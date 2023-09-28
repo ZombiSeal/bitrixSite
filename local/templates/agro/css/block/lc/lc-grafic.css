@@ -1,0 +1,91 @@
+.lc-content__grafic p {
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.03em;
+  color: #212121;
+  margin-bottom: 20px;
+}
+
+.lc-content__grafic-search {
+  width: 100%;
+  margin: 35px 0;
+}
+
+.lc-content__grafic-search input[type='text'] {
+  width: 100%;
+}
+
+.lc-content__grafic-list {
+  background: #F8FBFB;
+  border: 1px solid #CFD5D5;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.lc-content__grafic .pagination {
+  padding: 60px 0 0;
+}
+
+.grafic-list__top {
+  padding: 20px 30px;
+  border-bottom: 1px solid #CFD5D5;
+}
+
+.grafic-list__top span {
+  width: auto;
+}
+
+.grafic-list__top .icon {
+  width: 7px;
+  height: 7px;
+  margin-left: 10px;
+  transition: .3s;
+}
+
+.grafic-list__top ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.grafic-list__top ul li {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 135%;
+  color: #414141;
+  cursor: pointer;
+}
+
+.grafic-list__top ul li.inverse .icon {
+  transform: rotate(-180deg);
+}
+
+.grafic-list__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+}
+
+.grafic-list__bottom ul {
+  width: 50%;
+  padding: 10px 30px 15px;
+  border-right: 1px solid  #CFD5D5;
+}
+
+.grafic-list__bottom ul:nth-child(2n) {
+  border-right: 0;
+}
+
+.grafic-list__bottom ul li {
+  padding: 15px 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 135%;
+  color: #4F5050;
+  border-bottom: 1px dashed #B5BEBE;
+}
+
+/*# sourceMappingURL=lc-grafic.css.map */

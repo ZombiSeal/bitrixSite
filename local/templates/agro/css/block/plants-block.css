@@ -1,0 +1,79 @@
+.plants-block {
+  background: #EEF5F7;
+  padding: 69px 0 128px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #D8DFE2;
+}
+
+.plants-block__zag {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 120%;
+  letter-spacing: 0.08em;
+  color: #8FAAB3;
+  padding: 14px 17px 14px 21px;
+  position: relative;
+  margin-bottom: 30px;
+  display: inline-block;
+  background-color: #D5E2E6;
+}
+
+.plants-block__zag::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 32.5px 0 32.5px 20px;
+  border-color: transparent transparent transparent #D5E2E6;
+  position: absolute;
+  right: -20px;
+  top: 0;
+}
+
+.plants-block p {
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 160%;
+  max-width: 1100px;
+  color: #000000;
+}
+
+.plants-block p strong, .plants-block p b {
+  font-weight: 600;
+  font-size: 36px;
+}
+
+.ground {
+  position: absolute;
+  left: -25px;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 70px;
+}
+
+.ground__img {
+  width: calc(100% + 50px);
+  height: 70px;
+  background-image: url(../images/ground.png);
+  background-size: cover;
+}
+
+.plants {
+  width: 300px;
+  height: 300px;
+  z-index: 9;
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+}
+
+.plants__img {
+  width: 300px;
+  height: 300px;
+  background-image: url(../images/plants.png);
+  background-size: contain;
+}
+
+/*# sourceMappingURL=plants-block.css.map */

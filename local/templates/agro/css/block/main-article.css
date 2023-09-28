@@ -1,0 +1,27 @@
+.main-article {
+  position: relative;
+  background-color: #F1F5F6;
+  padding: 40px 0 20px;
+  z-index: 1;
+}
+
+.main-article::before {
+  content: '';
+  height: 203px;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.main-article .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+/*# sourceMappingURL=main-article.css.map */

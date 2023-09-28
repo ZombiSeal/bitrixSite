@@ -1,0 +1,60 @@
+.search-result__count {
+  text-align: center;
+  padding: 10px 0 40px;
+  font-size: 22px;
+  line-height: 136%;
+  color: #414141;
+}
+
+.search-result__form {
+  width: 990px;
+  margin: 0 auto 60px;
+}
+
+.search-result__form input[type='text'] {
+  width: 100%;
+}
+
+.search-result__container .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-result__btn {
+  justify-content: center;
+  display: flex;
+  padding: 30px 0 70px;
+  position: relative;
+}
+
+.search-result__btn .sbmt--red-border {
+  background-color: #fff;
+  position: relative;
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.search-result__btn .sbmt--red-border:hover {
+  background-color: #EF4949;
+}
+
+.search-result__btn::before {
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: #D8DFE2;
+  left: 0;
+  top: 56.5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.search-result .news .search-result__btn {
+  background-color: #F1F5F6;
+}
+
+.search-result .news .main-article {
+  padding-top: 0px;
+}
+
+/*# sourceMappingURL=search.css.map */

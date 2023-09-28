@@ -1,0 +1,1 @@
+{"version":3,"file":"lc-tabs.css","sources":["block/lc/lc-tabs.scss"],"sourcesContent":[".lc-tabs{\r\n\tli{\r\n\t\twidth: 325px;\r\n\t\ttext-align: center;\r\n\t\tpadding: 15px;\r\n\t}\r\n}"],"names":[],"mappings":"AAAA,AACC,QADO,CACP,EAAE,CAAA;EACD,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI;CACb"}

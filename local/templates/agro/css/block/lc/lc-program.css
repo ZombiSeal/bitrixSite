@@ -1,0 +1,123 @@
+.lc-program__block {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 43px;
+}
+
+.lc-program__block:last-child {
+  margin-bottom: 0;
+}
+
+.lc-program__block:nth-child(2) {
+  border-bottom: 1px solid #d8dfe2;
+}
+
+.lc-program__block-status {
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 135%;
+  padding-right: 20px;
+}
+
+.lc-program__block-action {
+  background-color: #f4f8f9;
+  padding: 10px 20px;
+  position: relative;
+  margin-left: 9px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.lc-program__block-action::before {
+  content: '';
+  background-color: #f4f8f9;
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  left: -5px;
+  top: 10px;
+  transform: rotate(45deg);
+}
+
+.lc-program__block-action .red {
+  color: #f64b4b;
+}
+
+.lc-program__block-bar {
+  width: 100%;
+  display: flex;
+  padding: 46px 0;
+}
+
+.lc-program__block-step {
+  height: 6px;
+  width: 100%;
+  background-color: #f4f8f9;
+  position: relative;
+}
+
+.lc-program__block-step:first-child {
+  border-radius: 3px;
+}
+
+.lc-program__block-step:last-child {
+  border-radius: 3px;
+}
+
+.lc-program__block-step:last-child::before {
+  display: none;
+}
+
+.lc-program__block-step::before {
+  position: absolute;
+  left: 100%;
+  transform: translateX(-50%);
+  top: -11px;
+  content: '';
+  width: 15px;
+  height: 15px;
+  border: 6px solid #f4f8f9;
+  border-radius: 13.5px;
+  background-color: #c4c6c7;
+  z-index: 20;
+}
+
+.lc-program__block-step span {
+  position: absolute;
+  left: 100%;
+  transform: translate(-50%, calc(-100% + -29px));
+  white-space: nowrap;
+}
+
+.lc-program__block-step.active {
+  background-color: #cedee2;
+}
+
+.lc-program__block-step.active::before {
+  border-color: #cedee2;
+  background-color: #f64b4b;
+}
+
+.lc-program__block-list li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 16px;
+}
+
+.lc-program__block-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(100%);
+  width: 3px;
+  height: 3px;
+  border-radius: 3.5px;
+  border: 2px solid #f64b4b;
+}
+
+/*# sourceMappingURL=lc-program.css.map */

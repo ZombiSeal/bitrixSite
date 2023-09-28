@@ -1,0 +1,116 @@
+.contact-juridical {
+  padding: 80px 0;
+}
+
+.contact-juridical__razdel {
+  font-size: 16px;
+  line-height: 120%;
+  color: #EF4949;
+}
+
+.contact-juridical__zag {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 200%;
+  color: #232323;
+  margin-bottom: 15px;
+}
+
+.contact-juridical__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-juridical__container > p {
+  width: 45%;
+  font-size: 16px;
+  line-height: 156%;
+  color: #363636;
+  padding-top: 50px;
+}
+
+.contact-juridical__list {
+  width: 45%;
+}
+
+.contact-juridical__list ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.contact-juridical__list ul li {
+  width: 45%;
+}
+
+.contact-juridical__list ul li:nth-child(even) {
+  text-align: right;
+}
+
+.contact-juridical__list ul li .red {
+  font-size: 16px;
+  line-height: 212%;
+  color: #F74B4B;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.contact-juridical .zag {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 156%;
+  letter-spacing: -0.02em;
+  color: #2B2B2B;
+}
+
+.contact-juridical.with-img .contact-juridical__container > p {
+  padding-top: 0;
+}
+
+.contact-juridical.with-img .contact-juridical__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.contact-juridical.with-img .contact-juridical__list ul {
+  margin-top: 5px;
+}
+
+.contact-juridical.with-img .contact-juridical__list .img {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  padding: 5px;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.16);
+}
+
+.contact-juridical.with-img .contact-juridical__list .img img {
+  width: calc(100% + 10px);
+  max-width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.contact-juridical.with-img .contact-juridical__list .text {
+  width: calc(100% - 240px);
+}
+
+.contact-juridical.with-img .contact-juridical__list li {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.contact-juridical.with-img .contact-juridical__list .red {
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=contact-juridical.css.map */

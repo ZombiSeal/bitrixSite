@@ -1,0 +1,102 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 70px;
+}
+
+.pagination ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.pagination ul a {
+  padding: 13px 11px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 18px;
+  color: #747676;
+  border-bottom: 2px solid transparent;
+  transition: .3s;
+}
+
+.pagination ul a:hover {
+  color: #1E1F1F;
+}
+
+.pagination ul .active {
+  border-color: #F74B4B;
+  color: #1E1F1F;
+}
+
+.pagination__prev, .pagination__next {
+  width: 55px;
+  height: 30px;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.pagination__prev img, .pagination__next img {
+  margin-left: 5px;
+}
+
+.pagination__prev:hover .action-button__circle--base, .pagination__next:hover .action-button__circle--base {
+  transform: scale(0.2) rotate(480deg);
+  fill: #373737;
+}
+
+.pagination__prev:hover .action-button__circle--base circle, .pagination__next:hover .action-button__circle--base circle {
+  fill: #373737;
+  transition: .3s;
+  transition-delay: 0.3s;
+}
+
+.pagination .action-button__circle {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pagination .action-button__circle circle {
+  stroke-width: 1;
+}
+
+.pagination .action-button__circle--base {
+  transform: rotate(210deg);
+  transition: .5s;
+}
+
+.pagination .action-button__circle--base circle {
+  stroke-width: 1;
+  stroke: #373737;
+  fill: transparent;
+  stroke-dasharray: 210;
+  stroke-dashoffset: 140;
+}
+
+.pagination .action-button__circle--fill {
+  display: none;
+}
+
+.pagination__next {
+  justify-content: flex-end;
+}
+
+.pagination__next .action-button__circle {
+  left: 0;
+}
+
+.pagination__next .action-button__circle--base {
+  transform: rotate(30deg);
+}
+
+.pagination__next img {
+  transform: rotate(180deg);
+  margin-left: 0;
+  margin-right: 5px;
+}
+
+/*# sourceMappingURL=pagination.css.map */

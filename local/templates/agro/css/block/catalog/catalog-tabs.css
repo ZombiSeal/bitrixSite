@@ -1,0 +1,72 @@
+.catalog-tabs {
+  display: flex;
+}
+
+.catalog-tabs__li {
+  padding: 12px 30px 11px 75px;
+  text-align: center;
+  border: 1px solid #AAB2B2;
+  border-right: 0;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #2B2D2D;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+
+.catalog-tabs__li::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 7px 6px;
+  border-color: transparent transparent transparent transparent;
+  position: absolute;
+  left: calc(50% - 6px);
+  bottom: 0;
+  transition: .2s;
+}
+
+.catalog-tabs__li:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.catalog-tabs__li:last-child {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-right: 1px solid #AAB2B2;
+}
+
+.catalog-tabs__li .sprite-svg {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  fill: #2B2D2D;
+  transition: 0.3s;
+}
+
+.catalog-tabs__li:hover .sprite-svg {
+  fill: #F74B4B;
+}
+
+.catalog-tabs .active {
+  border: 1px solid #4D5151;
+  color: #F74B4B;
+}
+
+.catalog-tabs .active .sprite-svg {
+  fill: #F74B4B;
+}
+
+.catalog-tabs .active::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 6px 7px 6px;
+  border-color: transparent transparent #F74B4B transparent;
+}
+
+/*# sourceMappingURL=catalog-tabs.css.map */

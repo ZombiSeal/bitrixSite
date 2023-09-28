@@ -1,0 +1,159 @@
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-right: 30px;
+  border-bottom: 1px solid #E8ECEC;
+}
+
+.basket-item:last-child {
+  border-bottom: 0;
+}
+
+.basket-item .for--mob {
+  display: none;
+}
+
+.basket-item__img {
+  height: 100%;
+  width: 18%;
+  padding: 20px 30px;
+}
+
+.basket-item__img .bg {
+  width: 100%;
+  height: 100%;
+  min-height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basket-item__name {
+  padding-top: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 135%;
+  width: 22%;
+  color: #4F5050;
+}
+
+.basket-item__discount, .basket-item__price, .basket-item__weight, .basket-item__count, .basket-item__total {
+  padding-top: 30px;
+  font-size: 14px;
+  line-height: 135%;
+  color: #4F5050;
+  text-align: center;
+  width: 12%;
+}
+
+.basket-item__discount {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 135%;
+  text-align: center;
+  color: #F74B4B;
+}
+
+.basket-item__price {
+  text-align: center;
+}
+
+.basket-item__price .old {
+  font-size: 13px;
+  line-height: 135%;
+  text-decoration-line: line-through;
+  color: #A7A7A7;
+  display: block;
+}
+
+.basket-item__price .new {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 135%;
+  color: #4F5050;
+  display: block;
+}
+
+.basket-item__total .old {
+  font-size: 13px;
+  line-height: 135%;
+  display: block;
+  /* identical to box height, or 18px */
+  text-decoration-line: line-through;
+  color: #A7A7A7;
+}
+
+.basket-item__total .new {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 135%;
+  /* identical to box height, or 19px */
+  color: #F74B4B;
+}
+
+.basket-item-page {
+  padding-right: 100px;
+  position: relative;
+}
+
+.basket-items-list .basket-container__param ul {
+  padding-right: 100px;
+}
+
+.basket-item__delet {
+  width: 90px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 30px;
+  justify-content: center;
+}
+
+.basket-item__delet .delete {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.basket-item__delet .delete svg {
+  fill: #454545;
+  transition: .3s;
+}
+
+.basket-item__delet .delete:hover svg {
+  fill: #a2a2a2;
+}
+
+.click-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.click-counter button {
+  border: 0;
+  background: none;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 0 5px;
+  color: #4F5050;
+  font-weight: lighter;
+}
+
+.click-counter input {
+  width: 40px;
+  border: 0;
+  font-size: 14px;
+  line-height: 135%;
+  text-align: center;
+  color: #4F5050;
+}
+
+/*# sourceMappingURL=basket-item.css.map */

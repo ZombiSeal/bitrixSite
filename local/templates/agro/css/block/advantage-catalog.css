@@ -1,0 +1,16 @@
+.advantage-catalog {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 15px;
+}
+
+.advantage-catalog__item {
+  width: 33.33%;
+  padding: 0 60px 0 80px;
+  min-height: 50px;
+  margin-bottom: 25px;
+  background-size: contain;
+}
+
+/*# sourceMappingURL=advantage-catalog.css.map */

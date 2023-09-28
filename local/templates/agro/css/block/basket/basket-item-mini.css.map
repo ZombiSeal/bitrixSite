@@ -1,0 +1,1 @@
+{"version":3,"file":"basket-item-mini.css","sources":["block/basket/basket-item-mini.scss"],"sourcesContent":[".basket-item-mini{\r\n\t&__img{\r\n\t\twidth: 100px;\r\n\t\theight: 100px;\r\n\t}\r\n}"],"names":[],"mappings":"AACE,AAAD,sBAAM,CAAA;EACL,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;CACb"}

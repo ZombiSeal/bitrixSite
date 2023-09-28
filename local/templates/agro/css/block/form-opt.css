@@ -1,0 +1,96 @@
+.form-opt {
+  margin: 80px auto;
+  max-width: 1160px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 30px rgba(162, 165, 166, 0.35);
+  padding: 20px;
+}
+
+.form-opt__container {
+  border: 1px solid rgba(201, 201, 209, 0.5);
+  border-bottom: 2px solid #F74B4B;
+  padding: 40px;
+}
+
+.form-opt__zag {
+  font-size: 33px;
+  line-height: 133%;
+  text-align: center;
+  color: #414141;
+  margin-bottom: 20px;
+}
+
+.form-opt__p {
+  text-align: center;
+  font-size: 16px;
+  line-height: 160%;
+  color: #B0B0B0;
+}
+
+.form-opt__form {
+  margin: 20px auto;
+  padding-top: 40px;
+  max-width: 920px;
+  border-top: 1px solid #D8DFE2;
+}
+
+.form-opt__form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-opt__form .required--sbmt {
+  padding: 12px 30px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 135%;
+  color: #EF4949;
+  border: 2px solid #EF4949;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: #fff;
+  transition: .3s;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.form-opt__form .required--sbmt:hover {
+  background-color: #EF4949;
+  color: #fff;
+}
+
+.form-opt__form .input-text-label {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.form-opt__form .input-text-label label {
+  font-size: 16px;
+  line-height: 120%;
+  color: #000000;
+  top: 20px;
+}
+
+.form-opt__form .input-text-label input {
+  width: 100%;
+  padding: 20px;
+  border: 0;
+  border-bottom: 1px solid #ACACAC;
+}
+
+.form-opt__form .input-text-label input.error {
+  border-bottom-color: #EF4949;
+}
+
+.form-opt__form .input-text-label.focus label {
+  top: -5px;
+  color: grey;
+  font-size: 12px;
+}
+
+.form-opt__form .input-text-label.w2 {
+  width: calc(50% - 10px);
+}
+
+/*# sourceMappingURL=form-opt.css.map */

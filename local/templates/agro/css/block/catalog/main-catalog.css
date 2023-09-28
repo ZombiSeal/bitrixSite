@@ -1,0 +1,22 @@
+.main-catalog {
+  padding: 68px 0 40px;
+}
+
+.main-catalog .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.catalog-container {
+  display: none;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 55px;
+}
+
+.catalog-container.active {
+  display: flex;
+}
+
+/*# sourceMappingURL=main-catalog.css.map */

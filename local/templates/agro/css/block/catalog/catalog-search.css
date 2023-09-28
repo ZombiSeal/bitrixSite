@@ -1,0 +1,47 @@
+.catalog-search {
+  position: relative;
+}
+
+.catalog-search input[type='text'] {
+  background: #F7FAFA;
+  border: 0.5px solid #b8bfbf;
+  border-radius: 2px;
+  min-height: 50px;
+  min-width: 655px;
+  padding: 12px 12px 12px 50px;
+  transition: 0.3s;
+}
+
+.catalog-search input[type='text']:hover, .catalog-search input[type='text']:focus {
+  background-color: #fff;
+}
+
+.catalog-search input::placeholder {
+  transition: .3s;
+}
+
+.catalog-search input:focus::placeholder {
+  color: #d2d2d2bf;
+}
+
+.catalog-search input[type='submit'] {
+  font-size: 0;
+  position: absolute;
+  left: 12px;
+  top: 9px;
+  width: 30px;
+  height: 30px;
+  background-size: 16px;
+  border: 0;
+  box-shadow: none;
+  background-position: center;
+  background-color: transparent;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.catalog-search input[type='submit']:hover {
+  opacity: 0.7;
+}
+
+/*# sourceMappingURL=catalog-search.css.map */

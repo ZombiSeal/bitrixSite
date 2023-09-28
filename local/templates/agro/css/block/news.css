@@ -1,0 +1,20 @@
+.news .tabs-nav {
+  max-width: 990px;
+  margin: auto;
+  padding: 0;
+}
+
+.news .article-item {
+  margin-bottom: 110px;
+}
+
+.news .pagination {
+  width: 100%;
+  padding-top: 0;
+}
+
+.news .tabs-content {
+  padding: 0;
+}
+
+/*# sourceMappingURL=news.css.map */
