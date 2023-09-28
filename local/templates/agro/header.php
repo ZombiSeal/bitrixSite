@@ -24,7 +24,7 @@ use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addString('<link rel="apple-touch-icon" sizes="114x114" href="/local/templates/agro/images/favicon/favicon114.png">');
 
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/libs.min.css");
-    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/--style.css');
+    Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/style.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/block/header.css');
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/block/footer.css');
 

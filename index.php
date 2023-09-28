@@ -2,10 +2,6 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Главная");
 
-use Bitrix\Main\Page\Asset;
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/block/main-top.css");
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/block/main-article.css");
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/block/main-about.css");
 ?>
     <article>
         <section>

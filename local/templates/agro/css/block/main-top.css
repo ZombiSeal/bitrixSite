@@ -146,7 +146,7 @@
 }
 
 .main-top__slider .slick-next {
-  background-image: url(../images/svg/a-r-black.svg);
+  background-image: url(../../images/svg/a-r-black.svg);
   right: 15px;
   z-index: 1;
 }
@@ -156,7 +156,7 @@
 }
 
 .main-top__slider .slick-prev {
-  background-image: url(../images/svg/a-l-black.svg);
+  background-image: url(../../images/svg/a-l-black.svg);
   left: 15px;
   z-index: 1;
 }

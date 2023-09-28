@@ -1,8 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Контакты");
-use Bitrix\Main\Page\Asset;
-Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/block/contact.css');
+
 ?>
     <article>
         <section>
