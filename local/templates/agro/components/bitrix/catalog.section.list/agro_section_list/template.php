@@ -28,7 +28,7 @@ $this->setFrameMode(true);
                     <?php foreach ($item['SUB_SECTIONS'] as $subitem): ?>
                         <li>
                             <a href="<?=$subitem['SECTION_PAGE_URL'];?>"><?= $subitem['NAME'] ?? '';?>
-                                <span>(<?=$item['ELEMENT_CNT']?>)</span>
+                                <span>(<?=$subitem['ELEMENT_CNT']?>)</span>
                             </a>
                         </li>
                     <?php endforeach; ?>
