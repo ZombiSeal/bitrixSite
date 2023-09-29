@@ -1,12 +1,9 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-<?php
-use Bitrix\Main\Page\Asset;
-?>
 <footer class="footer">
     <div class="footer-top">
         <div class="container">
             <div>
-                <div class="footer-logo"><a href="#"><img src="<?=SITE_TEMPLATE_PATH?>/images/logo2.svg"></a></div>
+                <div class="footer-logo"><a href="#"><img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg"></a></div>
                 <div class="footer-copyright"><span>2038, ООО «Норм сайт»</span><span>Все права защищенны ©</span></div>
             </div>
             <div class="footer-footersite"><span>Разработка сайта</span>&nbsp;
@@ -27,22 +24,22 @@ use Bitrix\Main\Page\Asset;
             <div class="footer__img">
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/0.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/0.svg"></div>
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/1.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/1.svg"></div>
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/2.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/2.svg"></div>
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/3.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/3.svg"></div>
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/4.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/4.svg"></div>
                 <div class="img"><img class="lazy"
                                       src="data:image/gif;base64,R0lGODlhCgAIAIABAN3d3f///yH5BAEAAAEALAAAAAAKAAgAAAINjAOnyJv2oJOrVXrzKQA7"
-                                      data-src="<?=SITE_TEMPLATE_PATH?>/images/pay/5.svg"></div>
+                                      data-src="<?= SITE_TEMPLATE_PATH ?>/images/pay/5.svg"></div>
             </div>
         </div>
     </div>
