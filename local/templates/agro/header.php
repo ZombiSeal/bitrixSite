@@ -61,8 +61,10 @@ use Bitrix\Main\Page\Asset;
                     "USE_EXT" => "N"
                 )
             ); ?>
-            <div class="header-bottom__phone"><a class="header-bottom__phone-link ico-velcom"
-                                                 href="tel:+375291112233"><span>8 (029) 111-22-33</span></a>
+            <div class="header-bottom__phone">
+                <a class="header-bottom__phone-link ico-velcom" href="tel:+375291112233">
+                    <span>8 (029) 111-22-33</span>
+                </a>
                 <div class="header-bottom__phone-hover">
                     <div class="header-bottom__phone-contact">
                         <div class="name">Контакт-центр:</div>
@@ -96,35 +98,57 @@ use Bitrix\Main\Page\Asset;
     </div>
     <div class="header-bottom">
         <div class="container">
-            <div class="header-bottom__logo"><a href="/" <?php if($APPLICATION->GetCurPage() == '/'):?> onclick="return false;" <?php endif;?>><img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg"></a>
+            <div class="header-bottom__logo">
+                <a href="/" <?php if($APPLICATION->GetCurPage() == '/'):?> onclick="return false;" <?php endif;?>>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg">
+                </a>
             </div>
-            <div class="header-bottom__phone"><a class="header-bottom__phone-link ico-velcom"
-                                                 href="tel:+375291112233"><span>8 (029) 111-22-33</span></a>
+            <div class="header-bottom__phone">
+                <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => "/include/main_phone.php",
+                        "AREA_FILE_SUFFIX" => "inc",
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "EDIT_TEMPLATE" => "standard.php"
+                    )
+                );?>
                 <div class="header-bottom__phone-hover">
                     <div class="header-bottom__phone-contact">
                         <div class="name">Контакт-центр:</div>
                         <ul>
-                            <li class="ico-velcom"><a href="tel:80291112233">8 (029)<b>111-22-33</b></a></li>
-                            <li class="ico-mtc"><a href="tel:80297002244">8 (029)<b>700-22-44</b></a></li>
+                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/phones.php",
+                                    "AREA_FILE_RECURSIVE" => "Y",
+                                    "EDIT_TEMPLATE" => "standard.php"
+                                )
+                            );?>
                             <li><a href="mailto:info@normsite.by">info@normsite.by</a></li>
                         </ul>
                     </div>
                     <div class="header-bottom__phone-time">
                         <div class="name">Время работы:</div>
                         <ul>
-                            <li>пн. - пт. с 10.00 до 19.00</li>
-                            <li>сб. - вс. с 10.00 до 17.00</li>
+                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/time.php",
+                                    "AREA_FILE_RECURSIVE" => "Y",
+                                    "EDIT_TEMPLATE" => "standard.php"
+                                )
+                            );?>
+
                         </ul>
                     </div>
                     <div class="header-bottom__phone-adress"><a class="call-back--link ico-smartphone-red" href="#">Обратный
                             звонок</a>
                         <ul>
-                            <li class="ico-placeholder-gray"><a href="#">Магазин на<span>Наполеона, 23</span></a><a
-                                        href="tel:80175551122">8 (017) 555-11-22</a></li>
-                            <li class="ico-placeholder-gray"><a href="#">Магазин на<span>Неманская, 45 11</span></a><a
-                                        href="tel:80175337788">8 (017) 533-77-88</a></li>
-                            <li class="ico-placeholder-gray"><a href="#">Магазин на<span>Уборевича, 31 2</span></a><a
-                                        href="tel:80293334455">8 (029) 333-44-55</a></li>
+                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "PATH" => "/include/adresses.php",
+                                    "AREA_FILE_RECURSIVE" => "Y",
+                                    "EDIT_TEMPLATE" => "standard.php"
+                                )
+                            );?>
                         </ul>
                     </div>
                 </div>
