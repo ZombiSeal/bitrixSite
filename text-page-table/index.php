@@ -8,9 +8,12 @@ $APPLICATION->SetTitle("Информационная");
         <div class="container">
             <div class="breadcrumbs">
                 <div class="bx-breadcrumb">
-                    <div class="bx-breadcrumb-item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="bx_breadcrumb_1"><a href="/" title="agro-park" itemprop="url"><span itemprop="title">Главная</span></a></div>
-                    <div class="bx-breadcrumb-item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="bx_breadcrumb_1"><a href="/" title="agro-park" itemprop="url"><span itemprop="title"> каталог товаров</span></a></div>
-                    <div class="bx-breadcrumb-item"><span>Текстовая страница</span></div>
+                    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb","agro_breadcrumb",Array(
+                            "START_FROM" => "0",
+                            "PATH" => "",
+                            "SITE_ID" => "s1"
+                        )
+                    );?>
                 </div>
             </div>
             <div class="zag_main">

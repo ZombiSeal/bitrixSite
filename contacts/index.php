@@ -6,12 +6,14 @@ $APPLICATION->SetTitle("Контакты");
     <article>
         <section>
             <div class="container">
+
                 <div class="breadcrumbs">
-                    <div class="bx-breadcrumb">
-                        <div class="bx-breadcrumb-item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="bx_breadcrumb_1"><a href="/" title="agro-park" itemprop="url"><span itemprop="title">Главная</span></a></div>
-                        <div class="bx-breadcrumb-item" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" itemref="bx_breadcrumb_1"><a href="/" title="agro-park" itemprop="url"><span itemprop="title"> каталог товаров</span></a></div>
-                        <div class="bx-breadcrumb-item"><span> Контакты</span></div>
-                    </div>
+                    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb","agro_breadcrumb",Array(
+                            "START_FROM" => "0",
+                            "PATH" => "",
+                            "SITE_ID" => "s1"
+                        )
+                    );?>
                 </div>
                 <div class="zag_main">
                     <h1> Контакты</h1>

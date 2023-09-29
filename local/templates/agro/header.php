@@ -96,7 +96,7 @@ use Bitrix\Main\Page\Asset;
     </div>
     <div class="header-bottom">
         <div class="container">
-            <div class="header-bottom__logo"><a href="/"><img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg"></a>
+            <div class="header-bottom__logo"><a href="/" <?php if($APPLICATION->GetCurPage() == '/'):?> onclick="return false;" <?php endif;?>><img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg"></a>
             </div>
             <div class="header-bottom__phone"><a class="header-bottom__phone-link ico-velcom"
                                                  href="tel:+375291112233"><span>8 (029) 111-22-33</span></a>
