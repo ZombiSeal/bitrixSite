@@ -18,7 +18,16 @@ $APPLICATION->SetTitle("Главная");
             </div>
             <div class="zag_main">
                 <h1>ВОПРОС - ОТВЕТ</h1>
-                <p><strong>Как мне действовать, если что-то сломалось в моей технике.</strong>И как я должен<br>  заботиться о ней. Вы найдёте ответы на эти и другие часто задаваемые вопросы здесь.</p>
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    array(
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "AREA_FILE_SHOW" => "page",
+                        "AREA_FILE_SUFFIX" => "subtitle",
+                        "EDIT_TEMPLATE" => "standard.php"
+                    )
+                ); ?>
             </div>
         </div>
     </section>
@@ -75,7 +84,18 @@ $APPLICATION->SetTitle("Главная");
                         </li>
                     </ul>
                 </div>
-                <div class="text-accordion__fixed"><a class="text-accordion__info" href="tel:80293334455" style="background-image: url(<?=SITE_TEMPLATE_PATH?>/images/question.png)">Если подходящей запчасти нету,<strong>позвоните нам по телефону 8 (029) 333-44-55</strong>и мы что-нибудь   придумаем.</a></div>
+                <div class="text-accordion__fixed">
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    array(
+                        "AREA_FILE_RECURSIVE" => "Y",
+                        "AREA_FILE_SHOW" => "page",
+                        "AREA_FILE_SUFFIX" => "faq",
+                        "EDIT_TEMPLATE" => "standard.php"
+                    )
+                ); ?>
+                </div>
             </div>
         </div>
     </section>
