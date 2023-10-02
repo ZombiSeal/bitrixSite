@@ -1,3 +1,6 @@
 <?php
 
 const CLOTHES_IBLOCK_ID = 2;
+const SLIDER_IBLOCK_ID = 5;
+const GOAL_IBLOCK_ID = 6;
+const ADVANTAGES_IBLOCK_ID = 7;
