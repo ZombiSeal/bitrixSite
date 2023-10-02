@@ -22,7 +22,20 @@
                             false
                         ); ?>
                     </span>
-                    <span>Все права защищенны ©</span>
+                    <span>
+                        <? $APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            ".default",
+                            array(
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => "/include/footer_txt3.php",
+                                "AREA_FILE_RECURSIVE" => "Y",
+                                "EDIT_TEMPLATE" => "standard.php",
+                                "COMPONENT_TEMPLATE" => ".default"
+                            ),
+                            false
+                        ); ?>
+                    </span>
                 </div>
             </div>
             <div class="footer-footersite">
