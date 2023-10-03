@@ -1,4 +1,4 @@
 <?php
-$sSectionName = "Информация таблица";
+$sSectionName = "Доставка";
 $arDirProperties = array(
 );
