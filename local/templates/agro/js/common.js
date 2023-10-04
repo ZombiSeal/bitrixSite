@@ -174,7 +174,32 @@ $(window).ready(function () {
 
 
 	//Табы на главной
-	$('body').on('click', '.catalog-tabs__li', function () {
+	// $('body').on('click', '.catalog-tabs__li', function () {
+	// 	if ($(this).hasClass('active')) {
+	// 		return false;
+	// 	} else {
+	// 		let dataTab = $(this).attr('data-tab');
+	// 		$(this).siblings().removeClass('active');
+	// 		$(this).addClass('active');
+	//
+	// 		$('.catalog-container').each(function () {
+	// 			$(this).removeClass('active');
+	//
+	// 			if ($(this).attr('data-tab') == dataTab) {
+	// 				$(this).addClass('active');
+	// 			}
+	// 		});
+	// 	}
+	// });
+	//
+	// $('body').on('click', '.btn-for--catalog', function () {
+	// 	$('body').toggleClass('menu--open');
+	// 	$(this).closest('.header-bottom__catalog').toggleClass('open');
+	// 	$(this).siblings('.header-catalog-popup').toggleClass('open');
+	// 	return false;
+	// });
+
+	$('body').on('click', '.tabs__li', function () {
 		if ($(this).hasClass('active')) {
 			return false;
 		} else {
@@ -182,7 +207,7 @@ $(window).ready(function () {
 			$(this).siblings().removeClass('active');
 			$(this).addClass('active');
 
-			$('.catalog-container').each(function () {
+			$('.tabs-content').each(function () {
 				$(this).removeClass('active');
 
 				if ($(this).attr('data-tab') == dataTab) {
@@ -198,6 +223,7 @@ $(window).ready(function () {
 		$(this).siblings('.header-catalog-popup').toggleClass('open');
 		return false;
 	});
+
 	$(document).mouseup(function (e) { // событие клика по веб-документу
 		var div = $(".header-bottom__catalog"); // тут указываем ID элемента
 		if (!div.is(e.target) // если клик был не по нашему блоку

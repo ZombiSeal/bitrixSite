@@ -7552,10 +7552,11 @@ img.mfp-img {
 }
 
 .contact .tabs-content .container {
+  width: max-content;
   position: absolute;
   top: 85px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 83%;
+  transform: translateX(-83%);
 }
 
 .contact .tabs-content .location-block {

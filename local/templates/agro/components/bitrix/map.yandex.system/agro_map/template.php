@@ -1,8 +1,7 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
-require_once 'result_modify.php'
-
+if(CModule::IncludeModule("iblock")) require_once 'result_modify.php'
 
 ?>
 <script type="text/javascript">
