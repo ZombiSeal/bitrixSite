@@ -8577,6 +8577,10 @@ img.mfp-img {
   width: calc(50% - 10px);
 }
 
+.form-opt__form .input-text-label.w2:last-of-type {
+  width: 100%;
+}
+
 .certificate-gallery {
   padding: 40px 0 94px;
 }
