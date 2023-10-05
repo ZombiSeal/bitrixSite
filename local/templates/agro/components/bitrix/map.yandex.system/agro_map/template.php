@@ -6,7 +6,7 @@ if (CModule::IncludeModule("iblock")) require 'result_modify.php';
 ?>
 <!--<script src="https://api-maps.yandex.ru/2.1/?apikey=2c3ad223-bf43-40ee-bf09-2bca17017747&lang=ru_RU"-->
 <!--        type="text/javascript">-->
-</script>
+
 <script type="text/javascript">
 
     if (!window.GLOBAL_arMapObjects)

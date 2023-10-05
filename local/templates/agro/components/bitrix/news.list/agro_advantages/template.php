@@ -21,10 +21,9 @@ $this->setFrameMode(true);
             $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
             ?>
 
-            <li id="<?=$this->GetEditAreaId($arItem['ID']);?>" class="<?=$arItem['PROPERTIES']['ICON']['VALUE']?> wow slideInLeft"><span class="name"><?=$arItem['NAME']?></span>
-                <p>
-                    <?=$arItem['~DETAIL_TEXT']?>
-                </p>
+            <li id="<?=$this->GetEditAreaId($arItem['ID']);?>" class="<?=$arItem['PROPERTIES']['ICON']['VALUE']?> wow slideInLeft">
+                <span class="name"><?=$arItem['NAME']?></span>
+                <p><?=$arItem['DETAIL_TEXT']?></p>
             </li>
 
         <?php endforeach; ?>

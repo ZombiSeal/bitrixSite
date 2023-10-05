@@ -99,7 +99,7 @@ $frame = $this->createFrame("sender-subscribe", false)->begin();
 			});
 		})();
 	</script>
-
+<?php vr($arResult);?>
 	<form id="bx_subscribe_subform_<?=$buttonId?>" role="form" method="post" action="<?=$arResult["FORM_ACTION"]?>">
 		<?=bitrix_sessid_post()?>
 		<input type="hidden" name="sender_subscription" value="add">

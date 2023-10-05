@@ -11,8 +11,9 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-
 /**/
+vr($arResult);
+$arFilter = ['ID'=> $arParams['ID'],'IBLOCK_ID' => $arParams['IBLOCK_ID'], 'ACTIVE'=>'Y'];
 ?>
 <?php if (!empty($arResult['ITEMS'])): ?>
     <ul class="text-accordion__list">
