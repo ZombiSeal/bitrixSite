@@ -1060,12 +1060,13 @@ function required_input() {
 				var inputLenght = $(this).attr('data-length') - 1;
 			}
 			else {
-				var inputLenght = 3;
+				var inputLenght = 2;
 			}
 
 			if (input.length > inputLenght) {
 				$(this).removeClass('error-online').closest('.input-text-label').removeClass('error-online');
 				$(this).removeClass('error').closest('.input-text-label').removeClass('error');
+				$(this).prev('label').css('color','black');
 			} else {
 				$(this).addClass('error-online').closest('.input-text-label').addClass('error-online');
 			}
@@ -1209,5 +1210,5 @@ function keyup_form() {
 	required_email();
 	required_input();
 	num__inset();
-	required_password()
+	required_password();
 }

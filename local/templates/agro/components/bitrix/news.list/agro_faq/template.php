@@ -15,9 +15,9 @@ require 'result_modify.php';
 ?>
 <?php if (!empty($arResult['ITEMS'])): ?>
     <?php foreach ($arResult['ITEMS'] as $arItem):?>
-        <div class="h2"><?=$arItem['SECTION_NAME']?></div>
+        <div class="h2"><?=$arItem['NAME']?></div>
         <ul class="text-accordion__list">
-            <?php foreach ($arItem["ELEMENTS"] as $el):?>
+            <?php foreach ($arItem["ITEMS"] as $el):?>
                 <?php
                 $this->AddEditAction($el['ID'], $el['EDIT_LINK'], CIBlock::GetArrayByID($el["IBLOCK_ID"], "ELEMENT_EDIT"));
                 $this->AddDeleteAction($el['ID'], $el['DELETE_LINK'], CIBlock::GetArrayByID($el["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
