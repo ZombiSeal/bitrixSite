@@ -1,6 +1,7 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 use Bitrix\Main\Page\Asset;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -99,56 +100,56 @@ use Bitrix\Main\Page\Asset;
     <div class="header-bottom">
         <div class="container">
             <div class="header-bottom__logo">
-                <a href="/" <?php if($APPLICATION->GetCurPage() == '/'):?> onclick="return false;" <?php endif;?>>
+                <a href="/" <?php if ($APPLICATION->GetCurPage() == '/'): ?> onclick="return false;" <?php endif; ?>>
                     <img src="<?= SITE_TEMPLATE_PATH ?>/images/logo2.svg">
                 </a>
             </div>
             <div class="header-bottom__phone">
-                <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                <? $APPLICATION->IncludeComponent("bitrix:main.include", "", array(
                         "AREA_FILE_SHOW" => "file",
                         "PATH" => "/include/main_phone.php",
                         "AREA_FILE_SUFFIX" => "inc",
                         "AREA_FILE_RECURSIVE" => "Y",
                         "EDIT_TEMPLATE" => "standard.php"
                     )
-                );?>
+                ); ?>
                 <div class="header-bottom__phone-hover">
                     <div class="header-bottom__phone-contact">
                         <div class="name">Контакт-центр:</div>
                         <ul>
-                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                            <? $APPLICATION->IncludeComponent("bitrix:main.include", "", array(
                                     "AREA_FILE_SHOW" => "file",
                                     "PATH" => "/include/phones.php",
                                     "AREA_FILE_RECURSIVE" => "Y",
                                     "EDIT_TEMPLATE" => "standard.php"
                                 )
-                            );?>
+                            ); ?>
                             <li><a href="mailto:info@normsite.by">info@normsite.by</a></li>
                         </ul>
                     </div>
                     <div class="header-bottom__phone-time">
                         <div class="name">Время работы:</div>
                         <ul>
-                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                            <? $APPLICATION->IncludeComponent("bitrix:main.include", "", array(
                                     "AREA_FILE_SHOW" => "file",
                                     "PATH" => "/include/time.php",
                                     "AREA_FILE_RECURSIVE" => "Y",
                                     "EDIT_TEMPLATE" => "standard.php"
                                 )
-                            );?>
+                            ); ?>
 
                         </ul>
                     </div>
                     <div class="header-bottom__phone-adress"><a class="call-back--link ico-smartphone-red" href="#">Обратный
                             звонок</a>
                         <ul>
-                            <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+                            <? $APPLICATION->IncludeComponent("bitrix:main.include", "", array(
                                     "AREA_FILE_SHOW" => "file",
                                     "PATH" => "/include/adresses.php",
                                     "AREA_FILE_RECURSIVE" => "Y",
                                     "EDIT_TEMPLATE" => "standard.php"
                                 )
-                            );?>
+                            ); ?>
                         </ul>
                     </div>
                 </div>
@@ -171,10 +172,10 @@ use Bitrix\Main\Page\Asset;
                             "VIEW_MODE" => "LIST",
                             "SHOW_PARENT_NAME" => "Y",
                             "IBLOCK_TYPE" => "catalog",
-                            "IBLOCK_ID" => CLOTHES_IBLOCK_ID,
+                            "IBLOCK_ID" => "10",
                             "SECTION_ID" => $_REQUEST["SECTION_ID"],
-                            "SECTION_CODE" => "",
-                            "SECTION_URL" => "",
+                            "SECTION_CODE" => $_REQUEST["SECTION_CODE_PATH"],
+                            "SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
                             "COUNT_ELEMENTS" => "Y",
                             "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
                             "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
@@ -194,7 +195,7 @@ use Bitrix\Main\Page\Asset;
                             "CACHE_GROUPS" => "Y",
                             "COMPONENT_TEMPLATE" => "agro_section_list",
                             "FILTER_NAME" => "sectionsFilter",
-                            "CACHE_FILTER" => "N",
+                            "CACHE_FILTER" => "N"
                         ),
                         false
                     ); ?>
