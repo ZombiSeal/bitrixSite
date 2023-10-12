@@ -178,7 +178,7 @@ use Bitrix\Main\Page\Asset;
                             "SECTION_URL" => "/catalog/#SECTION_CODE_PATH#/",
                             "COUNT_ELEMENTS" => "Y",
                             "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
-                            "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "N",
+                            "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "Y",
                             "TOP_DEPTH" => "2",
                             "SECTION_FIELDS" => array(
                                 0 => "",

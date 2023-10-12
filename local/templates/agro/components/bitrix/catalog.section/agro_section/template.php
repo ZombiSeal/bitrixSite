@@ -22,7 +22,9 @@ use Bitrix\Catalog\ProductTable;
  * |    <!-- component-end -->
  */
 
+
 $this->setFrameMode(true);
+
 
 if (!empty($arResult['NAV_RESULT'])) {
     $navParams = array(
@@ -86,6 +88,8 @@ $arParams['MESS_BTN_LAZY_LOAD'] = $arParams['MESS_BTN_LAZY_LOAD'] ?: Loc::getMes
 
 $obName = 'ob' . preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-' . $navParams['NavNum'];
+
+//vr($arResult);
 ?>
 
 <?
@@ -131,7 +135,6 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
     $areaIds = [];
     $itemParameters = [];
 
-//    vr($arResult['ITEMS']);
     foreach ($arResult['ITEMS'] as $item) {
         $uniqueId = $item['ID'] . '_' . md5($this->randString() . $component->getAction());
         $areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
@@ -149,6 +152,7 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
     ?>
 
     <!-- items-container -->
+    <div class="catalog-container catalog-container__page active">
     <?
     foreach ($arResult['ITEM_ROWS'] as $rowData) {
         $rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
@@ -235,30 +239,30 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
 
             case 2:
                 ?>
-                <div class="catalog-container catalog-container__page active">
-                    <?php foreach ($rowItems as $item): ?>
-                        <?
-                        $APPLICATION->IncludeComponent(
-                            'bitrix:catalog.item',
-                            'agro_item',
-                            array(
-                                'RESULT' => array(
-                                    'ITEM' => $item,
-                                    'AREA_ID' => $areaIds[$item['ID']],
-                                    'TYPE' => $rowData['TYPE'],
-                                    'BIG_LABEL' => 'N',
-                                    'BIG_DISCOUNT_PERCENT' => 'N',
-                                    'BIG_BUTTONS' => 'Y',
-                                    'SCALABLE' => 'N'
-                                ),
-                                'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-                            ),
-                            $component,
-                            array('HIDE_ICONS' => 'Y')
-                        );
-                        ?>
-                    <?php endforeach; ?>
-                </div>
+
+                <?php foreach ($rowItems as $item): ?>
+                <?
+                $APPLICATION->IncludeComponent(
+                    'bitrix:catalog.item',
+                    'agro_item',
+                    array(
+                        'RESULT' => array(
+                            'ITEM' => $item,
+                            'AREA_ID' => $areaIds[$item['ID']],
+                            'TYPE' => $rowData['TYPE'],
+                            'BIG_LABEL' => 'N',
+                            'BIG_DISCOUNT_PERCENT' => 'N',
+                            'BIG_BUTTONS' => 'Y',
+                            'SCALABLE' => 'N'
+                        ),
+                        'PARAMS' => $generalParams + $itemParameters[$item['ID']],
+                    ),
+                    $component,
+                    array('HIDE_ICONS' => 'Y')
+                );
+                ?>
+            <?php endforeach; ?>
+
 
                 <?
                 break;
@@ -641,7 +645,9 @@ if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
         ?>
         </div>
         <?
-    }
+    } ?>
+    </div>
+    <?php
     unset($rowItems);
 
     unset($itemParameters);
@@ -678,9 +684,7 @@ if ($showLazyLoad) {
 if ($showBottomPager) {
     ?>
     <div data-pagination-num="<?= $navParams['NavNum'] ?>">
-        <!-- pagination-container -->
         <?= $arResult['NAV_STRING'] ?>
-        <!-- pagination-container -->
     </div>
     <?
 }

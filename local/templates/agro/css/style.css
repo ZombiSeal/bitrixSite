@@ -401,37 +401,37 @@ ul {
   background-position: left;
 }
 
-.ico-credit {
+.ico_credit {
   background-image: url(../images/svg/debit-card.svg);
   background-repeat: no-repeat;
   background-position: left;
 }
 
-.ico-truck {
+.ico_truck {
   background-image: url(../images/svg/truck.svg);
   background-repeat: no-repeat;
   background-position: left;
 }
 
-.ico-setting {
+.ico_setting {
   background-image: url(../images/svg/settings.svg);
   background-repeat: no-repeat;
   background-position: left;
 }
 
-.ico-pig {
+.ico_pig {
   background-image: url(../images/svg/piggy-bank.svg);
   background-repeat: no-repeat;
   background-position: left;
 }
 
-.ico-winner {
+.ico_winner {
   background-image: url(../images/svg/winner.svg);
   background-repeat: no-repeat;
   background-position: left;
 }
 
-.ico-like {
+.ico_like {
   background-image: url(../images/svg/like.svg);
   background-repeat: no-repeat;
   background-position: left;
@@ -12908,4 +12908,11 @@ body {
   }
 }
 
+.menu ul{
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  font-weight: bold;
+  padding:20px;
+}
 /*# sourceMappingURL=style.css.map */

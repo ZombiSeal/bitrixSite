@@ -10,7 +10,7 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-require("result_modify.php");
+
 $this->setFrameMode(true);
 ?>
 <?php if (!empty($arResult['SECTIONS'])): ?>

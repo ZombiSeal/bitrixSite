@@ -65,37 +65,12 @@ if ($isFilter) {
 ?>
 
 
-<? $APPLICATION->IncludeComponent(
-    "bitrix:catalog.section.list",
-    "agro_catalog_menu",
-    array(
-        "ADDITIONAL_COUNT_ELEMENTS_FILTER" => "additionalCountFilter",
-        "VIEW_MODE" => "TEXT",
-        "SHOW_PARENT_NAME" => "Y",
-        "IBLOCK_TYPE" => $arParams['IBLOCK_TYPE'],
-        "IBLOCK_ID" => $arParams['IBLOCK_ID'],
-        "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
-
-        "COUNT_ELEMENTS" => "Y",
-        "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
-        "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "Y",
-        "TOP_DEPTH" => "2",
-        "SECTION_FIELDS" => "",
-        "SECTION_USER_FIELDS" => "",
-        "ADD_SECTIONS_CHAIN" => "N",
-        "CACHE_TYPE" => "A",
-        "CACHE_TIME" => "36000000",
-        "CACHE_NOTES" => "",
-        "CACHE_GROUPS" => "N"
-    )
-); ?>
-
 <div class="catalog-filter">
     <div class="catalog-filter__top">
         <div class="container">
             <div class="param">
                 <div class="catalog-filter__top-text"><span class="dekstop">ПОДБОР МОТОБЛОКА ПО</span><span
-                            class="mob">ПОДБОР ПО</span></div>
+                        class="mob">ПОДБОР ПО</span></div>
                 <div class="catalog-filter__top-btn" data-filter="parametr"><span>ПАРАМЕТРАМ</span>
                     <svg class="sprite-svg ar">
                         <use xlink:href="./images/sprite/sprite.svg#a-r-black"></use>
@@ -282,8 +257,8 @@ if ($isFilter) {
                         </div>
                     </div>
                     <div class="catalog-filter__select catalog-filter__block"><span
-                                class="tooltip-span">Мощность(лс):<span
-                                    class="quest">?</span>
+                            class="tooltip-span">Мощность(лс):<span
+                                class="quest">?</span>
                       <div class="tooltip-ico"><span>Разница в силе тяги и мощности</span></div></span>
                         <div>
                             <select class="styler">
@@ -312,8 +287,8 @@ if ($isFilter) {
                         </div>
                     </div>
                     <div class="catalog-filter__variant catalog-filter__block"><span
-                                class="tooltip-span">Дифференциал:<span
-                                    class="quest">?
+                            class="tooltip-span">Дифференциал:<span
+                                class="quest">?
                         <div class="tooltip-ico"><span>Разница в силе тяги и мощности</span></div></span></span>
                         <div class="filter__variant__block">
                             <div class="filter__variant__block-name"><span>5 варинатов</span></div>
@@ -392,7 +367,7 @@ if ($isFilter) {
                         <span>На протяжении</span>
                         <div>
                             <input class="num--inset" type="text" placeholder="От 2 месяцев"><span
-                                    class="absolute">Макс. 18 месяцев</span>
+                                class="absolute">Макс. 18 месяцев</span>
                         </div>
                         <span>месяцев</span>
                     </div>
