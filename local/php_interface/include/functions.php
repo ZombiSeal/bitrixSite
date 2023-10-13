@@ -51,3 +51,18 @@ function getMapData() : array
     }
     return $vars;
 }
+
+function renderFlag($sprite, $class, $tooltip) {
+
+    $spritePath = SITE_TEMPLATE_PATH . "/images/sprite/sprite.svg#$sprite";
+    return <<<HTML
+            <div class="flags $class">
+                <svg class="sprite-svg">
+                    <use xlink:href="$spritePath"></use>
+                </svg>
+                <div class="tooltip-ico">
+                    <span>$tooltip</span>
+                </div>
+            </div>
+        HTML;
+}

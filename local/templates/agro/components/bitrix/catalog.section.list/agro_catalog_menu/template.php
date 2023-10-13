@@ -15,13 +15,13 @@ $this->setFrameMode(true);
 //vr($arResult);
 ?>
 <?php if(!empty($arResult['SECTIONS'])):?>
-<div class="container">
-    <div class="menu">
-        <ul>
-            <?php foreach ($arResult['SECTIONS'] as $item): ?>
-                <li><a href="<?= $item['SECTION_PAGE_URL'] ?>"><?= $item['NAME'] ?><span>(<?=$item['ELEMENT_CNT']?>)</span></a></li>
-            <?php endforeach; ?>
-        </ul>
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <?php foreach ($arResult['SECTIONS'] as $item): ?>
+                    <li><a href="<?= $item['SECTION_PAGE_URL'] ?>"><?= $item['NAME'] ?><span>(<?=$item['ELEMENT_CNT']?>)</span></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
     </div>
-</div>
 <?php endif;?>
