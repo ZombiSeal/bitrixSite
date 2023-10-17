@@ -36,6 +36,23 @@ $arResult['BOTTOM_PROPS'] = [
     $arResult['PROPERTIES']['ARTICLE']
 ];
 
-$this->__component->setResultCacheKeys([
 
-]);
+if (!empty($arResult['PROPERTIES']['ADVANTAGES']['VALUE']))
+{
+        $filter = ["IBLOCK_ID" => CONTENT_IBLOCK_ID, "ID"=> $arResult['PROPERTIES']['ADVANTAGES']['VALUE']];
+        $res = CIBlockElement::GetList([], $filter, false, false, ['PROPERTY_ICON', 'NAME']); // с помощью метода CIBlockElement::GetList вытаскиваем все значения из нужного элемента
+        while($ob = $res->GetNext())
+        {
+            $arResult['PROPERTIES']['ADVANTAGES']['ELEMENTS'][] = $ob;
+        }
+}
+
+if (!empty($arResult['PROPERTIES']['ADDITIONAL_PRODUCT']['VALUE'])) {
+    foreach ($arResult['PROPERTIES']['ADDITIONAL_PRODUCT']['VALUE'] as $product) {
+        $arResult['ADDITIONAL_PRODUCT'][] = $product;
+    }
+
+    $this->__component->setResultCacheKeys([
+        'ADDITIONAL_PRODUCT'
+    ]);
+}

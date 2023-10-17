@@ -1,7 +1,12 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-$APPLICATION->SetTitle("Информационная");
-?><article> <section>
+$APPLICATION->SetTitle("Каталог");
+?><div class="fixed-compare">
+ <a class="fixed-compare__link" href="#">
+	5 товаров</a><a class="fixed-compare__link" href="#">
+	5 запчастей</a><a class="fixed-compare__close" href="#"> </a>
+</div>
+ <article> <section>
 <div class="container">
 	<div class="breadcrumbs">
 		<div class="bx-breadcrumb">
@@ -17,33 +22,10 @@ $APPLICATION->SetTitle("Информационная");
 		</div>
 	</div>
 	<div class="zag_main">
-		<h1>МОТОБЛОКИ</h1>
+		<h1><?= $APPLICATION->ShowTitle(false); ?></h1>
 	</div>
 </div>
- </section> <section>
-<div class="container">
-	<div class="advantage-catalog">
-		<div class="advantage-catalog__item ico-credit">
-			 Работаем в рассрочку без % от 3 до 36 месяцев
-		</div>
-		<div class="advantage-catalog__item ico-truck">
-			 Бесплатно привозим в любую точку страны при заказе от 1500 рублей
-		</div>
-		<div class="advantage-catalog__item ico-setting">
-			 Ремонтируем в собственном сервисном центре
-		</div>
-		<div class="advantage-catalog__item ico-pig">
-			 Являемся первым поставщиком, гарантируем лучшую цену
-		</div>
-		<div class="advantage-catalog__item ico-winner">
-			 Считаем гарантию с первого дня сезона
-		</div>
-		<div class="advantage-catalog__item ico-like">
-			 Помогаем подобрать лучший вариант под ваши нужды
-		</div>
-	</div>
-</div>
- </section> <section>
+ </section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog",
 	"agro_catalog",
@@ -72,7 +54,8 @@ $APPLICATION->SetTitle("Информационная");
 		"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
 		"COMPARE_PROPERTY_CODE" => array("",""),
 		"COMPATIBLE_MODE" => "N",
-		"CONVERT_CURRENCY" => "N",
+		"CONVERT_CURRENCY" => "Y",
+		"CURRENCY_ID" => "BYN",
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "N",
 		"DETAIL_ADD_TO_BASKET_ACTION" => array(0=>"BUY",),
 		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(0=>"BUY",),
@@ -164,9 +147,9 @@ $APPLICATION->SetTitle("Информационная");
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "N",
 		"PAGER_SHOW_ALWAYS" => "N",
-		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TEMPLATE" => "agro_pagenav",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "30",
+		"PAGE_ELEMENT_COUNT" => "3",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array("BASE"),
 		"PRICE_VAT_INCLUDE" => "Y",
@@ -242,4 +225,4 @@ $APPLICATION->SetTitle("Информационная");
 		"USE_SALE_BESTSELLERS" => "Y",
 		"USE_STORE" => "N"
 	)
-);?> </section> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+);?> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

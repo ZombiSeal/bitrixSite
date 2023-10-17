@@ -820,9 +820,9 @@ strong, b {
   opacity: 1;
 }
 
-.tabs-content {
-  padding: 40px 70px 0;
-}
+/*.tabs-content {*/
+/*  padding: 40px 70px 0;*/
+/*}*/
 
 .input-checkbox {
   padding-left: 40px;
@@ -4314,6 +4314,10 @@ body .article-item.article-item--main .article-item__link .arrow {
   border: 1px solid silver;
   padding: 10px;
   font-size: 16px;
+}
+
+.pagination-container {
+  width: 100%;
 }
 
 .pagination {

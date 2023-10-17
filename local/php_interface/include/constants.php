@@ -1,9 +1,9 @@
 <?php
 
-const CLOTHES_IBLOCK_ID = 2;
+const CATALOG_IBLOCK_ID = 10;
 const SLIDER_IBLOCK_ID = 5;
 const GOAL_IBLOCK_ID = 6;
 const ADVANTAGES_IBLOCK_ID = 7;
 const FAQ_IBLOCK_ID = 8;
 const CONTACT_IBLOCK_ID = 9;
-const CONTENT_IBLOCK_ID = 12;
+const CONTENT_IBLOCK_ID = 14;

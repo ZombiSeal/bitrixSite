@@ -470,7 +470,7 @@ if ($isFilter) {
             </svg>
         </div>
     </div>
-
+    <div class="catalog-container catalog-container__page active">
     <?php
     $APPLICATION->IncludeComponent(
         "bitrix:catalog.section",
@@ -602,4 +602,5 @@ if ($isFilter) {
         $component
     );
     ?>
+    </div>
 </div>

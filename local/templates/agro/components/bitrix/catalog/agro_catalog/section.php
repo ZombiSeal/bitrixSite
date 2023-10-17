@@ -127,6 +127,7 @@ if ($isFilter) {
         </div>
     </div>
 </section>
+
 <? $APPLICATION->IncludeComponent(
     "bitrix:catalog.section.list",
     "agro_catalog_menu",
@@ -138,7 +139,7 @@ if ($isFilter) {
         "IBLOCK_ID" => $arParams['IBLOCK_ID'],
         "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
         "SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
-        "SECTION_URL" => "/" . $arParams['IBLOCK_TYPE'] . "/#SECTION_CODE_PATH#/",
+        "SECTION_URL" => $arResult["FOLDER"] . $arResult["URL_TEMPLATES"]["section"],
         "COUNT_ELEMENTS" => "Y",
         "COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
         "HIDE_SECTIONS_WITH_ZERO_COUNT_ELEMENTS" => "Y",
@@ -496,7 +497,7 @@ if ($isFilter) {
             </svg>
         </div>
     </div>
-
+    <div class="catalog-container catalog-container__page active">
     <?php
     $APPLICATION->IncludeComponent(
         "bitrix:catalog.section",
@@ -628,5 +629,6 @@ if ($isFilter) {
         $component
     );
     ?>
+    </div>
 </div>
 </section>

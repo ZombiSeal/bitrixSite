@@ -20,8 +20,6 @@ $this->setFrameMode(true);
 
 $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
 
-//
-//vr($arResult);
 ?>
 
 <section>
@@ -84,17 +82,15 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                                 </a></div>
                         </div>
                     </div>
-                    <div class="card-tabs__block-text-advantage">
-                        <div class="advantage-catalog__item ico-credit">Работаем в рассрочку без % от 3 до 36
-                            месяцев
+                    <?php if (!empty($arResult['PROPERTIES']['ADVANTAGES']['ELEMENTS'])): ?>
+                        <div class="card-tabs__block-text-advantage">
+                            <?php foreach ($arResult['PROPERTIES']['ADVANTAGES']['ELEMENTS'] as $el): ?>
+                                <div class="advantage-catalog__item <?= $el['PROPERTY_ICON_VALUE'] ?>">
+                                    <?= $el['NAME']; ?>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="advantage-catalog__item ico-truck">Бесплатно привозим в любую точку страны при
-                            заказе от 1500 рублей
-                        </div>
-                        <div class="advantage-catalog__item ico-setting">Ремонтируем в собственном сервисном
-                            центре
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="card-tabs__block-img">
@@ -127,22 +123,13 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
             </div>
             <div class="card-tabs__block" data-tabs="description">
                 <div class="card-tabs__block-text">
-                    <div class="text">
-                        <div class="card-tabs__block-text-zag">Подарки при покупке одним платежом:</div>
-                        <p>Условия предоставления беспроцентной рассрочки от "Норм-сайт":</p>
-                        <ul>
-                            <li>паспорт;</li>
-                            <li>справка о доходах или пенсии за 3 месяца;</li>
-                            <li>без поручителей;</li>
-                            <li>без дополнительных документов;</li>
-                            <li>возможность досрочного погашения.</li>
-                        </ul>
-                        <p>Мы оформляем рассрочку в магазине по адресу: г. Минск, Наполеона, 23. Оформление занимает
-                            20 минут! При доставке, беспроцентную рассрочку оформляет курьер. Вы можете приобрести
-                            мотоблок по любой банковской карте рассрочки. Если вы хотите узнать об этом способе
-                            побольше, то можете почитать информацию об условиях на странице</p><a
-                                href="#">Рассрочка</a>
-                    </div>
+                    <?php if (!empty($arResult['DETAIL_TEXT'])): ?>
+                        <div class="text">
+                            <?= $arResult['DETAIL_TEXT'] ?>
+                        </div>
+                    <?php else: ?>
+                        <p>нет описания</p>
+                    <?php endif; ?>
                 </div>
                 <div class="card-tabs__block-img"
                      style="background-image: url(<?= $firstImgSrc ?>)">
@@ -166,34 +153,22 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                     <p>Упс... Свойств нет(((</p>
                 <?php endif; ?>
             </div>
+
+
             <div class="card-tabs__block" data-tabs="delivery">
                 <div class="card-tabs__block-text">
-                    <div class="text">
-                        <div class="card-tabs__block-text-zag">Условия доставки</div>
-                        <p>
-                            Бесплатно привезём заказ
-                            &#032;<b>в Минске</b>&#032;
-                            при покупке<span class="red">от 200 рублей.</span><br>Бесплатно привезём заказ
-                            &#032;<b>в Минске</b>&#032;
-                            при покупке<span class="red">от 200 рублей.</span>
-                        </p>
-                        <ul>
-                            <li>в Минске курьер привезёт заказ за 10 рублей в день заказа или на следующий день;
-                            </li>
-                            <li>по Беларуси стоимость доставки зависит от суммы заказа и места доставки.</li>
-                        </ul>
-                        <p>Наши консультанты помогут разобраться в этом вопросе и подберут оптимальный вариант по
-                            телефонам<br><b>8 (029) 111-22-33 или 8 (029) 700-22-44.</b></p>
-                        <p><b>Запчасти, заказы от 20 рублей можем переслать почтой наложенным платежом.</b>&#032;
-                            В Россию и Казахстан отправляем заказы транспортными компаниями или почтой наложенным
-                            платежом.
-                        </p>
-                        <p>Также вы можете забрать заказ в магазинах. Запчасти на Уборевича, 31, остальные товары на
-                            Наполеона, 23 или на складе по адресу 4-й переулок Монтажников, 5.</p>
-                    </div>
+                    <?php if (!empty($arResult['PROPERTIES']['DELIVERY']['VALUE']['TEXT'])): ?>
+                        <div class="text">
+                            <?= htmlspecialchars_decode($arResult['PROPERTIES']['DELIVERY']['VALUE']['TEXT']); ?>
+                        </div>
+                    <?php else: ?>
+                        <p>Нет доставки</p>
+                    <?php endif; ?>
                 </div>
                 <div class="card-tabs__block-img" style="background-image: url(<?= $firstImgSrc ?>)"></div>
             </div>
+
+
             <div class="card-tabs__block" data-tabs="instruction">
                 <div class="card-tabs__block-text">
                     <?php if (!empty($arResult['FILES'])): ?>
@@ -228,6 +203,7 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                 <div class="card-tabs__block-img" style="background-image: url(<?= $firstImgSrc ?>)"></div>
             </div>
         </div>
+
         <div class="card-tabs__list">
             <div class="container">
                 <ul>
@@ -242,6 +218,7 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                 <span class="border tab1"></span>
             </div>
         </div>
+
     </div>
 </section>
 <section>
@@ -343,686 +320,6 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                                 <use xlink:href="./images/sprite/sprite.svg#pdf"></use>
                             </svg>
                             Инструкция к мотоблоку.pdf</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="extra-block">
-        <div class="container">
-            <div class="extra-block__zag">
-                Этот товар
-                <b>дополняют:</b>
-            </div>
-            <div class="extra-block__container">
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#novinki"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Новинки</span></div>
-                            </div>
-                            <div class="flags tehniche">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#tehniche"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Гарантия 2 года</span></div>
-                            </div>
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>1-й поставщик</span></div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/c1.png)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                                <div class="block"><span>Вес:</span><span>3,1 кг</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В сравнении</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg" id="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#click-one"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Купить в 1 клик</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В корзине</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c3.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c3.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#novinki"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Новинки</span></div>
-                            </div>
-                            <div class="flags tehniche">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#tehniche"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Гарантия 2 года</span></div>
-                            </div>
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>1-й поставщик</span></div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/c1.png)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                                <div class="block"><span>Вес:</span><span>3,1 кг</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В сравнении</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg" id="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#click-one"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Купить в 1 клик</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В корзине</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="extra-block">
-        <div class="container">
-            <div class="extra-block__zag">
-                Из этой же
-                <b>категории:</b>
-            </div>
-            <div class="extra-block__container">
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#novinki"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Новинки</span></div>
-                            </div>
-                            <div class="flags tehniche">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#tehniche"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Гарантия 2 года</span></div>
-                            </div>
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>1-й поставщик</span></div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/c1.png)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                                <div class="block"><span>Вес:</span><span>3,1 кг</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В сравнении</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg" id="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#click-one"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Купить в 1 клик</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В корзине</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c3.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c3.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#novinki"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Новинки</span></div>
-                            </div>
-                            <div class="flags tehniche">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#tehniche"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>Гарантия 2 года</span></div>
-                            </div>
-                            <div class="flags one">
-                                <svg class="sprite-svg">
-                                    <use xlink:href="./images/sprite/sprite.svg#onePost"></use>
-                                </svg>
-                                <div class="tooltip-ico"><span>1-й поставщик</span></div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/c1.png)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                                <div class="block"><span>Объём двигателя:</span><span>4 м3</span></div>
-                                <div class="block"><span>Вес:</span><span>3,1 кг</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#video"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Видеозор</span></div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В сравнении</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg" id="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#click-one"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Купить в 1 клик</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>В корзине</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="./images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block"><span>Мощность двигателя:</span><span>27 лошадиные силы</span>
-                                </div>
-                                <div class="block"><span>Топливный бак (объем):</span><span>208 литров</span></div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#compare"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в сравнение</span></div>
-                                </a><a href="#">
-                                    <svg class="sprite-svg">
-                                        <use xlink:href="./images/sprite/sprite.svg#shopping-bag"></use>
-                                    </svg>
-                                    <div class="tooltip-ico"><span>Добавить в корзину</span></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
