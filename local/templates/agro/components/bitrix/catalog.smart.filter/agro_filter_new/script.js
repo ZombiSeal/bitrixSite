@@ -39,7 +39,6 @@ JCSmartFilter.prototype.click = function(checkbox)
 	this.timer = setTimeout(BX.delegate(function(){
 		this.reload(checkbox);
 	}, this), 500);
-
 };
 
 JCSmartFilter.prototype.reload = function(input)
@@ -162,9 +161,9 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 {
 	var hrefFILTER, url, curProp;
 	var modef = BX('modef');
-	console.log(modef);
 	var modef_num = BX('modef_num');
 
+	console.log('hello');
 	if (!!result && !!result.ITEMS)
 	{
 		for(var popupId in this.popups)
@@ -187,23 +186,23 @@ JCSmartFilter.prototype.postHandler = function (result, fromCache)
 		if (!!modef && !!modef_num)
 		{
 			modef_num.innerHTML = result.ELEMENT_COUNT;
-			hrefFILTER = BX.findChildren(modef, {tag: 'A'}, true);
+			// hrefFILTER = BX.findChildren(modef, {tag: 'A'}, true);
+			//
+			// if (result.FILTER_URL && hrefFILTER)
+			// {
+			// 	hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
+			// }
 
-			if (result.FILTER_URL && hrefFILTER)
-			{
-				hrefFILTER[0].href = BX.util.htmlspecialcharsback(result.FILTER_URL);
-			}
-
-			if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
-			{
-				BX.unbindAll(hrefFILTER[0]);
-				BX.bind(hrefFILTER[0], 'click', function(e)
-				{
-					url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
-					BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
-					return BX.PreventDefault(e);
-				});
-			}
+			// if (result.FILTER_AJAX_URL && result.COMPONENT_CONTAINER_ID)
+			// {
+			// 	BX.unbindAll(hrefFILTER[0]);
+			// 	BX.bind(hrefFILTER[0], 'click', function(e)
+			// 	{
+			// 		url = BX.util.htmlspecialcharsback(result.FILTER_AJAX_URL);
+			// 		BX.ajax.insertToNode(url, result.COMPONENT_CONTAINER_ID);
+			// 		return BX.PreventDefault(e);
+			// 	});
+			// }
 
 			if (result.INSTANT_RELOAD && result.COMPONENT_CONTAINER_ID)
 			{

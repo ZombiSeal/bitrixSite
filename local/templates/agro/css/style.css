@@ -2740,7 +2740,7 @@ body .article-item.article-item--main .article-item__link .arrow {
   line-height: 155%;
   font-weight: 400;
   color: #636367;
-  max-width: calc(100% - 30px);
+  /*max-width: calc(100% - 30px);*/
 }
 
 .catalog-filter__bottom .catalog-filter--sbmt {

@@ -17,6 +17,7 @@ use Bitrix\Iblock\SectionPropertyTable;
 $this->setFrameMode(true);
 $price = $arResult['ITEMS']['BASE'];
 ?>
+
 <div class="catalog-filter">
     <div class="catalog-filter__top">
         <div class="container">
@@ -130,7 +131,9 @@ $price = $arResult['ITEMS']['BASE'];
 
                                         <div>
                                             <select class="styler"
-                                                    name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>">
+                                                    name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
+                                                    onchange="smartFilter.click(this)"
+                                            >
                                                 <?php foreach ($arItem["VALUES"] as $val => $ar): ?>
                                                     <option
                                                             id="<?= $ar['CONTROL_ID'] ?>"
@@ -215,14 +218,14 @@ $price = $arResult['ITEMS']['BASE'];
                         </div>
                     <?php endforeach; ?>
 
-                    <div class="catalog-filter__btns">
+                    <div class="catalog-filter__btns" id="modef">
                         <label class="presence--btn">
                             <input class="styler" type="checkbox"><span>В наличии на складе</span>
                         </label>
 
                         <button class="reset for--deks" type="submit" name="del_filter" id="del_filter">
                             <svg class="sprite-svg">
-                                <use xlink:href="<?=SITE_TEMPLATE_PATH?>/images/sprite/sprite.svg#close"></use>
+                                <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
                             </svg>
                             Сбросить параметры фильтра
                         </button>
@@ -234,18 +237,8 @@ $price = $arResult['ITEMS']['BASE'];
                         </button>
 
                         <button class="catalog-filter--sbmt" type="submit" id="set_filter" name="set_filter">
-                            Показать все результаты (<?=$arResult["ELEMENT_COUNT"] ?? 0?>)
+                            Показать все результаты (<span id="modef_num"><?= $arResult["ELEMENT_COUNT"] ?? 0 ?></span>)
                         </button>
-
-                        <div class="bx-filter-popup-result <? if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"] ?>"
-                             id="modef" <? if (!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"'; ?>
-                             style="display: inline-block;">
-                            <? echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">' . (int)($arResult["ELEMENT_COUNT"] ?? 0) . '</span>')); ?>
-                            <span class="arrow"></span>
-                            <br/>
-                            <a href="<? echo $arResult["FILTER_URL"] ?>"
-                               target=""><? echo GetMessage("CT_BCSF_FILTER_SHOW") ?></a>
-                        </div>
                     </div>
                 </form>
             </div>
