@@ -15,6 +15,9 @@
 use Bitrix\Main\Loader;
 use Bitrix\Main\ModuleManager;
 
+$ajax = false;
+if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') $ajax = true;
+
 $this->setFrameMode(true);
 
 if (!isset($arParams['FILTER_VIEW_MODE']) || (string)$arParams['FILTER_VIEW_MODE'] == '')
@@ -163,7 +166,7 @@ if ($arParams['USE_FILTER'] == 'Y') {
                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                 "SECTION_ID" => $arCurSection['ID'],
-                "FILTER_NAME" => $arParams["FILTER_NAME"],
+                "FILTER_NAME" => "arrFilter",
                 "PRICE_CODE" => $arParams["PRICE_CODE"],
                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                 "CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -212,6 +215,7 @@ if ($arParams['USE_FILTER'] == 'Y') {
                 </svg>
             </div>
         </div>
+        <?php if ($ajax === true) ob_end_clean()?>
         <div class="catalog-container catalog-container__page active">
             <?php
             $APPLICATION->IncludeComponent(
@@ -345,5 +349,6 @@ if ($arParams['USE_FILTER'] == 'Y') {
             );
             ?>
         </div>
+        <?php if ($ajax === true) die()?>
     </div>
 </section>

@@ -45,9 +45,7 @@ $price = $arResult['ITEMS']['BASE'];
     <div class="catalog-filter__bottom">
         <div class="container">
             <div class="catalog-filter__bottom-param" data-filter="parametr">
-                <form name="<? echo $arResult["FILTER_NAME"] . "_form" ?>" action="<? echo $arResult["FORM_ACTION"] ?>"
-                      method="get" class="smartfilter">
-
+                <form id="filter">
                     <?php foreach ($arResult['NEW_ITEMS'] as $key => $block):
                         $class = ($key === 'FIRST_BLOCK') ? "catalog-filter__maker" : "catalog-filter__container";
 
@@ -63,7 +61,6 @@ $price = $arResult['ITEMS']['BASE'];
                                                 id="<?= $price["VALUES"]["MIN"]["CONTROL_ID"] ?>"
                                                 placeholder="От <?= $price["VALUES"]["MIN"]["VALUE"] ?>р"
                                                 size="5"
-                                                onkeyup="smartFilter.keyup(this)"
                                         />
                                         <input
                                                 type="text"
@@ -71,7 +68,6 @@ $price = $arResult['ITEMS']['BASE'];
                                                 id="<?= $price["VALUES"]["MAX"]["CONTROL_ID"] ?>"
                                                 placeholder="От <?= $price["VALUES"]["MAX"]["VALUE"] ?>р"
                                                 size="5"
-                                                onkeyup="smartFilter.keyup(this)"
                                         />
                                     </div>
                                 </div>
@@ -101,7 +97,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                         value="<? echo $arItem["VALUES"]["MIN"]["HTML_VALUE"] ?>"
                                                         placeholder="От <? echo $arItem["VALUES"]["MIN"]["VALUE"] ?> кг"
                                                         size="5"
-                                                        onkeyup="smartFilter.keyup(this)"
+
                                                 />
                                                 <input
                                                         type="text"
@@ -110,7 +106,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                         value="<? echo $arItem["VALUES"]["MAX"]["HTML_VALUE"] ?>"
                                                         placeholder="До <? echo $arItem["VALUES"]["MAX"]["VALUE"] ?> кг"
                                                         size="5"
-                                                        onkeyup="smartFilter.keyup(this)"
+
                                                 />
                                             </div>
                                         </div>
@@ -132,7 +128,7 @@ $price = $arResult['ITEMS']['BASE'];
                                         <div>
                                             <select class="styler"
                                                     name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
-                                                    onchange="smartFilter.click(this)"
+
                                             >
                                                 <?php foreach ($arItem["VALUES"] as $val => $ar): ?>
                                                     <option
@@ -171,7 +167,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                                name="<? echo $ar["CONTROL_NAME"] ?>"
                                                                id="<? echo $ar["CONTROL_ID"] ?>"
                                                             <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
-                                                               onclick="smartFilter.click(this)"
+
                                                         />
                                                         <span class="styler"
                                                               title="<?= $ar["VALUE"] ?>">
@@ -198,7 +194,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                                        name="<? echo $brand["CONTROL_NAME"] ?>"
                                                                        id="<? echo $brand["CONTROL_ID"] ?>"
                                                                     <? echo $brand["CHECKED"] ? 'checked="checked"' : '' ?>
-                                                                       onclick="smartFilter.click(this)"
+
                                                                 />
                                                                 <span class="styler"
                                                                       title="<?= $brand["VALUE"] ?>">
@@ -218,12 +214,12 @@ $price = $arResult['ITEMS']['BASE'];
                         </div>
                     <?php endforeach; ?>
 
-                    <div class="catalog-filter__btns" id="modef">
+                    <div class="catalog-filter__btns">
                         <label class="presence--btn">
                             <input class="styler" type="checkbox"><span>В наличии на складе</span>
                         </label>
 
-                        <button class="reset for--deks" type="submit" name="del_filter" id="del_filter">
+                        <button class="reset for--deks">
                             <svg class="sprite-svg">
                                 <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
                             </svg>
@@ -235,9 +231,8 @@ $price = $arResult['ITEMS']['BASE'];
                             </svg>
                             Сбросить фильтры
                         </button>
-
-                        <button class="catalog-filter--sbmt" type="submit" id="set_filter" name="set_filter">
-                            Показать все результаты (<span id="modef_num"><?= $arResult["ELEMENT_COUNT"] ?? 0 ?></span>)
+                        <button class="catalog-filter--sbmt">
+                            Показать все результаты <span class="modef_num"></span>
                         </button>
                     </div>
                 </form>
@@ -245,6 +240,3 @@ $price = $arResult['ITEMS']['BASE'];
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', '<?=CUtil::JSEscape($arParams["FILTER_VIEW_MODE"])?>', <?=CUtil::PhpToJSObject($arResult["JS_FILTER_PARAMS"])?>);
-</script>
