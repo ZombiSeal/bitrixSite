@@ -2743,6 +2743,10 @@ body .article-item.article-item--main .article-item__link .arrow {
   /*max-width: calc(100% - 30px);*/
 }
 
+.catalog-container.blur {
+  filter: blur(5px);
+}
+
 .catalog-filter__bottom .catalog-filter--sbmt {
   margin-left: 80px;
 }

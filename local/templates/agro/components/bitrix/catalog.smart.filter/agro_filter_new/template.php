@@ -16,6 +16,7 @@ use Bitrix\Iblock\SectionPropertyTable;
 
 $this->setFrameMode(true);
 $price = $arResult['ITEMS']['BASE'];
+
 ?>
 
 <div class="catalog-filter">
@@ -126,9 +127,9 @@ $price = $arResult['ITEMS']['BASE'];
                                         <?php endif; ?>
 
                                         <div>
-                                            <select class="styler"
-                                                    name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
+                                            <select class="styler select"
 
+                                                    name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
                                             >
                                                 <?php foreach ($arItem["VALUES"] as $val => $ar): ?>
                                                     <option
@@ -159,7 +160,7 @@ $price = $arResult['ITEMS']['BASE'];
                                             <?php endif; ?>
                                             <div>
                                                 <?php foreach ($arItem['VALUES'] as $val => $ar): ?>
-                                                    <label data-role="label_<?= $ar["CONTROL_ID"] ?>"
+                                                    <label class="check" data-role="label_<?= $ar["CONTROL_ID"] ?>"
                                                            for="<? echo $ar["CONTROL_ID"] ?>">
                                                         <input class="styler"
                                                                type="checkbox"
@@ -187,7 +188,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                     <span><?= $country['NAME'] ?></span>
                                                     <?php foreach ($country['BRANDS'] as $brand): ?>
                                                         <li>
-                                                            <label>
+                                                            <label class="check">
                                                                 <input class="styler"
                                                                        type="checkbox"
                                                                        value="<? echo $brand["HTML_VALUE"] ?>"
@@ -232,7 +233,7 @@ $price = $arResult['ITEMS']['BASE'];
                             Сбросить фильтры
                         </button>
                         <button class="catalog-filter--sbmt">
-                            Показать все результаты <span class="modef_num"></span>
+                            Показать все результаты <span class="num_el"></span>
                         </button>
                     </div>
                 </form>

@@ -215,8 +215,9 @@ if ($arParams['USE_FILTER'] == 'Y') {
                 </svg>
             </div>
         </div>
-        <?php if ($ajax === true) ob_end_clean()?>
+
         <div class="catalog-container catalog-container__page active">
+            <?php if ($ajax === true) ob_end_clean()?>
             <?php
             $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
@@ -348,7 +349,8 @@ if ($arParams['USE_FILTER'] == 'Y') {
                 $component
             );
             ?>
+            <?php if ($ajax === true) die()?>
         </div>
-        <?php if ($ajax === true) die()?>
+
     </div>
 </section>

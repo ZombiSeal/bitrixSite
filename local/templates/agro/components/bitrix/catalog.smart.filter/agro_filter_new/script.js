@@ -1,19 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
     let form = document.querySelector('#filter');
+    let filter = new AjaxFilter(form);
+    filter.getElementsCount();
+
     if(form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            let filter = new AjaxFilter(form);
+            filter.scrollToElements();
             filter.submit();
         })
     }
 
+    let checkboxes = document.querySelectorAll('#filter .check');
+    checkboxes.forEach((check) => {
+        check.addEventListener('click', (e) => {
+            filter.getElementsCount();
+        });
+    });
+
+    let inputs = document.querySelectorAll('#filter input[type="text"]');
+    inputs.forEach(input => {
+        input.addEventListener('keyup', (e) => {
+            e.target.value = e.target.value.replace(/[^\d]/g,'');
+            filter.getElementsCount();
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if(!e.target.classList.contains('sel')) return;
+        filter.getElementsCount();
+    })
+
+    let btnReset = document.querySelector('.reset');
+    btnReset.addEventListener('click', (e) => {
+        e.preventDefault();
+        checkboxes.forEach(check => {
+            let children = check.firstElementChild;
+            let checkbox = check.querySelector("input[type='checkbox']");
+            checkbox.checked = false;
+            if(children.classList.contains('checked')) children.classList.remove('checked');
+        })
+        inputs.forEach(input => {
+            input.value = "";
+        });
+        filter.getElementsCount();
+    })
 })
-
-// addEventListener('click', e => {
-//     console.log('hello')
-// })
-
 
 function AjaxFilter(form) {
     this.url = window.location.href;
@@ -39,29 +71,59 @@ AjaxFilter.prototype.getParams = function () {
     return params;
 }
 
-AjaxFilter.prototype.submit = function () {
-
-    console.log(this.params);
+AjaxFilter.prototype.generateUrl = function () {
     let symbol = (this.params.hasOwnProperty("") && this.params[""] === undefined) ? "&" : "?";
-    let filterUrl = symbol + "set_filter=Y";
+    this.url = symbol + "set_filter=Y";
     let formData = new FormData(this.form);
+    console.log(formData);
     for (let pair of formData.entries()) {
         if(pair[1].length !== 0) {
-            filterUrl += "&" + pair[0] + "=" + pair[1];
+            this.url += "&" + pair[0] + "=" + pair[1];
         }
     }
     for (let key in this.params) {
-        if(!filterUrl.includes(key) && !key.includes('arrFilter')) filterUrl += "&" + key + "=" + this.params[key];
+        if(!this.url.includes(key) && !key.includes('arrFilter')) this.url += "&" + key + "=" + this.params[key];
     }
+}
 
-    fetch(filterUrl, {
+AjaxFilter.prototype.getElementsCount = function () {
+    this.generateUrl();
+    fetch(this.url, {
+            headers: {'X-Requested-With': 'XMLHttpRequest'}
+        }
+    ).then(res => {
+        return res.text();
+    }).then(data => {
+        let dataContainer = document.createElement('div');
+        dataContainer.innerHTML = data;
+        let elements = dataContainer.querySelectorAll(".catalog-item");
+        document.querySelector('.num_el').innerHTML = "(" + elements.length + ")";
+    }).catch((error) => console.log(error));
+}
+
+AjaxFilter.prototype.submit = function () {
+
+    this.generateUrl();
+    let catalog = document.querySelector('.catalog-container');
+    catalog.classList.add('blur');
+
+    fetch(this.url, {
         headers: {'X-Requested-With': 'XMLHttpRequest'}
     }
     ).then(res => {
         return res.text();
     }).then(data => {
+        catalog.classList.remove('blur');
         document.querySelector(".catalog-container__page").innerHTML = data
-        console.log(data);
     }).catch((error) => console.log(error));
-    history.pushState(null, null, filterUrl)
+    history.pushState(null, null, this.url)
 }
+
+AjaxFilter.prototype.scrollToElements = function(btn) {
+    let hiddenElem =  document.querySelector('.catalog-container');
+    hiddenElem.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+AjaxFilter.prototype.addToFilterParam = function() {
+}
+
