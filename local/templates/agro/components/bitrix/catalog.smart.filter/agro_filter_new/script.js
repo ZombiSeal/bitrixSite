@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     let form = document.querySelector('#filter');
     let filter = new AjaxFilter(form);
+    let checkboxes = document.querySelectorAll('#filter .check');
+    let inputs = document.querySelectorAll('#filter input[type="text"]');
+    let btnReset = document.querySelector('.reset');
     filter.getElementsCount();
 
     if(form) {
@@ -11,14 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    let checkboxes = document.querySelectorAll('#filter .check');
     checkboxes.forEach((check) => {
         check.addEventListener('click', (e) => {
+            if(e.target.tagName == 'SPAN') return;
             filter.getElementsCount();
+
+            let text = check.querySelector('span').getAttribute('title');
         });
     });
 
-    let inputs = document.querySelectorAll('#filter input[type="text"]');
     inputs.forEach(input => {
         input.addEventListener('keyup', (e) => {
             e.target.value = e.target.value.replace(/[^\d]/g,'');
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filter.getElementsCount();
     })
 
-    let btnReset = document.querySelector('.reset');
+
     btnReset.addEventListener('click', (e) => {
         e.preventDefault();
         checkboxes.forEach(check => {
@@ -116,14 +120,27 @@ AjaxFilter.prototype.submit = function () {
         catalog.classList.remove('blur');
         document.querySelector(".catalog-container__page").innerHTML = data
     }).catch((error) => console.log(error));
-    history.pushState(null, null, this.url)
+    history.pushState(null, null, this.url);
 }
 
-AjaxFilter.prototype.scrollToElements = function(btn) {
+AjaxFilter.prototype.scrollToElements = function() {
     let hiddenElem =  document.querySelector('.catalog-container');
     hiddenElem.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
-AjaxFilter.prototype.addToFilterParam = function() {
+AjaxFilter.prototype.createFilterParam = function(text) {
+    let divElement = document.createElement("div");
+    divElement.innerHTML = text;
+
+    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svgElement.setAttribute("class", "sprite-svg");
+
+    let useElement = document.createElementNS("http://www.w3.org/2000/svg", "use");
+    useElement.setAttribute("xlink:href", "./images/sprite/sprite.svg#close");
+
+    svgElement.appendChild(useElement);
+    divElement.appendChild(svgElement);
+
+    return divElement;
 }
 
