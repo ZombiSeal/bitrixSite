@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let checkboxes = document.querySelectorAll('#filter .check');
     let inputs = document.querySelectorAll('#filter input[type="text"]');
     let btnReset = document.querySelector('.reset');
+    let filterParams = document.querySelector('.filter-param__active');
     filter.getElementsCount();
 
     if(form) {
@@ -17,9 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
     checkboxes.forEach((check) => {
         check.addEventListener('click', (e) => {
             if(e.target.tagName == 'SPAN') return;
+            e.preventDefault();
             filter.getElementsCount();
 
             let text = check.querySelector('span').getAttribute('title');
+            let id = check.querySelector('input[type="checkbox"]').id;
+            let params = filterParams.querySelectorAll('div');
+
+            let isExists = Array.from(params).some(param =>  param.getAttribute('input-id') === id);
+
+            if(isExists){
+                filterParams.querySelector('div[input-id=' + id + ']').remove()
+            } else {
+                filterParams.appendChild(filter.createFilterParam(id,text))
+            }
         });
     });
 
@@ -128,9 +140,10 @@ AjaxFilter.prototype.scrollToElements = function() {
     hiddenElem.scrollIntoView({ block: "center", behavior: "smooth" });
 }
 
-AjaxFilter.prototype.createFilterParam = function(text) {
+AjaxFilter.prototype.createFilterParam = function(id, text) {
     let divElement = document.createElement("div");
     divElement.innerHTML = text;
+    divElement.setAttribute('input-id', id);
 
     let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgElement.setAttribute("class", "sprite-svg");

@@ -193,29 +193,6 @@ if ($arParams['USE_FILTER'] == 'Y') {
         ?>
     <?php endif; ?>
     <div class="container">
-        <div class="filter-param__active">
-            <div>Бензиновые
-                <svg class="sprite-svg">
-                    <use xlink:href="./images/sprite/sprite.svg#close"></use>
-                </svg>
-            </div>
-            <div>Дизельные
-                <svg class="sprite-svg">
-                    <use xlink:href="./images/sprite/sprite.svg#close"></use>
-                </svg>
-            </div>
-            <div>Тяжелые
-                <svg class="sprite-svg">
-                    <use xlink:href="./images/sprite/sprite.svg#close"></use>
-                </svg>
-            </div>
-            <div>Вал отбора мощности
-                <svg class="sprite-svg">
-                    <use xlink:href="./images/sprite/sprite.svg#close"></use>
-                </svg>
-            </div>
-        </div>
-
         <div class="catalog-container catalog-container__page active">
             <?php if ($ajax === true) ob_end_clean()?>
             <?php

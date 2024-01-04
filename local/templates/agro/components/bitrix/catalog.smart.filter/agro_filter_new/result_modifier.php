@@ -22,6 +22,7 @@ if (!empty($arResult['ITEMS'])) {
 
                     $sections[$sect['ID']] = ['NAME' => $sect['NAME'], 'CODE' => $sect['CODE'], 'IMG' => CFile::GetFileArray($sect['UF_ICON'])['SRC']];
                     $sections[$sect['ID']]['BRANDS'][] = $val;
+
                 }
 
             }
@@ -34,4 +35,39 @@ if (!empty($arResult['ITEMS'])) {
 }
 
 
+if (!empty($arResult['ITEMS'])) {
+    foreach ($arResult['ITEMS'] as $filter) {
+        foreach ($filter['VALUES'] as $val) {
+            if (array_key_exists('BRANDS', $val)) {
+                foreach ($val['BRANDS'] as $brand) {
+                    $arResult['FILTERS'][$brand['CONTROL_ID']] = checkParams($brand);
+                }
+            } else {
+                $arResult['FILTERS'][$val['CONTROL_ID']] = checkParams($val);
+            }
+        }
+    }
+
+    $arResult['FILTERS'] = array_filter($arResult['FILTERS'], function ($value) {
+        return $value;
+    });
+}
+
+$result = [];
+foreach ($arResult['FILTERS'] as $key => $value) {
+    $prefix = substr($key, 0, strrpos($key, "_")); // Получаем префикс ключа
+    $postfix = substr($key, strrpos($key, "_") + 1); // Получаем постфикс ключа
+
+    if ($postfix === "MIN" || $postfix === "MAX") {
+        $arResult['FILTERS'][$prefix][]= $value;
+        unset($arResult['FILTERS'][$key]);
+    }
+}
+
+vr($arResult['FILTERS']);
+function checkParams ($elem) {
+    if(array_key_exists($elem['CONTROL_ID'], $_GET) || $elem['CHECKED']) {
+        return ($elem['HTML_VALUE'] === "Y") ? $elem['VALUE'] : $elem['HTML_VALUE'];
+    }
+}
 

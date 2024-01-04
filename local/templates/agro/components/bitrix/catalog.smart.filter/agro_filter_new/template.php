@@ -16,7 +16,7 @@ use Bitrix\Iblock\SectionPropertyTable;
 
 $this->setFrameMode(true);
 $price = $arResult['ITEMS']['BASE'];
-
+//vr($arResult);
 ?>
 
 <div class="catalog-filter">
@@ -239,5 +239,33 @@ $price = $arResult['ITEMS']['BASE'];
                 </form>
             </div>
         </div>
+    </div>
+</div>
+<div class="container">
+    <div class="filter-param__active">
+        <?php
+        if (!empty($arResult['FILTERS'])):
+            foreach ($arResult['FILTERS'] as $id => $name):
+                ?>
+
+                <div input-id=<?=$id?>>
+                    <?php if(is_array($name)): ?>
+                        <?php if(count($name) > 1):?>
+                            <?=$name[0]?> - <?=$name[1]?>
+                        <?php else:?>
+                            <?=$name[0];?>
+                        <?php endif;?>
+                    <?php else:?>
+                        <?=$name?>
+                    <?php endif;?>
+
+                    <svg class="sprite-svg">
+                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
+                    </svg>
+                </div>
+            <?php
+            endforeach;
+        endif;
+        ?>
     </div>
 </div>
