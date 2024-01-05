@@ -42,6 +42,8 @@ if (!empty($arResult['ITEMS'])) {
                 foreach ($val['BRANDS'] as $brand) {
                     $arResult['FILTERS'][$brand['CONTROL_ID']] = checkParams($brand);
                 }
+            } else if($val['PROPERTY_TYPE'] === 'S'){
+                $arResult['FILTERS'][$val['CONTROL_NAME_ALT']] = checkParams($val);
             } else {
                 $arResult['FILTERS'][$val['CONTROL_ID']] = checkParams($val);
             }

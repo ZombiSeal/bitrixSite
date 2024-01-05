@@ -61,6 +61,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                 name="<?= $price["VALUES"]["MIN"]["CONTROL_NAME"] ?>"
                                                 id="<?= $price["VALUES"]["MIN"]["CONTROL_ID"] ?>"
                                                 placeholder="От <?= $price["VALUES"]["MIN"]["VALUE"] ?>р"
+                                                value="<? echo $price["VALUES"]["MIN"]["HTML_VALUE"] ?>"
                                                 size="5"
                                         />
                                         <input
@@ -68,6 +69,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                 name="<?= $price["VALUES"]["MAX"]["CONTROL_NAME"] ?>"
                                                 id="<?= $price["VALUES"]["MAX"]["CONTROL_ID"] ?>"
                                                 placeholder="От <?= $price["VALUES"]["MAX"]["VALUE"] ?>р"
+                                                value="<? echo $price["VALUES"]["MAX"]["HTML_VALUE"] ?>"
                                                 size="5"
                                         />
                                     </div>
@@ -128,10 +130,10 @@ $price = $arResult['ITEMS']['BASE'];
 
                                         <div>
                                             <select class="styler select"
-
                                                     name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
                                             >
-                                                <?php foreach ($arItem["VALUES"] as $val => $ar): ?>
+                                                <option id="default" value="" selected>Выбрать</option>
+                                                <?php foreach ($arItem["VALUES"] as $val => $ar): vr($ar); ?>
                                                     <option
                                                             id="<?= $ar['CONTROL_ID'] ?>"
                                                             value="<?= $ar["HTML_VALUE_ALT"] ?>"
@@ -249,16 +251,17 @@ $price = $arResult['ITEMS']['BASE'];
                 ?>
 
                 <div input-id=<?=$id?>>
-                    <?php if(is_array($name)): ?>
-                        <?php if(count($name) > 1):?>
-                            <?=$name[0]?> - <?=$name[1]?>
+                    <p>
+                        <?php if(is_array($name)): ?>
+                            <?php if(count($name) > 1):?>
+                                <?=$name[0]?> - <?=$name[1]?>
+                            <?php else:?>
+                                <?=$name[0];?>
+                            <?php endif;?>
                         <?php else:?>
-                            <?=$name[0];?>
+                            <?=$name?>
                         <?php endif;?>
-                    <?php else:?>
-                        <?=$name?>
-                    <?php endif;?>
-
+                    </p>
                     <svg class="sprite-svg">
                         <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
                     </svg>
