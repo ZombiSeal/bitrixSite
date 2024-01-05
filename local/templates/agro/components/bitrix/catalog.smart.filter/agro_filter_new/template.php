@@ -250,8 +250,8 @@ $price = $arResult['ITEMS']['BASE'];
             foreach ($arResult['FILTERS'] as $id => $name):
                 ?>
 
-                <div input-id=<?=$id?>>
-                    <p>
+                <div input-id=<?=$id?> class="param">
+
                         <?php if(is_array($name)): ?>
                             <?php if(count($name) > 1):?>
                                 <?=$name[0]?> - <?=$name[1]?>
@@ -261,7 +261,7 @@ $price = $arResult['ITEMS']['BASE'];
                         <?php else:?>
                             <?=$name?>
                         <?php endif;?>
-                    </p>
+
                     <svg class="sprite-svg">
                         <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
                     </svg>

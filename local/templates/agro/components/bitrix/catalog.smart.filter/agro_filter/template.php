@@ -244,7 +244,8 @@ $price = $arResult['ITEMS']['BASE'];
                             <span class="arrow"></span>
                             <br/>
                             <a href="<? echo $arResult["FILTER_URL"] ?>"
-                               target=""><? echo GetMessage("CT_BCSF_FILTER_SHOW") ?></a>
+                               target=""><? echo GetMessage("CT_BCSF_FILTER_SHOW") ?>
+                            </a>
                         </div>
                     </div>
                 </form>

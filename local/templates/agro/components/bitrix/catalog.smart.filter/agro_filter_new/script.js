@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputs = document.querySelectorAll('#filter input[type="text"]');
     let btnReset = document.querySelector('.reset');
     let filterParamsBlock = document.querySelector('.filter-param__active');
-    let params = filterParamsBlock.querySelectorAll('div');
 
     filter.getElementsCount();
 
@@ -47,10 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         filter.getElementsCount();
     })
 
-    params.forEach(param => {
-        param.addEventListener("click", (e) => {
-            console.log(e.currentTarget);
-        })
+    //удаление параметра фильтра
+    filterParamsBlock.addEventListener("click", (e) => {
+        if (!e.target.classList.contains('param')) return;
+
+        filter.delParam(e.target);
+        filter.getElementsCount();
+        console.log(filter);
+
     })
 
     //сброс фильтра
@@ -77,6 +80,7 @@ function AjaxFilter(form) {
     this.inputRange = [];
     this.oldId = document.querySelector('select.select option:checked').id;
     this.isExistFlag = false;
+    this.form = document.querySelector('#filter');
 }
 
 AjaxFilter.prototype.getParams = function () {
@@ -153,10 +157,8 @@ AjaxFilter.prototype.scrollToElements = function () {
 AjaxFilter.prototype.createFilterParam = function (id, text) {
     let divElement = document.createElement("div");
     divElement.setAttribute('input-id', id);
-    let textElement = document.createElement("p");
-    textElement.innerHTML = text;
-    divElement.appendChild(textElement);
-
+    divElement.setAttribute('class', "param");
+    divElement.textContent = text;
 
     let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svgElement.setAttribute("class", "sprite-svg");
@@ -205,7 +207,7 @@ AjaxFilter.prototype.inputParams = function (input) {
         if (text === "") {
             this.filterParams.querySelector('div[input-id=' + id + ']').remove();
         } else {
-            this.filterParams.querySelector('div[input-id=' + id + '] p').innerText = text;
+            this.filterParams.querySelector('div[input-id=' + id + ']').firstChild.nodeValue = text;
         }
     } else {
         this.filterParams.appendChild(this.createFilterParam(id, text))
@@ -225,7 +227,7 @@ AjaxFilter.prototype.selectParams = function (select) {
     } else {
         if ((!isExists)) {
             if (this.isExistFlag) {
-                this.filterParams.querySelector('div[input-id=' + this.oldId + '] p').innerText = text;
+                this.filterParams.querySelector('div[input-id=' + this.oldId + ']').firstChild.nodeValue = text;
                 this.filterParams.querySelector('div[input-id=' + this.oldId + ']').setAttribute('input-id', id);
             } else {
                 this.filterParams.appendChild(this.createFilterParam(id, text));
@@ -236,3 +238,34 @@ AjaxFilter.prototype.selectParams = function (select) {
 
     this.oldId = id;
 }
+
+AjaxFilter.prototype.delParam = function(param) {
+    let id = param.getAttribute('input-id');
+    let filterElem = document.querySelector('#' + id);
+
+    if (!filterElem) {
+        let inputs = this.form.querySelectorAll('input[type="text"]');
+        inputs.forEach(input => {
+            let inputId = input.id;
+            if (inputId.includes(id)) {
+                input.value = "";
+            }
+        });
+    } else {
+        let elem = this.form.querySelector('#' + id);
+        if(elem.tagName === 'INPUT') {
+            elem.parentElement.classList.remove('checked');
+            elem.checked = false;
+        }
+        if(elem.tagName === 'OPTION') {
+            elem.parentElement.selectedIndex = 0;
+            let optionText = this.form.querySelector('.jq-selectbox__select-text');
+            optionText.textContent = elem.parentElement.options[0].text;
+            this.isExistFlag = false;
+        }
+        console.log(elem);
+    }
+
+    this.filterParams.querySelector('div[input-id=' + id + ']').remove();
+}
+

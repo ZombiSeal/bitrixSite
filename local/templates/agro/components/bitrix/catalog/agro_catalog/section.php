@@ -62,7 +62,7 @@ if ($arParams['USE_FILTER'] == 'Y') {
         $arCurSection = array();
 }
 
-
+vr($arCurSection);
 ?>
 
 <section>
@@ -328,6 +328,5 @@ if ($arParams['USE_FILTER'] == 'Y') {
             ?>
             <?php if ($ajax === true) die()?>
         </div>
-
     </div>
 </section>
