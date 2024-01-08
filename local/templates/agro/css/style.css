@@ -2600,6 +2600,15 @@ body .article-item.article-item--main .article-item__link .arrow {
   fill: #B0BABA;
 }
 
+.filter-param__active div img {
+  margin: 11px 15px 11px 15px;
+  width: 11px;
+  height: 11px;
+  transition: .4s;
+  fill: #B0BABA;
+}
+
+
 .filter-param__active div:hover {
   border-radius: 2px;
   background-color: #d6dee0;

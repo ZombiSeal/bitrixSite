@@ -62,7 +62,11 @@ if ($arParams['USE_FILTER'] == 'Y') {
         $arCurSection = array();
 }
 
-vr($arCurSection);
+if (isset($_GET["sort"]) && isset($_GET["method"]) && ($_GET["sort"] == "property_new")) {
+    $arParams["ELEMENT_SORT_FIELD"] = $_GET["sort"];
+    $arParams["ELEMENT_SORT_ORDER"] = $_GET["method"];
+}
+
 ?>
 
 <section>

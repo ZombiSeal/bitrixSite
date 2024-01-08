@@ -34,7 +34,6 @@ if (!empty($arResult['ITEMS'])) {
     }
 }
 
-
 if (!empty($arResult['ITEMS'])) {
     foreach ($arResult['ITEMS'] as $filter) {
         foreach ($filter['VALUES'] as $val) {
@@ -66,10 +65,8 @@ foreach ($arResult['FILTERS'] as $key => $value) {
     }
 }
 
-vr($arResult['FILTERS']);
 function checkParams ($elem) {
     if(array_key_exists($elem['CONTROL_ID'], $_GET) || $elem['CHECKED']) {
         return ($elem['HTML_VALUE'] === "Y") ? $elem['VALUE'] : $elem['HTML_VALUE'];
     }
 }
-

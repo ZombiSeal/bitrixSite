@@ -62,7 +62,6 @@ if ($isFilter) {
         $arCurSection = array();
 }
 
-vr($arCurSection);
 
 ?>
 <section>

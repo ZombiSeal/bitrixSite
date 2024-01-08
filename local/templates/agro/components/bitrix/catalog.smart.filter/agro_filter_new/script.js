@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputs = document.querySelectorAll('#filter input[type="text"]');
     let btnReset = document.querySelector('.reset');
     let filterParamsBlock = document.querySelector('.filter-param__active');
+    let select = form.querySelector('select');
+    let sortBlock= document.querySelector('.sort');
 
+    history.pushState(null, null, filter.generateUrl());
     filter.getElementsCount();
 
     //отправка формы
@@ -18,42 +21,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //выбор checkbox
-    checkboxes.forEach((check) => {
-        check.addEventListener('click', (e) => {
-            if (e.target.tagName == 'SPAN') return;
-            e.preventDefault();
+    if(checkboxes) {
+        checkboxes.forEach((check) => {
+            check.addEventListener('click', (e) => {
+                if (e.target.tagName == 'SPAN') return;
+                e.preventDefault();
 
-            filter.checkboxParams(check);
-            filter.getElementsCount();
+                filter.checkboxParams(check);
+                filter.getElementsCount();
+            });
         });
-    });
+    }
 
     //изменение значение input[type='text']
-    inputs.forEach(input => {
-        input.addEventListener('keyup', (e) => {
-            e.target.value = e.target.value.replace(/[^\d]/g, '');
+    if(inputs) {
+        inputs.forEach(input => {
+            input.addEventListener('keyup', (e) => {
+                e.target.value = e.target.value.replace(/[^\d]/g, '');
 
-            filter.inputParams(e.target);
-            filter.getElementsCount();
+                filter.inputParams(e.target);
+                filter.getElementsCount();
+            });
         });
-    });
+    }
 
     //выбор из списка select
-    document.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('sel')) return;
+    if(select) {
+        form.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('sel')) return;
 
-        filter.selectParams(e.target);
-        filter.getElementsCount();
-    })
+            filter.selectParams(e.target);
+            filter.getElementsCount();
+        })
+    }
+
+    //выбор сортировки
+    if(sortBlock) {
+        sortBlock.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('sel')) return;
+            filter.submit();
+        })
+    }
 
     //удаление параметра фильтра
     filterParamsBlock.addEventListener("click", (e) => {
-        if (!e.target.classList.contains('param')) return;
-
-        filter.delParam(e.target);
+        let elem = "";
+        if (e.target.classList.contains('close-tag')) {
+            elem = e.target;
+        } else if(e.target.classList.contains('img-tag')){
+            elem = e.target.parentElement;
+        } else {
+            return;
+        }
+        filter.delParam(elem);
         filter.getElementsCount();
-        console.log(filter);
-
     })
 
     //сброс фильтра
@@ -78,9 +99,10 @@ function AjaxFilter(form) {
     this.form = form;
     this.filterParams = document.querySelector('.filter-param__active');
     this.inputRange = [];
-    this.oldId = document.querySelector('select.select option:checked').id;
+    this.oldId = document.querySelector('select.select option:checked');
     this.isExistFlag = false;
     this.form = document.querySelector('#filter');
+    this.sort = document.querySelector('.sort select');
 }
 
 AjaxFilter.prototype.getParams = function () {
@@ -98,14 +120,37 @@ AjaxFilter.prototype.getParams = function () {
             {}
         );
 
+    console.log(params);
     return params;
 }
 
+AjaxFilter.prototype.generateSort = function() {
+    let sortBlock = document.querySelector('.sort');
+    let options = sortBlock.querySelectorAll('option');
+    let sort = sortBlock.querySelector('option:checked').value;
+
+    sortBlock.addEventListener('click', e => {
+        if (!e.target.classList.contains('sel')) return;
+        options.forEach(option => {
+            if(option.text == e.target.innerText.trim()) sort = option.value;
+        })
+    })
+
+    return sort;
+}
+
 AjaxFilter.prototype.generateUrl = function () {
+    console.log(this.sort);
     let symbol = (this.params.hasOwnProperty("") && this.params[""] === undefined) ? "&" : "?";
-    this.url = symbol + "set_filter=Y";
+
+    if (this.sort) {
+        this.url = symbol + this.sort.options[this.sort.selectedIndex].value + "&set_filter=Y";
+    } else {
+        this.url = symbol + "set_filter=Y";
+    }
+
     let formData = new FormData(this.form);
-    console.log(formData);
+    // console.log(formData);
     for (let pair of formData.entries()) {
         if (pair[1].length !== 0) {
             this.url += "&" + pair[0] + "=" + pair[1];
@@ -114,6 +159,8 @@ AjaxFilter.prototype.generateUrl = function () {
     for (let key in this.params) {
         if (!this.url.includes(key) && !key.includes('arrFilter')) this.url += "&" + key + "=" + this.params[key];
     }
+
+    return this.url;
 }
 
 AjaxFilter.prototype.getElementsCount = function () {
@@ -157,16 +204,13 @@ AjaxFilter.prototype.scrollToElements = function () {
 AjaxFilter.prototype.createFilterParam = function (id, text) {
     let divElement = document.createElement("div");
     divElement.setAttribute('input-id', id);
-    divElement.setAttribute('class', "param");
+    divElement.setAttribute('class', "close-tag");
     divElement.textContent = text;
 
-    let svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    let svgElement = document.createElement("img");
     svgElement.setAttribute("class", "sprite-svg");
-
-    let useElement = document.createElementNS("http://www.w3.org/2000/svg", "use");
-    useElement.setAttribute("xlink:href", "/local/templates/agro/images/sprite/sprite.svg#close");
-
-    svgElement.appendChild(useElement);
+    svgElement.setAttribute("class", "img-tag");
+    svgElement.setAttribute("src", "/local/templates/agro/images/svg/cross.svg");
     divElement.appendChild(svgElement);
 
     return divElement;
@@ -222,13 +266,13 @@ AjaxFilter.prototype.selectParams = function (select) {
     let isExists = this.filterParams.querySelector('div[input-id=' + id + ']') ?? null;
 
     if (text == "Выбрать") {
-        this.filterParams.querySelector('div[input-id=' + this.oldId + ']').remove();
+        this.filterParams.querySelector('div[input-id=' + this.oldId.id + ']').remove();
         this.isExistFlag = false;
     } else {
         if ((!isExists)) {
             if (this.isExistFlag) {
-                this.filterParams.querySelector('div[input-id=' + this.oldId + ']').firstChild.nodeValue = text;
-                this.filterParams.querySelector('div[input-id=' + this.oldId + ']').setAttribute('input-id', id);
+                this.filterParams.querySelector('div[input-id=' + this.oldId.id + ']').firstChild.nodeValue = text;
+                this.filterParams.querySelector('div[input-id=' + this.oldId.id + ']').setAttribute('input-id', id);
             } else {
                 this.filterParams.appendChild(this.createFilterParam(id, text));
                 this.isExistFlag = true;
@@ -236,11 +280,12 @@ AjaxFilter.prototype.selectParams = function (select) {
         }
     }
 
-    this.oldId = id;
+    this.oldId.id = id;
 }
 
 AjaxFilter.prototype.delParam = function(param) {
     let id = param.getAttribute('input-id');
+    console.log(id);
     let filterElem = document.querySelector('#' + id);
 
     if (!filterElem) {

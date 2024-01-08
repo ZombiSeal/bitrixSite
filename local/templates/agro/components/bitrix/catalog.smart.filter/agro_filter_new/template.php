@@ -16,7 +16,6 @@ use Bitrix\Iblock\SectionPropertyTable;
 
 $this->setFrameMode(true);
 $price = $arResult['ITEMS']['BASE'];
-//vr($arResult);
 ?>
 
 <div class="catalog-filter">
@@ -34,13 +33,7 @@ $price = $arResult['ITEMS']['BASE'];
                     </svg>
                 </div>
             </div>
-            <div class="sort"><span>Сортировка:</span>
-                <select class="styler">
-                    <option>Популярное</option>
-                    <option>Новые</option>
-                    <option>На акции</option>
-                </select>
-            </div>
+           <?php include_once  $_SERVER['DOCUMENT_ROOT'] . SITE_TEMPLATE_PATH . "/include/sort.php"?>
         </div>
     </div>
     <div class="catalog-filter__bottom">
@@ -49,7 +42,6 @@ $price = $arResult['ITEMS']['BASE'];
                 <form id="filter">
                     <?php foreach ($arResult['NEW_ITEMS'] as $key => $block):
                         $class = ($key === 'FIRST_BLOCK') ? "catalog-filter__maker" : "catalog-filter__container";
-
                         ?>
                         <div class="<?= $class ?>">
 
@@ -100,7 +92,6 @@ $price = $arResult['ITEMS']['BASE'];
                                                         value="<? echo $arItem["VALUES"]["MIN"]["HTML_VALUE"] ?>"
                                                         placeholder="От <? echo $arItem["VALUES"]["MIN"]["VALUE"] ?> кг"
                                                         size="5"
-
                                                 />
                                                 <input
                                                         type="text"
@@ -109,7 +100,6 @@ $price = $arResult['ITEMS']['BASE'];
                                                         value="<? echo $arItem["VALUES"]["MAX"]["HTML_VALUE"] ?>"
                                                         placeholder="До <? echo $arItem["VALUES"]["MAX"]["VALUE"] ?> кг"
                                                         size="5"
-
                                                 />
                                             </div>
                                         </div>
@@ -133,7 +123,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                     name="<?= current($arItem['VALUES'])['CONTROL_NAME_ALT'] ?>"
                                             >
                                                 <option id="default" value="" selected>Выбрать</option>
-                                                <?php foreach ($arItem["VALUES"] as $val => $ar): vr($ar); ?>
+                                                <?php foreach ($arItem["VALUES"] as $val => $ar): ?>
                                                     <option
                                                             id="<?= $ar['CONTROL_ID'] ?>"
                                                             value="<?= $ar["HTML_VALUE_ALT"] ?>"
@@ -161,6 +151,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                 <span><?= $arItem['NAME'] ?>:</span>
                                             <?php endif; ?>
                                             <div>
+
                                                 <?php foreach ($arItem['VALUES'] as $val => $ar): ?>
                                                     <label class="check" data-role="label_<?= $ar["CONTROL_ID"] ?>"
                                                            for="<? echo $ar["CONTROL_ID"] ?>">
@@ -170,7 +161,6 @@ $price = $arResult['ITEMS']['BASE'];
                                                                name="<? echo $ar["CONTROL_NAME"] ?>"
                                                                id="<? echo $ar["CONTROL_ID"] ?>"
                                                             <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
-
                                                         />
                                                         <span class="styler"
                                                               title="<?= $ar["VALUE"] ?>">
@@ -250,7 +240,7 @@ $price = $arResult['ITEMS']['BASE'];
             foreach ($arResult['FILTERS'] as $id => $name):
                 ?>
 
-                <div input-id=<?=$id?> class="param">
+                <div input-id=<?=$id?> class="close-tag">
 
                         <?php if(is_array($name)): ?>
                             <?php if(count($name) > 1):?>
@@ -262,9 +252,8 @@ $price = $arResult['ITEMS']['BASE'];
                             <?=$name?>
                         <?php endif;?>
 
-                    <svg class="sprite-svg">
-                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
-                    </svg>
+                    <img src="<?= SITE_TEMPLATE_PATH ?>/images/svg/cross.svg" class="sprite-svg">
+
                 </div>
             <?php
             endforeach;
