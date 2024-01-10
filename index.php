@@ -70,836 +70,152 @@ $APPLICATION->SetTitle("Главная");
             <div class="container">
                 <ul class="catalog-tabs">
                     <li class="catalog-tabs__li active" data-tab="novinki">
-
+                    <svg id="svg-anim" class="sprite-svg">
+                        <use xlink:href="<?=SITE_TEMPLATE_PATH?>/images/sprite/sprite.svg#novinki"></use>
+                    </svg>
                         Новинки
                     </li>
                     <li class="catalog-tabs__li" data-tab="akcii">
-
+                        <svg id="svg-anim" class="sprite-svg">
+                            <use xlink:href="<?=SITE_TEMPLATE_PATH?>/images/sprite/sprite.svg#akcii"></use>
+                        </svg>
                         Акции и скидки
                     </li>
                     <li class="catalog-tabs__li" data-tab="popular">
-
+                        <svg id="svg-anim" class="sprite-svg">
+                            <use xlink:href="<?=SITE_TEMPLATE_PATH?>/images/sprite/sprite.svg#lider"></use>
+                        </svg>
                         Популярные товары
                     </li>
                 </ul>
                 <div class="catalog-search">
-                    <form>
-                        <input type="text" placeholder="Поиск по названию товара или артиклю">
-                        <input class="ico-search" type="submit">
-                    </form>
+                    <?$APPLICATION->IncludeComponent("bitrix:search.title","catalog-search",Array(
+                            "CATEGORY_0" => array(),
+                            "CATEGORY_0_TITLE" => "",
+                            "CHECK_DATES" => "N",
+                            "CONTAINER_ID" => "title-search",
+                            "INPUT_ID" => "title-search-input",
+                            "NUM_CATEGORIES" => "1",
+                            "ORDER" => "date",
+                            "PAGE" => "#SITE_DIR#catalog/search/",
+                            "SHOW_INPUT" => "Y",
+                            "SHOW_OTHERS" => "N",
+                            "TOP_COUNT" => "5",
+                            "USE_LANGUAGE_GUESS" => "Y"
+                        )
+                    );?>
                 </div>
-                <div class="catalog-container active" data-tab="novinki">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-
-                                <div class="tooltip-ico">Новинки</div>
-                            </div>
-                            <div class="flags tehniche">
-
-                                <div class="tooltip-ico">Гарантия 2 года</div>
-                            </div>
-                            <div class="flags one">
-
-                                <div class="tooltip-ico">1-й поставщик</div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                                <div class="block">Вес:3,1 кг</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-
-                                    <div class="tooltip-ico">В сравнении</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Купить в 1 клик</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">В корзине</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)">
-                            <span
-                                    class="bxhtmled-surrogate-inner">
-                                <span class="bxhtmled-right-side-item-icon"></span>
-                                <span class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-
-                                <div class="tooltip-ico">Новинки</div>
-                            </div>
-                            <div class="flags tehniche">
-
-                                <div class="tooltip-ico">Гарантия 2 года</div>
-                            </div>
-                            <div class="flags one">
-
-                                <div class="tooltip-ico">1-й поставщик</div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                                <div class="block">Вес:3,1 кг</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-
-                                    <div class="tooltip-ico">В сравнении</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Купить в 1 клик</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">В корзине</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="catalog-container active">
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:catalog.section",
+                        "agro_section",
+                        Array(
+                            "ACTION_VARIABLE" => "action",
+                            "ADD_PICT_PROP" => "-",
+                            "ADD_PROPERTIES_TO_BASKET" => "Y",
+                            "ADD_SECTIONS_CHAIN" => "N",
+                            "ADD_TO_BASKET_ACTION" => "ADD",
+                            "AJAX_MODE" => "N",
+                            "AJAX_OPTION_ADDITIONAL" => "",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "AJAX_OPTION_JUMP" => "N",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "BACKGROUND_IMAGE" => "-",
+                            "BASKET_URL" => "/personal/basket.php",
+                            "BROWSER_TITLE" => "-",
+                            "CACHE_FILTER" => "N",
+                            "CACHE_GROUPS" => "Y",
+                            "CACHE_TIME" => "36000000",
+                            "CACHE_TYPE" => "A",
+                            "COMPATIBLE_MODE" => "N",
+                            "CONVERT_CURRENCY" => "Y",
+                            "CURRENCY_ID" => "BYN",
+                            "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",
+                            "DETAIL_URL" => "",
+                            "DISABLE_INIT_JS_IN_COMPONENT" => "N",
+                            "DISPLAY_BOTTOM_PAGER" => "N",
+                            "DISPLAY_COMPARE" => "N",
+                            "DISPLAY_TOP_PAGER" => "N",
+                            "ELEMENT_SORT_FIELD" => "sort",
+                            "ELEMENT_SORT_FIELD2" => "id",
+                            "ELEMENT_SORT_ORDER" => "asc",
+                            "ELEMENT_SORT_ORDER2" => "desc",
+                            "ENLARGE_PRODUCT" => "STRICT",
+                            "FILTER_NAME" => "arrFilter",
+                            "HIDE_NOT_AVAILABLE" => "N",
+                            "HIDE_NOT_AVAILABLE_OFFERS" => "N",
+                            "IBLOCK_ID" => "10",
+                            "IBLOCK_TYPE" => "catalog",
+                            "INCLUDE_SUBSECTIONS" => "Y",
+                            "LABEL_PROP" => array(),
+                            "LAZY_LOAD" => "N",
+                            "LINE_ELEMENT_COUNT" => "3",
+                            "LOAD_ON_SCROLL" => "N",
+                            "MESSAGE_404" => "",
+                            "MESS_BTN_ADD_TO_BASKET" => "В корзину",
+                            "MESS_BTN_BUY" => "Купить",
+                            "MESS_BTN_DETAIL" => "Подробнее",
+                            "MESS_BTN_LAZY_LOAD" => "Показать ещё",
+                            "MESS_BTN_SUBSCRIBE" => "Подписаться",
+                            "MESS_NOT_AVAILABLE" => "Нет в наличии",
+                            "MESS_NOT_AVAILABLE_SERVICE" => "Недоступно",
+                            "META_DESCRIPTION" => "-",
+                            "META_KEYWORDS" => "-",
+                            "OFFERS_LIMIT" => "5",
+                            "PAGER_BASE_LINK_ENABLE" => "N",
+                            "PAGER_DESC_NUMBERING" => "N",
+                            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                            "PAGER_SHOW_ALL" => "N",
+                            "PAGER_SHOW_ALWAYS" => "N",
+                            "PAGER_TEMPLATE" => "agro_pagenav",
+                            "PAGER_TITLE" => "Товары",
+                            "PAGE_ELEMENT_COUNT" => "6",
+                            "PARTIAL_PRODUCT_PROPERTIES" => "N",
+                            "PRICE_CODE" => array("BASE"),
+                            "PRICE_VAT_INCLUDE" => "Y",
+                            "PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
+                            "PRODUCT_ID_VARIABLE" => "id",
+                            "PRODUCT_PROPS_VARIABLE" => "prop",
+                            "PRODUCT_QUANTITY_VARIABLE" => "quantity",
+                            "PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
+                            "PRODUCT_SUBSCRIPTION" => "Y",
+                            "PROPERTY_CODE_MOBILE" => array(),
+                            "RCM_PROD_ID" => $_REQUEST["PRODUCT_ID"],
+                            "RCM_TYPE" => "personal",
+                            "SECTION_CODE" => "",
+                            "SECTION_CODE_PATH" => "",
+                            "SECTION_ID" => $_REQUEST["SECTION_ID"],
+                            "SECTION_ID_VARIABLE" => "SECTION_ID",
+                            "SECTION_URL" => "",
+                            "SECTION_USER_FIELDS" => array("",""),
+                            "SEF_MODE" => "Y",
+                            "SEF_RULE" => "",
+                            "SET_BROWSER_TITLE" => "Y",
+                            "SET_LAST_MODIFIED" => "N",
+                            "SET_META_DESCRIPTION" => "Y",
+                            "SET_META_KEYWORDS" => "Y",
+                            "SET_STATUS_404" => "N",
+                            "SET_TITLE" => "Y",
+                            "SHOW_404" => "N",
+                            "SHOW_ALL_WO_SECTION" => "N",
+                            "SHOW_CLOSE_POPUP" => "N",
+                            "SHOW_DISCOUNT_PERCENT" => "N",
+                            "SHOW_FROM_SECTION" => "N",
+                            "SHOW_MAX_QUANTITY" => "N",
+                            "SHOW_OLD_PRICE" => "N",
+                            "SHOW_PRICE_COUNT" => "1",
+                            "SHOW_SLIDER" => "Y",
+                            "SLIDER_INTERVAL" => "3000",
+                            "SLIDER_PROGRESS" => "N",
+                            "TEMPLATE_THEME" => "blue",
+                            "USE_ENHANCED_ECOMMERCE" => "N",
+                            "USE_MAIN_ELEMENT_SECTION" => "N",
+                            "USE_PRICE_COUNT" => "N",
+                            "USE_PRODUCT_QUANTITY" => "N"
+                        )
+                    );?>
                 </div>
-                <div class="catalog-container" data-tab="akcii">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
 
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-
-                                <div class="tooltip-ico">Новинки</div>
-                            </div>
-                            <div class="flags tehniche">
-
-                                <div class="tooltip-ico">Гарантия 2 года</div>
-                            </div>
-                            <div class="flags one">
-
-                                <div class="tooltip-ico">1-й поставщик</div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                                <div class="block">Вес:3,1 кг</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-
-                                    <div class="tooltip-ico">В сравнении</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Купить в 1 клик</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">В корзине</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catalog-container" data-tab="popular">
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"
-                           data-bg="url(<?= SITE_TEMPLATE_PATH ?>/images/c2.png)"
-                           style="background-image: url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                        </a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#" data-bg="url(/images/c3.png)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                            style="background-image:
-                            url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"</a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags one">
-
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#" data-bg="url(/images/c3.png)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>
-                            style="background-image:
-                            url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"</a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G с плугом и почвофрезой</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#" data-bg="url(/images/c3.png)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>/images/c2.png)"
-                            style="background-image:
-                            url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"</a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <div class="flags novinki">
-
-                                <div class="tooltip-ico">Новинки</div>
-                            </div>
-                            <div class="flags tehniche">
-
-                                <div class="tooltip-ico">Гарантия 2 года</div>
-                            </div>
-                            <div class="flags one">
-
-                                <div class="tooltip-ico">1-й поставщик</div>
-                            </div>
-                        </div>
-                        <a class="catalog-item__img lazy" href="#"></a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая</div>
-                                <div class="name">AL-KO Hightline 42.5 P-A</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                                <div class="block">Объём двигателя:4 м3</div>
-                                <div class="block">Вес:3,1 кг</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price">
-                                <!--span.current 780,00 руб.--><span class="new">590,00 руб</span><span class="old">750,00руб</span>
-                            </div>
-                            <div class="catalog-item__ico "><a class="catalog-item__ico-video" href="#">
-
-                                    <div class="tooltip-ico">Видеозор</div>
-                                </a><a class="catalog-item__ico-compare" href="#">
-
-                                    <div class="tooltip-ico">В сравнении</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Купить в 1 клик</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">В корзине</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="catalog-item">
-                        <div class="catalog-item__flags">
-                            <!--+b('flags novinki')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#novinki")-->
-                            <!--+b('flags tehniche')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#tehniche")-->
-                            <!--+b('flags one')-->
-                            <!--    svg(class="sprite-svg")-->
-                            <!--        use(xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#onePost")-->
-                        </div>
-                        <a class="catalog-item__img lazy" href="#" data-bg="url(/images/c3.png)"><span
-                                    class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span
-                                        class="bxhtmled-comp-lable" unselectable="on" spellcheck="false"></span></span>/images/c2.png)"
-                            style="background-image:
-                            url(data:image/gif;base64,R0lGODlhKwAgAIAAAP///wAAACH5BAEAAAEALAAAAAArACAAAAIjjI+py+0Po5y02ouz3rz7D4biSJbmiabqyrbuC8fyTNf2bRcAOw==)"</a>
-                        <div class="catalog-item__name">
-                            <div>
-                                <div class="pos">Газонокосилка бензиновая самоходная</div>
-                                <div class="name">BOSCH TT 951 2479-G67-E</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__param">
-                            <div>
-                                <div class="block">Мощность двигателя:27 лошадиные силы
-                                </div>
-                                <div class="block">Топливный бак (объем):208 литров</div>
-                            </div>
-                        </div>
-                        <div class="catalog-item__bottom">
-                            <div class="catalog-item__price"><span class="current">780,00 руб.</span>
-                            </div>
-                            <div class="catalog-item__ico"><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в сравнение</div>
-                                </a><a href="#">
-
-                                    <div class="tooltip-ico">Добавить в корзину</div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

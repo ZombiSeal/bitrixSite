@@ -1,7 +1,8 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
-?><div class="fixed-compare">
+?>
+    <div class="fixed-compare">
  <a class="fixed-compare__link" href="#">
 	5 товаров</a><a class="fixed-compare__link" href="#">
 	5 запчастей</a><a class="fixed-compare__close" href="#"> </a>
@@ -27,9 +28,9 @@ $APPLICATION->SetTitle("Каталог");
 </div>
  </section>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog",
-	"agro_catalog",
-	Array(
+	"bitrix:catalog", 
+	"agro_catalog", 
+	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
@@ -50,20 +51,33 @@ $APPLICATION->SetTitle("Каталог");
 		"COMMON_SHOW_CLOSE_POPUP" => "N",
 		"COMPARE_ELEMENT_SORT_FIELD" => "sort",
 		"COMPARE_ELEMENT_SORT_ORDER" => "asc",
-		"COMPARE_FIELD_CODE" => array("",""),
+		"COMPARE_FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
-		"COMPARE_PROPERTY_CODE" => array("",""),
+		"COMPARE_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"COMPATIBLE_MODE" => "N",
 		"CONVERT_CURRENCY" => "Y",
 		"CURRENCY_ID" => "BYN",
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "N",
-		"DETAIL_ADD_TO_BASKET_ACTION" => array(0=>"BUY",),
-		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(0=>"BUY",),
+		"DETAIL_ADD_TO_BASKET_ACTION" => array(
+			0 => "BUY",
+		),
+		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(
+			0 => "BUY",
+		),
 		"DETAIL_BACKGROUND_IMAGE" => "-",
 		"DETAIL_BRAND_USE" => "N",
 		"DETAIL_BROWSER_TITLE" => "-",
 		"DETAIL_CHECK_SECTION_ID_VARIABLE" => "N",
-		"DETAIL_DETAIL_PICTURE_MODE" => array(0=>"POPUP",1=>"MAGNIFIER",),
+		"DETAIL_DETAIL_PICTURE_MODE" => array(
+			0 => "POPUP",
+			1 => "MAGNIFIER",
+		),
 		"DETAIL_DISPLAY_NAME" => "Y",
 		"DETAIL_DISPLAY_PREVIEW_TEXT_MODE" => "E",
 		"DETAIL_IMAGE_RESOLUTION" => "16by9",
@@ -71,7 +85,10 @@ $APPLICATION->SetTitle("Каталог");
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
-		"DETAIL_PROPERTY_CODE" => array("",""),
+		"DETAIL_PROPERTY_CODE" => array(
+			0 => "",
+			1 => "",
+		),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
 		"DETAIL_SHOW_POPULAR" => "Y",
@@ -83,9 +100,9 @@ $APPLICATION->SetTitle("Каталог");
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"ELEMENT_SORT_FIELD" => "sort",
+		"ELEMENT_SORT_FIELD" => "property_popular",
 		"ELEMENT_SORT_FIELD2" => "id",
-		"ELEMENT_SORT_ORDER" => "asc",
+		"ELEMENT_SORT_ORDER" => "desc",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"FILTER_HIDE_ON_MOBILE" => "N",
 		"FILTER_VIEW_MODE" => "VERTICAL",
@@ -124,7 +141,13 @@ $APPLICATION->SetTitle("Каталог");
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"LIST_PROPERTY_CODE" => array("POWER","VOLUME_ENGINE","VOLUME_FUEL","VOLUME",""),
+		"LIST_PROPERTY_CODE" => array(
+			0 => "POWER",
+			1 => "VOLUME_ENGINE",
+			2 => "VOLUME_FUEL",
+			3 => "VOLUME",
+			4 => "",
+		),
 		"LIST_SHOW_SLIDER" => "Y",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
@@ -151,11 +174,16 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_TITLE" => "Товары",
 		"PAGE_ELEMENT_COUNT" => "3",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array("BASE"),
+		"PRICE_CODE" => array(
+			0 => "BASE",
+		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
 		"PRODUCT_ID_VARIABLE" => "id",
-		"PRODUCT_PROPERTIES" => array("SUPPLIER","GUARANTEE"),
+		"PRODUCT_PROPERTIES" => array(
+			0 => "SUPPLIER",
+			1 => "GUARANTEE",
+		),
 		"PRODUCT_PROPS_VARIABLE" => "prop",
 		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
 		"PRODUCT_SUBSCRIPTION" => "Y",
@@ -174,11 +202,10 @@ $APPLICATION->SetTitle("Каталог");
 		"SECTION_TOP_DEPTH" => "2",
 		"SEF_FOLDER" => "/catalog/",
 		"SEF_MODE" => "Y",
-		"SEF_URL_TEMPLATES" => Array("compare"=>"compare/","element"=>"#SECTION_CODE_PATH#/#ELEMENT_CODE#/","section"=>"#SECTION_CODE_PATH#/","sections"=>"","smart_filter"=>"#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/"),
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "Y",
-		"SHOW_404" => "N",
+		"SHOW_404" => "Y",
 		"SHOW_DEACTIVATED" => "N",
 		"SHOW_DISCOUNT_PERCENT" => "N",
 		"SHOW_MAX_QUANTITY" => "N",
@@ -200,7 +227,11 @@ $APPLICATION->SetTitle("Каталог");
 		"TOP_LINE_ELEMENT_COUNT" => "3",
 		"TOP_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"TOP_PROPERTY_CODE" => array("POWER","VOLUME",""),
+		"TOP_PROPERTY_CODE" => array(
+			0 => "POWER",
+			1 => "VOLUME",
+			2 => "",
+		),
 		"TOP_SHOW_SLIDER" => "Y",
 		"TOP_SLIDER_INTERVAL" => "3000",
 		"TOP_SLIDER_PROGRESS" => "N",
@@ -215,7 +246,7 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_COMPARE" => "Y",
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_ENHANCED_ECOMMERCE" => "N",
-		"USE_FILTER" => "N",
+		"USE_FILTER" => "Y",
 		"USE_GIFTS_DETAIL" => "Y",
 		"USE_GIFTS_MAIN_PR_SECTION_LIST" => "Y",
 		"USE_GIFTS_SECTION" => "Y",
@@ -223,6 +254,17 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_PRICE_COUNT" => "N",
 		"USE_PRODUCT_QUANTITY" => "N",
 		"USE_SALE_BESTSELLERS" => "Y",
-		"USE_STORE" => "N"
-	)
+		"USE_STORE" => "N",
+		"COMPONENT_TEMPLATE" => "agro_catalog",
+		"FILTER_NAME" => "",
+		"FILE_404" => "",
+		"SEF_URL_TEMPLATES" => array(
+			"sections" => "",
+			"section" => "#SECTION_CODE_PATH#/",
+			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+			"compare" => "compare/",
+			"search" => "search/",
+		)
+	),
+	false
 );?> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

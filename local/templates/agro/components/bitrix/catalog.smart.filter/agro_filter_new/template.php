@@ -165,7 +165,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                         <span class="styler"
                                                               title="<?= $ar["VALUE"] ?>">
                                                             <?= $ar["VALUE"] ?>
-                                                            <?= ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($ar["ELEMENT_COUNT"])) ? "({$ar["ELEMENT_COUNT"]})" : "" ?>
+
                                                         </span>
                                                     </label>
                                                 <?php endforeach; ?>
@@ -192,7 +192,7 @@ $price = $arResult['ITEMS']['BASE'];
                                                                 <span class="styler"
                                                                       title="<?= $brand["VALUE"] ?>">
                                                                     <?= $brand["VALUE"] ?>
-                                                                    <?= ($arParams["DISPLAY_ELEMENT_COUNT"] !== "N" && isset($brand["ELEMENT_COUNT"])) ? "({$brand["ELEMENT_COUNT"]})" : "" ?>
+
                                                                 </span>
                                                             </label>
                                                         </li>

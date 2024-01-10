@@ -206,17 +206,21 @@ use Bitrix\Main\Page\Asset;
                 <div class="header-bottom__li"><a href="#">Сотрудничество</a></div>
             </div>
             <div class="header-bottom__btn">
-                <div class="search-block header-bottom__btn-block">
-                    <form>
-                        <input type="text" placeholder="Введите ваш поисковый запрос">
-                        <button class="close">
-                            <svg class="sprite-svg">
-                                <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#close"></use>
-                            </svg>
-                        </button>
-                        <input class="ico-search" type="submit">
-                    </form>
-                </div>
+                <?$APPLICATION->IncludeComponent("bitrix:search.title","header-search",Array(
+                        "CATEGORY_0" => array(),
+                        "CATEGORY_0_TITLE" => "",
+                        "CHECK_DATES" => "N",
+                        "CONTAINER_ID" => "title-search",
+                        "INPUT_ID" => "title-search-input",
+                        "NUM_CATEGORIES" => "1",
+                        "ORDER" => "date",
+                        "PAGE" => "#SITE_DIR#catalog/search/",
+                        "SHOW_INPUT" => "Y",
+                        "SHOW_OTHERS" => "N",
+                        "TOP_COUNT" => "5",
+                        "USE_LANGUAGE_GUESS" => "Y"
+                    )
+                );?>
                 <div class="basket-block header-bottom__btn-block"><a class="basket-header-ico" href="#">
                         <svg class="sprite-svg">
                             <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>

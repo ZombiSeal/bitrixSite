@@ -89,6 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
         inputs.forEach(input => {
             input.value = "";
         });
+
+        select.selectedIndex = 0;
+        form.querySelector('.jq-selectbox__select-text').textContent = select.options[0].text;
+        filter.changeExitFlag();
+
+        filterParamsBlock.innerHTML = '';
         filter.getElementsCount();
     })
 })
@@ -166,15 +172,20 @@ AjaxFilter.prototype.generateUrl = function () {
 AjaxFilter.prototype.getElementsCount = function () {
     this.generateUrl();
     fetch(this.url, {
-            headers: {'X-Requested-With': 'XMLHttpRequest'}
+        method:'POST',
+        body: new URLSearchParams({'ajaxCount':"y"}),
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
         }
+    }
     ).then(res => {
-        return res.text();
+        return res.json();
     }).then(data => {
-        let dataContainer = document.createElement('div');
-        dataContainer.innerHTML = data;
-        let elements = dataContainer.querySelectorAll(".catalog-item");
-        document.querySelector('.num_el').innerHTML = "(" + elements.length + ")";
+        console.log(data);
+        // let dataContainer = document.createElement('div');
+        // dataContainer.innerHTML = data;
+        // let elements = dataContainer.querySelectorAll(".catalog-item");
+        document.querySelector('.num_el').innerHTML = "(" + data + ")";
     }).catch((error) => console.log(error));
 }
 
@@ -281,6 +292,10 @@ AjaxFilter.prototype.selectParams = function (select) {
     }
 
     this.oldId.id = id;
+}
+
+AjaxFilter.prototype.changeExitFlag = function () {
+   this.isExistFlag = false;
 }
 
 AjaxFilter.prototype.delParam = function(param) {

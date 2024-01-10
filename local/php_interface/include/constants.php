@@ -8,3 +8,5 @@ const FAQ_IBLOCK_ID = 8;
 const CONTACT_IBLOCK_ID = 9;
 const CONTENT_IBLOCK_ID = 14;
 const BRANDS_IBLOCK_ID = 15;
+
+const NEWS_IBLOCK_ID = 16;

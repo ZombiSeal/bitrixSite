@@ -66,3 +66,27 @@ function renderFlag($sprite, $class, $tooltip) {
             </div>
         HTML;
 }
+
+function getNewsType() {
+    $cache = Cache::createInstance(); // получаем экземпляр класса
+    $ttl = 36000000;
+    $cacheKey = 'contactsMap';
+    if ($cache->initCache($ttl, $cacheKey)) { // проверяем кеш и задаём настройки
+        $vars = $cache->getVars(); // достаем переменные из кеша
+    } elseif ($cache->startDataCache()) {
+        if (Loader::includeModule("iblock")) {
+            $propertyEnums = CIBlockPropertyEnum::GetList(
+                array("SORT" => "ASC"),
+                array("IBLOCK_ID" => 16, "CODE" => "TYPE")
+            );
+
+            while ($enumFields = $propertyEnums->GetNext()) {
+                $types[] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID']];
+            }
+        }
+        $vars = ['types' => $types];
+        $cache->endDataCache($vars);
+
+    }
+    return $vars;
+}

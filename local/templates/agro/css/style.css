@@ -3319,7 +3319,7 @@ body .article-item.article-item--main .article-item__link .arrow {
   font-size: 8px;
   border-radius: 50%;
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 0;
   line-height: 1.3;
 }
@@ -7710,6 +7710,11 @@ img.mfp-img {
   margin: 0 auto 60px;
 }
 
+.catalog-search .search-result__form {
+  width:auto;
+  margin: 0;
+}
+
 .search-result__form input[type='text'] {
   width: 100%;
 }
@@ -7739,10 +7744,10 @@ img.mfp-img {
 
 .search-result__btn::before {
   content: '';
-  width: 100%;
+  width: 200%;
   height: 1px;
   background-color: #D8DFE2;
-  left: 0;
+  left: -50%;
   top: 56.5px;
   position: absolute;
   z-index: 1;
