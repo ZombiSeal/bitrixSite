@@ -76,12 +76,16 @@ function getNewsType() {
     } elseif ($cache->startDataCache()) {
         if (Loader::includeModule("iblock")) {
             $propertyEnums = CIBlockPropertyEnum::GetList(
-                array("SORT" => "ASC"),
-                array("IBLOCK_ID" => 16, "CODE" => "TYPE")
+                ["SORT" => "ASC"],
+                ["IBLOCK_ID" => NEWS_IBLOCK_ID, "CODE" => "TYPE"]
             );
 
             while ($enumFields = $propertyEnums->GetNext()) {
-                $types[] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID']];
+                $arSelectElem = ['ID'];
+                $arFilterElem = ["IBLOCK_ID" => NEWS_IBLOCK_ID,'PROPERTY_TYPE' => $enumFields['ID'], 'ACTIVE' => 'Y'];
+                $res = CIBlockElement::GetList([], $arFilterElem, false, ["nTopCount"=>1], $arSelectElem);
+                if(!empty($res->GetNext())) $types[] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID']];
+
             }
         }
         $vars = ['types' => $types];

@@ -37,7 +37,16 @@ $arTemplateParameters["SEF_MODE"] = array(
     ),
     "search" => array(
         "NAME" => 'Поиск',
-        "DEFAULT" => "catalog/search/",
+        "DEFAULT" => "search/",
     ),
 
+    "brand" => array(
+        "NAME" => 'Бренд',
+        "DEFAULT" => "brands/#SECTION_CODE#/#ELEMENT_CODE#/",
+    ),
+
+    "brands" => array(
+        "NAME" => 'Бренды',
+        "DEFAULT" => "brands/",
+    )
 );

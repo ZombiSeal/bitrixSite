@@ -380,61 +380,66 @@ $APPLICATION->SetTitle("Главная");
         </div>
     </section>
     <section>
-        <div class="main-article">
-            <div class="container">
-                <div class="article-item article-item--akcii">
-                    <div class="article-item__top"><a class="article-item__type" href="#">Акции</a>
-                        <div class="article-item__date">02 марта</div>
-                    </div>
-                    <div class="article-item__name">Преимущества блоков, а может и газонокосилок производства от
-                        российского «Тополя»
-                    </div>
-                    <div class="article-item__desc">Наша компания ОДО «Норм-сайт» многие годы профессионально
-                        занимается
-                        продажей сервисным обслуживанием мотосельхозтехни ведущих мировых производителей.
-                    </div>
-                    <a class="article-item__link" href="#">Читать полностью
-                        <div class="arrow">
-
-                        </div>
-                    </a>
-                </div>
-                <div class="article-item article-item--article">
-                    <div class="article-item__top"><a class="article-item__type" href="#">Статьи</a>
-                        <div class="article-item__date">15 марта</div>
-                    </div>
-                    <div class="article-item__name">Преимущества блоков, а может и газонокосилок производства от
-                        российского «Тополя»
-                    </div>
-                    <div class="article-item__desc">Наша компания ОДО «Норм-сайт» многие годы профессионально
-                        занимается
-                        продажей сервисным обслуживанием мотосельхозтехни ведущих мировых производителей.
-                    </div>
-                    <a class="article-item__link" href="#">Читать полностью
-                        <div class="arrow">
-
-                        </div>
-                    </a>
-                </div>
-                <div class="article-item article-item--news">
-                    <div class="article-item__top"><a class="article-item__type" href="#">Новости</a>
-                        <div class="article-item__date">22 марта</div>
-                    </div>
-                    <div class="article-item__name">Преимущества блоков, а может и газонокосилок производства от
-                        российского «Тополя»
-                    </div>
-                    <div class="article-item__desc">Наша компания ОДО «Норм-сайт» многие годы профессионально
-                        занимается
-                        продажей сервисным обслуживанием мотосельхозтехни ведущих мировых производителей.
-                    </div>
-                    <a class="article-item__link" href="#">Читать полностью
-                        <div class="arrow">
-
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php
+        global $filterAll;
+        $filterAll = ['!=PROPERTY_PREVIEW' => 43];
+        $APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"agro_news",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "j F",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "N",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array("",""),
+        "FILTER_NAME" => "filterAll",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => NEWS_IBLOCK_ID,
+		"IBLOCK_TYPE" => "news",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "3",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => "agro_pagenav",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array("TYPE",""),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N"
+	)
+);?>
     </section>
     <section>
         <div class="brands">
@@ -445,49 +450,68 @@ $APPLICATION->SetTitle("Главная");
                     </span>
                     <span>
                         бренды
-                    </span></div>
-                <div class="brands__img"><a class="img wow fadeInUp" href="#" data-wow-delay=".5s"></a><a
-                            class="img wow fadeInUp" href="#" data-wow-delay=".5s"><img
-                                src="/local/templates/agro/images/brands/logo1.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo1.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay=".6s"><img
-                                src="/local/templates/agro/images/brands/logo2.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo2.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay=".7s"><img
-                                src="/local/templates/agro/images/brands/logo3.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo3.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay=".8s"><img
-                                src="/local/templates/agro/images/brands/logo4.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo4.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay=".9s"></a><a
-                            class="img wow fadeInUp" href="#" data-wow-delay=".9s"><img
-                                src="/local/templates/agro/images/brands/logo5.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo5.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay="1s"><img
-                                src="/local/templates/agro/images/brands/logo6.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo6.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay="1.1s"><img
-                                src="/local/templates/agro/images/brands/logo7.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo7.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay="1.2s"><img
-                                src="/local/templates/agro/images/brands/logo8.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo8.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay="1.3s"><img
-                                src="/local/templates/agro/images/brands/logo9.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo9.svg"></a><a class="img wow fadeInUp"
-                                                                                                href="#"
-                                                                                                data-wow-delay="1.4s"><img
-                                src="/local/templates/agro/images/brands/logo10.svg" class="lazy"
-                                data-src="/local/templates/agro/images/brands/logo10.svg"></a>
+                    </span>
                 </div>
+                <?
+                global $mainBrands;
+                $mainBrands= ['PROPERTY_IN_MAIN_PAGE' => 44];
+                $APPLICATION->IncludeComponent(
+                    "bitrix:news.list",
+                    "agro_main_brands",
+                    Array(
+                        "ACTIVE_DATE_FORMAT" => "",
+                        "ADD_SECTIONS_CHAIN" => "Y",
+                        "AJAX_MODE" => "N",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "N",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_STYLE" => "Y",
+                        "CACHE_FILTER" => "N",
+                        "CACHE_GROUPS" => "Y",
+                        "CACHE_TIME" => "36000000",
+                        "CACHE_TYPE" => "A",
+                        "CHECK_DATES" => "Y",
+                        "DETAIL_URL" => "",
+                        "DISPLAY_BOTTOM_PAGER" => "N",
+                        "DISPLAY_DATE" => "Y",
+                        "DISPLAY_NAME" => "Y",
+                        "DISPLAY_PICTURE" => "Y",
+                        "DISPLAY_PREVIEW_TEXT" => "Y",
+                        "DISPLAY_TOP_PAGER" => "N",
+                        "FIELD_CODE" => array("",""),
+                        "FILTER_NAME" => "mainBrands",
+                        "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                        "IBLOCK_ID" => BRANDS_IBLOCK_ID,
+                        "IBLOCK_TYPE" => "catalog",
+                        "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                        "INCLUDE_SUBSECTIONS" => "Y",
+                        "MESSAGE_404" => "",
+                        "NEWS_COUNT" => "10",
+                        "PAGER_BASE_LINK_ENABLE" => "N",
+                        "PAGER_DESC_NUMBERING" => "N",
+                        "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                        "PAGER_SHOW_ALL" => "N",
+                        "PAGER_SHOW_ALWAYS" => "N",
+                        "PAGER_TEMPLATE" => "agro_pagenav",
+                        "PAGER_TITLE" => "Новости",
+                        "PARENT_SECTION" => "",
+                        "PARENT_SECTION_CODE" => "",
+                        "PREVIEW_TRUNCATE_LEN" => "",
+                        "PROPERTY_CODE" => array("LOGO",""),
+                        "SET_BROWSER_TITLE" => "Y",
+                        "SET_LAST_MODIFIED" => "N",
+                        "SET_META_DESCRIPTION" => "Y",
+                        "SET_META_KEYWORDS" => "Y",
+                        "SET_STATUS_404" => "N",
+                        "SET_TITLE" => "Y",
+                        "SHOW_404" => "N",
+                        "SORT_BY1" => "ACTIVE_FROM",
+                        "SORT_BY2" => "SORT",
+                        "SORT_ORDER1" => "DESC",
+                        "SORT_ORDER2" => "ASC",
+                        "STRICT_SECTION_CHECK" => "N"
+                    )
+                );?>
             </div>
         </div>
     </section>

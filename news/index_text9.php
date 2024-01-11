@@ -1,2 +1,0 @@
-<h3>Мы ответим на Ваши вопросы по телефонам:</h3>
-<p><img src="<?=SITE_TEMPLATE_PATH?>/images/mts.png"><a href="tel:80297002244">8 (029) 700-22-44</a><br><img src="<?=SITE_TEMPLATE_PATH?>/images/velcom2.png"><a href="tel:80297002244">8 (029) 144-14-27</a></p>

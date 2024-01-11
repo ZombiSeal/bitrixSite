@@ -264,6 +264,8 @@ $APPLICATION->SetTitle("Каталог");
 			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
 			"compare" => "compare/",
 			"search" => "search/",
+			"brand" => "brands/#SECTION_CODE#/#ELEMENT_CODE#/",
+			"brands" => "brands/",
 		)
 	),
 	false

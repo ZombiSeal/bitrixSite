@@ -13,7 +13,7 @@ $this->setFrameMode(true);
                 $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 
                 $classPrefix = $item['PROPERTIES']['TYPE']['VALUE_XML_ID'];
-                $type = ($key === 3 && $arParams['TAB'] === 'all') ? 'Анонс': $item['PROPERTIES']['TYPE']['VALUE'];;
+                $type = ($key === 3 && $arParams['TAB'] === 'all') ? 'Анонс': $item['PROPERTIES']['TYPE']['VALUE'];
                 ?>
 
                 <div id="<?=$this->GetEditAreaId($item['ID']);?>" class="article-item article-item--<?= $classPrefix ?> <?=($key === 3 && $arParams['TAB'] === 'all') ? 'article-item--main' : ''?>">
@@ -48,7 +48,5 @@ $this->setFrameMode(true);
             </div>
         <?php endif;?>
     </div>
-
-
 </div>
 
