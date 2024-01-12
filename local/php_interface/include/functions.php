@@ -67,30 +67,31 @@ function renderFlag($sprite, $class, $tooltip) {
         HTML;
 }
 
-function getNewsType() {
-    $cache = Cache::createInstance(); // получаем экземпляр класса
-    $ttl = 36000000;
-    $cacheKey = 'contactsMap';
-    if ($cache->initCache($ttl, $cacheKey)) { // проверяем кеш и задаём настройки
-        $vars = $cache->getVars(); // достаем переменные из кеша
-    } elseif ($cache->startDataCache()) {
-        if (Loader::includeModule("iblock")) {
-            $propertyEnums = CIBlockPropertyEnum::GetList(
-                ["SORT" => "ASC"],
-                ["IBLOCK_ID" => NEWS_IBLOCK_ID, "CODE" => "TYPE"]
-            );
-
-            while ($enumFields = $propertyEnums->GetNext()) {
-                $arSelectElem = ['ID'];
-                $arFilterElem = ["IBLOCK_ID" => NEWS_IBLOCK_ID,'PROPERTY_TYPE' => $enumFields['ID'], 'ACTIVE' => 'Y'];
-                $res = CIBlockElement::GetList([], $arFilterElem, false, ["nTopCount"=>1], $arSelectElem);
-                if(!empty($res->GetNext())) $types[] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID']];
-
-            }
-        }
-        $vars = ['types' => $types];
-        $cache->endDataCache($vars);
-
-    }
-    return $vars;
-}
+//function getNewsType() {
+//    $cache = Cache::createInstance(); // получаем экземпляр класса
+//    $ttl = 36000000;
+//    $cacheKey = 'contactsMap';
+//    if ($cache->initCache($ttl, $cacheKey)) { // проверяем кеш и задаём настройки
+//        $vars = $cache->getVars(); // достаем переменные из кеша
+//    } elseif ($cache->startDataCache()) {
+//        if (Loader::includeModule("iblock")) {
+//            $propertyEnums = CIBlockPropertyEnum::GetList(
+//                ["SORT" => "ASC"],
+//                ["IBLOCK_ID" => $arParams['IBLOCK_ID'], "CODE" => "TYPE"]
+//            );
+//
+//            $typesAll['all'] = ['VALUE' => 'Все материалы',"CODE" => 'all', 'LINK' => '?type=all'];
+//            while ($enumFields = $propertyEnums->GetNext()) {
+//                $arSelectElem = ['ID'];
+//                $arFilterElem = ["IBLOCK_ID" => NEWS_IBLOCK_ID,'PROPERTY_TYPE' => $enumFields['ID'], 'ACTIVE' => 'Y'];
+//                $res = CIBlockElement::GetList([], $arFilterElem, false, ["nTopCount"=>1], $arSelectElem);
+//                if(!empty($res->GetNext())) $types[$enumFields['XML_ID']] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID'], 'LINK' => '?type=' . $enumFields['XML_ID']];
+//            }
+//            if(!empty($types)) $types = array_merge($typesAll, $types);
+//        }
+//        $vars = $types;
+//        $cache->endDataCache($vars);
+//
+//    }
+//    return $vars;
+//}

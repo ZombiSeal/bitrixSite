@@ -221,12 +221,18 @@ use Bitrix\Main\Page\Asset;
                         "USE_LANGUAGE_GUESS" => "Y"
                     )
                 );?>
-                <div class="basket-block header-bottom__btn-block"><a class="basket-header-ico" href="#">
+                <div class="basket-block header-bottom__btn-block">
+                    <a class="basket-header-ico" href="#">
                         <svg class="sprite-svg">
                             <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                         </svg>
-                        <span class="count active">9</span></a></div>
-                <div class="personal-block header-bottom__btn-block"><a class="ico-lock" href="#">Личный кабинет</a>
+                        <span class="count active">9</span>
+                    </a>
+                </div>
+
+
+                <div class="personal-block header-bottom__btn-block">
+                    <a class="ico-lock" href="#">Личный кабинет</a>
                 </div>
             </div>
         </div>

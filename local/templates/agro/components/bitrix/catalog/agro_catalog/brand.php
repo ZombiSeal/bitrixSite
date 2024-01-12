@@ -33,11 +33,10 @@ $this->setFrameMode(true);
     );?>
 
     <div class="container">
-        <div class="extra-block__zag">Товары производителя:</div>
-        <div class="brands-advantage">
+        <div class="extra-block__zag">Товары производителя</div>
             <?php
             global $brandFilter;
-            $brandFilter = ["PROPERTY_PRODUCER" => $GLOBALS["ELEMENT_ID_BRAND"]];
+            $brandFilter = ["=PROPERTY_PRODUCER" => $GLOBALS["ELEMENT_ID_BRAND"]];
             $APPLICATION->IncludeComponent(
                 "bitrix:catalog.section",
                 "agro_section",
@@ -165,7 +164,6 @@ $this->setFrameMode(true);
                 $component
             );
             ?>
-        </div>
     </div>
 </section>
 

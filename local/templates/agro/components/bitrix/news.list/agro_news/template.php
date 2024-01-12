@@ -1,7 +1,6 @@
 <?php
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $this->setFrameMode(true);
-
 ?>
 <div class="main-article">
     <div class="container">
@@ -13,10 +12,11 @@ $this->setFrameMode(true);
                 $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 
                 $classPrefix = $item['PROPERTIES']['TYPE']['VALUE_XML_ID'];
-                $type = ($key === 3 && $arParams['TAB'] === 'all') ? 'Анонс': $item['PROPERTIES']['TYPE']['VALUE'];
+                $isPreview = $item['PROPERTIES']['PREVIEW'];
+                $type = (array_key_exists('IS_PREVIEW', $item)) ? 'Анонс': $item['PROPERTIES']['TYPE']['VALUE'];
                 ?>
 
-                <div id="<?=$this->GetEditAreaId($item['ID']);?>" class="article-item article-item--<?= $classPrefix ?> <?=($key === 3 && $arParams['TAB'] === 'all') ? 'article-item--main' : ''?>">
+                <div id="<?=$this->GetEditAreaId($item['ID']);?>" class="article-item article-item--<?= $classPrefix ?> <?=(array_key_exists('IS_PREVIEW', $item)) ? 'article-item--main' : ''?>">
                     <div class="article-item__top">
                         <a class="article-item__type" href="<?=$item["DETAIL_PAGE_URL"]?>">
                             <?=$type;?>

@@ -13,21 +13,36 @@
 $this->setFrameMode(true);
 
 ?>
-<div class="brands__img">
-    <?php
-    if (!empty($arResult['ITEMS'])):
-        foreach ($arResult['ITEMS'] as $brand):?>
-            <?php
-            $this->AddEditAction($brand['ID'], $brand['EDIT_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_EDIT"));
-            $this->AddDeleteAction($brand['ID'], $brand['DELETE_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-            ?>
-            <a id="<?= $this->GetEditAreaId($brand['ID']); ?>" class="img wow fadeInUp" href="<?=$brand[' DETAIL_PAGE_URL']?>" data-wow-delay=".5s">
-                <?php $img = CFile::GetFileArray($brand['PROPERTIES']['LOGO']['VALUE']); ?>
-                <img
-                        src="<?=$img['SRC']?>" class="lazy"
-                        data-src="<?=$img['SRC']?>"/>
-            </a>
-        <?php
-        endforeach;
-    endif; ?>
-</div>
+<section>
+    <div class="brands">
+        <div class="container">
+            <div class="brands__text">
+                    <span>
+                        <?=$arParams["TITLE_UP"]?>
+                    </span>
+                    <span>
+                        <?=$arParams["TITLE_BOTTOM"]?>
+                    </span>
+            </div>
+            <div class="brands__img">
+                <?php
+                if (!empty($arResult['ITEMS'])):
+                    foreach ($arResult['ITEMS'] as $brand):?>
+                        <?php
+                        $this->AddEditAction($brand['ID'], $brand['EDIT_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_EDIT"));
+                        $this->AddDeleteAction($brand['ID'], $brand['DELETE_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+                        ?>
+                        <a id="<?= $this->GetEditAreaId($brand['ID']); ?>" class="img wow fadeInUp"
+                           href="<?= $brand[' DETAIL_PAGE_URL'] ?>" data-wow-delay=".5s">
+                            <?php $img = CFile::GetFileArray($brand['PROPERTIES']['LOGO']['VALUE']); ?>
+                            <img
+                                    src="<?= $img['SRC'] ?>" class="lazy"
+                                    data-src="<?= $img['SRC'] ?>"/>
+                        </a>
+                    <?php
+                    endforeach;
+                endif; ?>
+            </div>
+        </div>
+    </div>
+</section>

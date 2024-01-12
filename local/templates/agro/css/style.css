@@ -769,7 +769,8 @@ strong, b {
   justify-content: center;
 }
 
-.tabs-nav li {
+.tabs-nav li,
+.tabs-nav a  {
   width: 50%;
   cursor: pointer;
   text-align: center;
@@ -786,17 +787,20 @@ strong, b {
   position: relative;
 }
 
-.tabs-nav li:first-child {
+.tabs-nav li:first-child,
+.tabs-nav a:first-child{
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.tabs-nav li:last-child {
+.tabs-nav li:last-child,
+.tabs-nav a:last-child{
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-.tabs-nav li::before {
+.tabs-nav li::before,
+.tabs-nav a::before{
   content: '';
   width: 0;
   height: 0;
