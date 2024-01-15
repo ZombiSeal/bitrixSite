@@ -1,5 +1,4 @@
 <?php
-
 if ($_REQUEST['ajaxCount'] == 'y') {
     $FILTER_NAME = (string)$arParams["FILTER_NAME"];
     ob_end_clean();

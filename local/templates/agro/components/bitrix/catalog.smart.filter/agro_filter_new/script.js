@@ -181,10 +181,6 @@ AjaxFilter.prototype.getElementsCount = function () {
     ).then(res => {
         return res.json();
     }).then(data => {
-        console.log(data);
-        // let dataContainer = document.createElement('div');
-        // dataContainer.innerHTML = data;
-        // let elements = dataContainer.querySelectorAll(".catalog-item");
         document.querySelector('.num_el').innerHTML = "(" + data + ")";
     }).catch((error) => console.log(error));
 }

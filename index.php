@@ -356,12 +356,8 @@ $APPLICATION->SetTitle("Главная");
 		"STRICT_SECTION_CHECK" => "N"
 	)
 );?>
-		<div class="main-about__img lazy" data-bg="url(<span id=" title="Код PHP: &lt;?= SITE_TEMPLATE_PATH ?&gt;">
- <span class="bxhtmled-surrogate-inner"><span class="bxhtmled-right-side-item-icon"></span><span class="bxhtmled-comp-lable" unselectable="on" spellcheck="false">Код PHP</span></span>/images/main-about.png)"&gt;
-		</div>
-	</div>
-</div>
- </section> <section>
+ </section>
+    <section>
 <?php
         global $filterAll;
         $filterAll = ['PROPERTY_PREVIEW' => false];

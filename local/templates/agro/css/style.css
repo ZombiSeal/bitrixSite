@@ -659,7 +659,8 @@ strong, b {
   top: 20px !important;
 }
 
-.popup-form__error {
+.popup-form__error,
+.error-auth {
   display: none;
   width: 100%;
   font-size: 16px;
@@ -670,6 +671,7 @@ strong, b {
   padding: 15px;
   background-color: #D8E3E5;
 }
+
 
 .popup-form__error svg {
   fill: #FFA34E;
@@ -824,9 +826,9 @@ strong, b {
   opacity: 1;
 }
 
-/*.tabs-content {*/
-/*  padding: 40px 70px 0;*/
-/*}*/
+.tabs-content {
+  padding: 40px 70px 0;
+}
 
 .input-checkbox {
   padding-left: 40px;
@@ -923,7 +925,8 @@ strong, b {
   margin-top: 0;
 }
 
-.input-bottom button {
+.input-bottom button,
+.input-bottom a.btn{
   padding: 12px 30px;
   box-shadow: none;
   border: 2px solid #EF4949;
@@ -935,7 +938,8 @@ strong, b {
   font-family: "montserat";
 }
 
-.input-bottom button:hover {
+.input-bottom button:hover,
+.input-bottom a.btn:hover{
   background-color: #EF4949;
   color: #fff;
 }

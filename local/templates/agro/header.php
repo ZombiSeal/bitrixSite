@@ -30,6 +30,7 @@ use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-3.2.1.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/libs.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/common.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/auth.js");
     ?>
 
 </head>
@@ -232,7 +233,7 @@ use Bitrix\Main\Page\Asset;
 
 
                 <div class="personal-block header-bottom__btn-block">
-                    <a class="ico-lock" href="#">Личный кабинет</a>
+                    <a class="ico-lock ajax-form" href="<?=($USER->IsAuthorized()) ? '/personal' : '/auth'?>">Личный кабинет</a>
                 </div>
             </div>
         </div>
