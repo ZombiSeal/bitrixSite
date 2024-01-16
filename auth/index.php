@@ -7,7 +7,7 @@ $APPLICATION->IncludeComponent(
     array(
         "AUTH_FORGOT_PASSWORD_URL" => "",
         "AUTH_REGISTER_URL" => "",
-        "AUTH_SUCCESS_URL" => "/",
+        "AUTH_SUCCESS_URL" => "",
     ),
     false
 );

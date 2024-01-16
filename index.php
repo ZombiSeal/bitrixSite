@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Главная");
-//$USER->Authorize(2);
+//$USER->Authorize(1);
 ?><article> <section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",

@@ -1,6 +1,7 @@
 <?php
-if (!empty($arResult['ERRORS'])) {
+if ($_POST['AUTH_ACTION'] == 'Войти') {
     ob_end_clean();
-    echo true;
+    $error = !empty($arResult['ERRORS']) ? true : false;
+    echo json_encode(['error' => $error]);
     die();
 }

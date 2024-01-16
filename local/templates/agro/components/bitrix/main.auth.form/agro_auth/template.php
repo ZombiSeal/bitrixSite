@@ -36,7 +36,7 @@
                 </div>
                 <div class="error-auth">Ошибка</div>
                 <div class="input-bottom">
-                    <input name="<?= $arResult['FIELDS']['action'];?>" class="required--sbmt ajax-sbmt" type="submit" value="Войти"/><span>или</span>
+                    <input name="<?= $arResult['FIELDS']['action'];?>" class="required--sbmt ajax-auth" type="submit" value="Войти"/><span>или</span>
                     <a class="ajax-form btn" href="/auth/register.php">Зарегестрироваться</a>
                     <div class="help"><a class="ajax-form" href="/auth/forget-password.php">Подскажите мне мой пароль</a></div>
                 </div>
