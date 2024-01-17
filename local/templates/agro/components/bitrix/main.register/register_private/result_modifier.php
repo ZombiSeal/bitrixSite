@@ -1,11 +1,3 @@
 <?php
-$arResult['SHOW_FIELDS'] = [
-    'LOGIN',
-    'NAME',
-    'LAST_NAME',
-    'SECOND_NAME',
-    'EMAIL',
-    'PERSONAL_PHONE',
-    'PASSWORD',
-    'CONFIRM_PASSWORD'
-];
+$mainFields = array_splice($arResult['SHOW_FIELDS'],0, 4);
+$arResult['SHOW_FIELDS'] = array_merge($arResult['SHOW_FIELDS'], $mainFields);

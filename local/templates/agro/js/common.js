@@ -464,7 +464,6 @@ $(window).ready(function () {
 
 					keyup_form();
 					click_submit();
-
 				}
 			}
 
@@ -1048,6 +1047,25 @@ function required_email() {
 		}
 	});
 }
+
+function required_phone() {
+	$('.required--phone').mask("+375(99)999-99-99");
+
+	$('.required--phone').keyup(function () {
+		let phone = $(this).val();
+		if (phone.length > 0 && (phone.match(/\+375\((29|33|44|17)\)\d{3}-\d{2}-\d{2}/g) || []).length !== 1) {
+			$(this).addClass('error-online').closest('.input-text-label').addClass('error-online');
+		}
+		else if (phone == '') {
+			$(this).removeClass('error-online').closest('.input-text-label').removeClass('error-online');
+			$(this).removeClass('error').closest('.input-text-label').removeClass('error');
+		}
+		else {
+			$(this).removeClass('error-online').closest('.input-text-label').removeClass('error-online');
+			$(this).removeClass('error').closest('.input-text-label').removeClass('error');
+		}
+	});
+}
 function required_input() {
 
 	$('.required--input').keyup(function () {
@@ -1171,8 +1189,6 @@ function click_submit() {
 			});
 		}
 
-
-
 		//Проверка чекбоксов
 		let checkRequired = $this.closest('form').find('input.required--check');
 		if (checkRequired.length) {
@@ -1195,7 +1211,6 @@ function click_submit() {
 
 		//Вывод ошибки вверху
 		popupForm__error(count);
-
 		//	Отпралять или нет
 		if (count >= 1) {
 			return false;
@@ -1208,6 +1223,7 @@ function click_submit() {
 }
 function keyup_form() {
 	required_email();
+	required_phone();
 	required_input();
 	num__inset();
 	required_password();

@@ -672,6 +672,9 @@ strong, b {
   background-color: #D8E3E5;
 }
 
+.error-auth {
+  margin-top:20px;
+}
 
 .popup-form__error svg {
   fill: #FFA34E;
