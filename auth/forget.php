@@ -1,14 +1,14 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->IncludeComponent(
-    "bitrix:system.auth.changepasswd",
-    "",
-    array(
-        "SHOW_ERRORS" => 'Y'
-    ),
-    false
+	"bitrix:main.auth.forgotpasswd",
+	"forgot",
+	Array(
+		"AUTH_AUTH_URL" => "",
+		"AUTH_REGISTER_URL" => ""
+	)
 );
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
 ?>
 <!---->
 <!--<div class="popup-form">-->

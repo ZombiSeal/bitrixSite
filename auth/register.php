@@ -20,7 +20,7 @@
             array(
             "AUTH" => "Y",
             "SET_TITLE" => "N",
-            "SHOW_FIELDS" => array("NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_PHONE"),
+            "SHOW_FIELDS" => array("NAME",  "LAST_NAME", "SECOND_NAME", "PERSONAL_PHONE"),
             "REQUIRED_FIELDS" => Array("NAME", "SECOND_NAME", "LAST_NAME", "PERSONAL_PHONE"),
             "SUCCESS_PAGE" => "",
             "USER_PROPERTY" => array(),

@@ -637,9 +637,17 @@ strong, b {
   width: calc(100% - 300px);
 }
 
-.popup-form--main .mfp-content {
+.popup-form--main .mfp-content
+{
   max-width: 600px;
   width: 100%;
+}
+
+.form-wrapper {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  /*margin-bottom: 70px;*/
 }
 
 .popup-form {
@@ -648,6 +656,13 @@ strong, b {
   background: #FFFFFF;
   overflow: hidden;
 }
+
+.popup-form--flat {
+  box-shadow: none;
+  max-width:600px;
+  width:100%;
+}
+
 
 .popup-form--main .mfp-close {
   width: 25px;
@@ -676,6 +691,10 @@ strong, b {
   margin-top:20px;
 }
 
+.error-auth--show {
+  display: block;
+}
+
 .popup-form__error svg {
   fill: #FFA34E;
   margin: 0 10px;
@@ -697,6 +716,16 @@ strong, b {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.popup-form__zag--w {
+  background: transparent;
+  flex-direction:column;
+}
+
+.simple-text {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .popup-form__hello {

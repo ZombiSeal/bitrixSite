@@ -233,7 +233,7 @@ use Bitrix\Main\Page\Asset;
 
 
                 <div class="personal-block header-bottom__btn-block">
-                    <a class="ico-lock <?=($USER->IsAuthorized()) ? '' : 'ajax-form'?>" href="<?=($USER->IsAuthorized()) ? '/personal' : '/auth'?>">Личный кабинет</a>
+                    <a class="ico-lock <?=($USER->IsAuthorized()) ? '' : 'ajax-form'?>" href="<?=($USER->IsAuthorized()) ? '/personal' : '/auth/auth.php'?>">Личный кабинет</a>
                 </div>
             </div>
         </div>

@@ -1,9 +1,8 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
-
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->IncludeComponent(
     "bitrix:main.auth.form",
-    "agro_auth",
+    "change_passwd",
     array(
         "AUTH_FORGOT_PASSWORD_URL" => "",
         "AUTH_REGISTER_URL" => "",
@@ -11,5 +10,15 @@ $APPLICATION->IncludeComponent(
     ),
     false
 );
+$APPLICATION->IncludeComponent(
+    "bitrix:main.auth.changepasswd",
+    "change",
+    array(
+        "SHOW_ERRORS" => 'Y'
+    ),
+    false
+);
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");
+
 ?>
 

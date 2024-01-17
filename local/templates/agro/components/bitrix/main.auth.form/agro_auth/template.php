@@ -41,8 +41,7 @@
                 <input name="<?= $arResult['FIELDS']['action']; ?>" class="required--sbmt ajax-auth" type="submit"
                        value="<?= GetMessage('AUTH_BUTTON') ?>"/><span>или</span>
                 <a class="ajax-form btn" href="/auth/register.php"><?= GetMessage('REGISTER_BUTTON') ?></a>
-                <div class="help"><a class="ajax-form"
-                                     href="/auth/forget-password.php"><?= GetMessage('FORGET_BUTTON') ?></a></div>
+                <div class="help"><a href="/auth/forget.php"><?= GetMessage('FORGET_BUTTON') ?></a></div>
             </div>
         </form>
     </div>
