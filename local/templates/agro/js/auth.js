@@ -41,7 +41,7 @@ function ajaxAuth() {
             errorBlock.style.display = 'flex';
             errorBlock.innerHTML = 'Неверный email или пароль';
         } else {
-            window.location.href = '/personal/';
+            window.location.href = '/personal/private/';
         }
 
     }).catch((error) => console.log(error));
@@ -76,7 +76,7 @@ function ajaxRegister() {
             errorBlock.style.display = 'flex';
             errorBlock.innerHTML = 'Пользователь с таким email уже существует';
         } else {
-            window.location.href = '/personal/';
+            window.location.href = '/personal/private/';
         }
 
     }).catch((error) => console.log(error));

@@ -23,8 +23,6 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $labelPositionClass
  * @var CatalogSectionComponent $component
  */
-
-
 ?>
 
 <div class="catalog-item__flags">
@@ -97,8 +95,8 @@ if (!empty($item['DISPLAY_PROPERTIES'])) {
         <?php endif; ?>
 
         <?php if ($actualItem['CAN_BUY']): ?>
-            <div id="<?= $itemIds['BASKET_ACTIONS'] ?>">
-                <a href="javascript:void(0)" id="<?= $itemIds['BUY_LINK'] ?>">
+            <div id="<?= $itemIds['BASKET_ACTIONS']?>">
+                <a class="basket" href="<?=$item['ADD_URL']?>" id="<?= $itemIds['BUY_LINK'] ?>" data-id="<?=$item['ID'];?>">
                     <svg class="sprite-svg">
                         <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                     </svg>

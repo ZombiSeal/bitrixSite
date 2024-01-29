@@ -223,7 +223,7 @@ use Bitrix\Main\Page\Asset;
                     )
                 );?>
                 <div class="basket-block header-bottom__btn-block">
-                    <a class="basket-header-ico" href="#">
+                    <a class="basket-header-ico" href="/basket/">
                         <svg class="sprite-svg">
                             <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                         </svg>
@@ -233,7 +233,7 @@ use Bitrix\Main\Page\Asset;
 
 
                 <div class="personal-block header-bottom__btn-block">
-                    <a class="ico-lock <?=($USER->IsAuthorized()) ? '' : 'ajax-form'?>" href="<?=($USER->IsAuthorized()) ? '/personal' : '/auth/auth.php'?>">Личный кабинет</a>
+                    <a class="ico-lock <?=($USER->IsAuthorized()) ? '' : 'ajax-form'?>" href="<?=($USER->IsAuthorized()) ? '/personal/private/' : '/auth/auth.php'?>">Личный кабинет</a>
                 </div>
             </div>
         </div>

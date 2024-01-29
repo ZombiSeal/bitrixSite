@@ -695,6 +695,11 @@ strong, b {
   display: block;
 }
 
+.error-auth--block {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
 .popup-form__error svg {
   fill: #FFA34E;
   margin: 0 10px;
@@ -3576,6 +3581,10 @@ body .article-item.article-item--main .article-item__link .arrow {
   fill: #F74B4B;
   backface-visibility: hidden;
   transition: .3s;
+}
+
+.catalog-item__ico svg.active {
+  fill: black;
 }
 
 .catalog-item__ico a {

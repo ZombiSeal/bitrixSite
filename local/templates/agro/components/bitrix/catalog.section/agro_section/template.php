@@ -18,7 +18,6 @@ $elementEdit = CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_EDIT');
 $elementDelete = CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_DELETE');
 $elementDeleteParams = array('CONFIRM' => GetMessage('CT_BCS_TPL_ELEMENT_DELETE_CONFIRM'));
 
-
 if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS'])) {
      foreach ($arResult['ITEM_ROWS'] as $rowData) {
         $rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);

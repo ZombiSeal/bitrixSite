@@ -1,8 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
-?>
-    <div class="fixed-compare">
+?><div class="fixed-compare">
  <a class="fixed-compare__link" href="#">
 	5 товаров</a><a class="fixed-compare__link" href="#">
 	5 запчастей</a><a class="fixed-compare__close" href="#"> </a>
@@ -28,9 +27,9 @@ $APPLICATION->SetTitle("Каталог");
 </div>
  </section>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog", 
-	"agro_catalog", 
-	array(
+	"bitrix:catalog",
+	"agro_catalog",
+	Array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
@@ -41,7 +40,7 @@ $APPLICATION->SetTitle("Каталог");
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
-		"BASKET_URL" => "/personal/basket.php",
+		"BASKET_URL" => "/basket/",
 		"BIG_DATA_RCM_TYPE" => "personal",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
@@ -51,44 +50,31 @@ $APPLICATION->SetTitle("Каталог");
 		"COMMON_SHOW_CLOSE_POPUP" => "N",
 		"COMPARE_ELEMENT_SORT_FIELD" => "sort",
 		"COMPARE_ELEMENT_SORT_ORDER" => "asc",
-		"COMPARE_FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"COMPARE_FIELD_CODE" => array("",""),
 		"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
-		"COMPARE_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
-		"COMPATIBLE_MODE" => "N",
+		"COMPARE_POSITION" => "top left",
+		"COMPARE_POSITION_FIXED" => "Y",
+		"COMPARE_PROPERTY_CODE" => array(0=>"",1=>"",),
+		"COMPATIBLE_MODE" => "Y",
 		"CONVERT_CURRENCY" => "Y",
 		"CURRENCY_ID" => "BYN",
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "N",
-		"DETAIL_ADD_TO_BASKET_ACTION" => array(
-			0 => "BUY",
-		),
-		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(
-			0 => "BUY",
-		),
+		"DETAIL_ADD_TO_BASKET_ACTION" => array("BUY"),
+		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array("BUY"),
 		"DETAIL_BACKGROUND_IMAGE" => "-",
 		"DETAIL_BRAND_USE" => "N",
 		"DETAIL_BROWSER_TITLE" => "-",
 		"DETAIL_CHECK_SECTION_ID_VARIABLE" => "N",
-		"DETAIL_DETAIL_PICTURE_MODE" => array(
-			0 => "POPUP",
-			1 => "MAGNIFIER",
-		),
+		"DETAIL_DETAIL_PICTURE_MODE" => array("POPUP","MAGNIFIER"),
 		"DETAIL_DISPLAY_NAME" => "Y",
 		"DETAIL_DISPLAY_PREVIEW_TEXT_MODE" => "E",
 		"DETAIL_IMAGE_RESOLUTION" => "16by9",
+		"DETAIL_MAIN_BLOCK_PROPERTY_CODE" => array(),
 		"DETAIL_META_DESCRIPTION" => "-",
 		"DETAIL_META_KEYWORDS" => "-",
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
-		"DETAIL_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"DETAIL_PROPERTY_CODE" => array(0=>"",1=>"",),
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
 		"DETAIL_SHOW_POPULAR" => "Y",
@@ -104,7 +90,9 @@ $APPLICATION->SetTitle("Каталог");
 		"ELEMENT_SORT_FIELD2" => "id",
 		"ELEMENT_SORT_ORDER" => "desc",
 		"ELEMENT_SORT_ORDER2" => "desc",
+		"FILE_404" => "",
 		"FILTER_HIDE_ON_MOBILE" => "N",
+		"FILTER_NAME" => "",
 		"FILTER_VIEW_MODE" => "VERTICAL",
 		"GIFTS_DETAIL_BLOCK_TITLE" => "Выберите один из подарков",
 		"GIFTS_DETAIL_HIDE_BLOCK_TITLE" => "N",
@@ -128,7 +116,7 @@ $APPLICATION->SetTitle("Каталог");
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
 		"INSTANT_RELOAD" => "N",
-		"LABEL_PROP" => "",
+		"LABEL_PROP" => array(),
 		"LAZY_LOAD" => "N",
 		"LINE_ELEMENT_COUNT" => "3",
 		"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
@@ -141,13 +129,8 @@ $APPLICATION->SetTitle("Каталог");
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"LIST_PROPERTY_CODE" => array(
-			0 => "POWER",
-			1 => "VOLUME_ENGINE",
-			2 => "VOLUME_FUEL",
-			3 => "VOLUME",
-			4 => "",
-		),
+		"LIST_PROPERTY_CODE" => array(0=>"POWER",1=>"VOLUME_ENGINE",2=>"VOLUME_FUEL",3=>"VOLUME",4=>"",),
+		"LIST_PROPERTY_CODE_MOBILE" => array(),
 		"LIST_SHOW_SLIDER" => "Y",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
@@ -172,18 +155,13 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => "agro_pagenav",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "3",
+		"PAGE_ELEMENT_COUNT" => "30",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
-		"PRICE_CODE" => array(
-			0 => "BASE",
-		),
+		"PRICE_CODE" => array("BASE"),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",
 		"PRODUCT_ID_VARIABLE" => "id",
-		"PRODUCT_PROPERTIES" => array(
-			0 => "SUPPLIER",
-			1 => "GUARANTEE",
-		),
+		"PRODUCT_PROPERTIES" => array(0=>"SUPPLIER",1=>"GUARANTEE",),
 		"PRODUCT_PROPS_VARIABLE" => "prop",
 		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
 		"PRODUCT_SUBSCRIPTION" => "Y",
@@ -202,6 +180,7 @@ $APPLICATION->SetTitle("Каталог");
 		"SECTION_TOP_DEPTH" => "2",
 		"SEF_FOLDER" => "/catalog/",
 		"SEF_MODE" => "Y",
+		"SEF_URL_TEMPLATES" => Array("brand"=>"brands/#SECTION_CODE#/#ELEMENT_CODE#/","brands"=>"brands/","compare"=>"compare/","element"=>"#SECTION_CODE_PATH#/#ELEMENT_CODE#/","search"=>"search/","section"=>"#SECTION_CODE_PATH#/","sections"=>"","smart_filter"=>"#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/"),
 		"SET_LAST_MODIFIED" => "N",
 		"SET_STATUS_404" => "Y",
 		"SET_TITLE" => "Y",
@@ -227,11 +206,8 @@ $APPLICATION->SetTitle("Каталог");
 		"TOP_LINE_ELEMENT_COUNT" => "3",
 		"TOP_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
 		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
-		"TOP_PROPERTY_CODE" => array(
-			0 => "POWER",
-			1 => "VOLUME",
-			2 => "",
-		),
+		"TOP_PROPERTY_CODE" => array(0=>"POWER",1=>"VOLUME",2=>"",),
+		"TOP_PROPERTY_CODE_MOBILE" => array(),
 		"TOP_SHOW_SLIDER" => "Y",
 		"TOP_SLIDER_INTERVAL" => "3000",
 		"TOP_SLIDER_PROGRESS" => "N",
@@ -254,19 +230,10 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_PRICE_COUNT" => "N",
 		"USE_PRODUCT_QUANTITY" => "N",
 		"USE_SALE_BESTSELLERS" => "Y",
-		"USE_STORE" => "N",
-		"COMPONENT_TEMPLATE" => "agro_catalog",
-		"FILTER_NAME" => "",
-		"FILE_404" => "",
-		"SEF_URL_TEMPLATES" => array(
-			"sections" => "",
-			"section" => "#SECTION_CODE_PATH#/",
-			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
-			"compare" => "compare/",
-			"search" => "search/",
-			"brand" => "brands/#SECTION_CODE#/#ELEMENT_CODE#/",
-			"brands" => "brands/",
-		)
-	),
-	false
-);?> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+		"USE_STORE" => "N"
+	)
+);?> </article>
+
+<?
+require ($_SERVER["DOCUMENT_ROOT"] . "/ajax/basket-items.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
