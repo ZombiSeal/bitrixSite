@@ -31,6 +31,7 @@ use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/libs.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/common.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/auth.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/basket.js");
     ?>
 
 </head>
@@ -227,7 +228,7 @@ use Bitrix\Main\Page\Asset;
                         <svg class="sprite-svg">
                             <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                         </svg>
-                        <span class="count active">9</span>
+                        <span class="count">0</span>
                     </a>
                 </div>
 

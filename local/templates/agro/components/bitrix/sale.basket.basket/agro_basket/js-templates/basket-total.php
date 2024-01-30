@@ -36,7 +36,7 @@ use Bitrix\Main\Localization\Loc;
         <div class="basket-header__price-econom">
                 <div class="basket-header__price-econom">
                     <span>Экономия:</span>
-                    <div class="num">{{DISCOUNT_PRICE_FORMATED}}</div>
+                    <div class="num">{{{DISCOUNT_PRICE_FORMATED}}}</div>
                 </div>
         </div>
         {{/DISCOUNT_PRICE_FORMATED}}

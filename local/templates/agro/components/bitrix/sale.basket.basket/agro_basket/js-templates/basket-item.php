@@ -49,14 +49,14 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
         </div>
         <div class="basket-item__name"><span>{{NAME}}</span></div>
         <div class="basket-item__discount"><span class="for--mob">Скидка</span><span
-                    class="red">{{DISCOUNT_PRICE_PERCENT_FORMATED}}</span>
+                    class="red">{{{DISCOUNT_PRICE_PERCENT_FORMATED}}}</span>
         </div>
         <div class="basket-item__price">
             <span class="for--mob">Цена</span>
-            <span class="new">{{PRICE_FORMATED}}</span>
+            <span class="new">{{{PRICE_FORMATED}}}</span>
 
             {{#SHOW_DISCOUNT_PRICE}}
-            <span class="old">{{FULL_PRICE_FORMATED}}</span>
+            <span class="old">{{{FULL_PRICE_FORMATED}}}</span>
             {{/SHOW_DISCOUNT_PRICE}}
         </div>
 
@@ -77,10 +77,10 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
         </div>
         <div class="basket-item__total">
             <span class="for--mob">Сумма</span>
-            <span class="new">{{SUM_PRICE_FORMATED}}</span>
+            <span class="new">{{{SUM_PRICE_FORMATED}}}</span>
 
             {{#SHOW_DISCOUNT_PRICE}}
-            <span class="old">{{SUM_FULL_PRICE_FORMATED}}</span>
+            <span class="old">{{{SUM_FULL_PRICE_FORMATED}}}</span>
             {{/SHOW_DISCOUNT_PRICE}}
 
         </div>

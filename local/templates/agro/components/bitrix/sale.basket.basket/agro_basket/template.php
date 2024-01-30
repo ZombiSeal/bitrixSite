@@ -249,6 +249,11 @@ if (empty($arResult['ERROR_MESSAGE'])) { ?>
     }
 } elseif ($arResult['EMPTY_BASKET']) {
     include(Main\Application::getDocumentRoot() . $templateFolder . '/empty.php');
-} else {
+}
+elseif ($arResult['EMPTY_BASKET'])
+{
+    include(Main\Application::getDocumentRoot().$templateFolder.'/empty.php');
+}
+else {
     ShowError($arResult['ERROR_MESSAGE']);
 }

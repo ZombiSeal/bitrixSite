@@ -1470,6 +1470,10 @@
 				if (items.hasOwnProperty(i))
 				{
 					this.deleteBasketItem(items[i], restore, final);
+					let countBlock = document.querySelector('.basket-block .count');
+					countBlock.innerHTML = +countBlock.innerHTML - 1;
+					if (countBlock.innerHTML == 0) countBlock.classList.remove('active');
+
 				}
 			}
 		},

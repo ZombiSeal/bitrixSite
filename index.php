@@ -120,7 +120,7 @@ $APPLICATION->SetTitle("Главная");
                             "CACHE_GROUPS" => "Y",
                             "CACHE_TIME" => "36000000",
                             "CACHE_TYPE" => "A",
-                            "COMPATIBLE_MODE" => "N",
+                            "COMPATIBLE_MODE" => "Y",
                             "CONVERT_CURRENCY" => "Y",
                             "CURRENCY_ID" => "BYN",
                             "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",

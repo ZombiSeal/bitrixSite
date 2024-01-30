@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     let basketBtns = document.querySelectorAll('.basket');
+
     getBasketItems();
     basketBtns.forEach(btn => {
         btn.addEventListener('click', e => {
@@ -24,16 +25,15 @@ function getBasketItems() {
     ).then(res => {
         return res.json();
     }).then(data => {
-        let items = document.querySelectorAll('.basket');
-        console.log(items);
-        items.forEach(item => {
-            console.log(data);
-            console.log(item);
-            if(data.includes(+item.getAttribute('data-id'))) {
-                item.querySelector('.tooltip-ico span').innerText = 'В корзине';
-                item.querySelector('svg').classList.add('active');
-            }
-        })
+        if(data.lenght !== 0) {
+            let items = document.querySelectorAll('.basket');
+            items.forEach(item => {
+                if(data.includes(+item.getAttribute('data-id'))) {
+                    changeLinkStatus(item);
+                }
+            })
+        }
+
     }).catch((error) => console.log(error));
 }
 
@@ -52,9 +52,16 @@ function addToBasket(url, elem) {
         return res.json();
     }).then(data => {
         if (data['STATUS'] === 'OK') {
-            elem.querySelector('.tooltip-ico span').innerText = 'В корзине';
-            elem.querySelector('svg').classList.add('active');
+            changeLinkStatus(elem);
+            let countBlock = document.querySelector('.basket-block .count');
+            if (!countBlock.classList.contains('active')) countBlock.classList.add('active');
+            countBlock.innerHTML = +countBlock.innerHTML + 1;
         }
-        console.log(data);
     }).catch((error) => console.log(error));
+}
+
+function changeLinkStatus(item) {
+    item.querySelector('.tooltip-ico span').innerText = 'В корзине';
+    item.querySelector('svg').classList.add('active');
+    item.setAttribute('href', '#');
 }
