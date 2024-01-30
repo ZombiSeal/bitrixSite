@@ -23,7 +23,7 @@ $APPLICATION->SetTitle("Оформление заказа");
  </section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:sale.order.ajax", 
-	"agro_order",
+	"agro_order", 
 	array(
 		"ACTION_VARIABLE" => "soa-action",
 		"ADDITIONAL_PICT_PROP_10" => "-",
@@ -41,7 +41,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 		"DELIVERY_TO_PAYSYSTEM" => "d2p",
 		"DISABLE_BASKET_REDIRECT" => "N",
 		"EMPTY_BASKET_HINT_PATH" => "/catalog/",
-		"HIDE_ORDER_DESCRIPTION" => "N",
+		"HIDE_ORDER_DESCRIPTION" => "Y",
 		"ONLY_FULL_PAY_FROM_ACCOUNT" => "N",
 		"PATH_TO_AUTH" => "/auth/",
 		"PATH_TO_BASKET" => "/personal/cart/",
@@ -90,7 +90,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 		"TEMPLATE_LOCATION" => "popup",
 		"TEMPLATE_THEME" => "site",
 		"USER_CONSENT" => "Y",
-		"USER_CONSENT_ID" => "0",
+		"USER_CONSENT_ID" => "1",
 		"USER_CONSENT_IS_CHECKED" => "N",
 		"USER_CONSENT_IS_LOADED" => "N",
 		"USE_CUSTOM_ADDITIONAL_MESSAGES" => "N",
@@ -101,7 +101,7 @@ $APPLICATION->SetTitle("Оформление заказа");
 		"USE_PRELOAD" => "N",
 		"USE_PREPAYMENT" => "N",
 		"USE_YM_GOALS" => "N",
-		"COMPONENT_TEMPLATE" => ".default"
+		"COMPONENT_TEMPLATE" => "agro_order"
 	),
 	false
 );?> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

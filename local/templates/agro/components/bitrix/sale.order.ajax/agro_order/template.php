@@ -18,6 +18,7 @@ use Bitrix\Main\Localization\Loc;
 $context = Main\Application::getInstance()->getContext();
 $request = $context->getRequest();
 
+
 if (empty($arParams['TEMPLATE_THEME'])) {
     $arParams['TEMPLATE_THEME'] = Main\ModuleManager::isModuleInstalled('bitrix.eshop') ? 'site' : 'blue';
 }
@@ -28,17 +29,18 @@ if ($arParams['TEMPLATE_THEME'] === 'site') {
     $arParams['TEMPLATE_THEME'] = Main\Config\Option::get('main', 'wizard_' . $templateId . '_theme_id', 'blue', $component->getSiteId());
 }
 
-if (!empty($arParams['TEMPLATE_THEME'])) {
-    if (!is_file(Main\Application::getDocumentRoot() . '/bitrix/css/main/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css')) {
-        $arParams['TEMPLATE_THEME'] = 'blue';
-    }
-}
+//if (!empty($arParams['TEMPLATE_THEME'])) {
+//    if (!is_file(Main\Application::getDocumentRoot() . '/bitrix/css/main/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css')) {
+//        $arParams['TEMPLATE_THEME'] = 'blue';
+//    }
+//}
 
 $arParams['SHOW_ORDER_BUTTON'] = (string)($arParams['SHOW_ORDER_BUTTON'] ?? 'final_step');
 $arParams['SHOW_TOTAL_ORDER_BUTTON'] = ($arParams['SHOW_TOTAL_ORDER_BUTTON'] ?? 'N') === 'Y' ? 'Y' : 'N';
 $arParams['SHOW_PAY_SYSTEM_LIST_NAMES'] = ($arParams['SHOW_PAY_SYSTEM_LIST_NAMES'] ?? 'Y') === 'N' ? 'N' : 'Y';
 $arParams['SHOW_PAY_SYSTEM_INFO_NAME'] = ($arParams['SHOW_PAY_SYSTEM_INFO_NAME'] ?? 'Y') === 'N' ? 'N' : 'Y';
 $arParams['SHOW_DELIVERY_LIST_NAMES'] = ($arParams['SHOW_DELIVERY_LIST_NAMES'] ?? 'Y') === 'N' ? 'N' : 'Y';
+$arParams['SHOW_DELIVERY_INFO_NAME'] = ($arParams['SHOW_DELIVERY_INFO_NAME'] ?? 'Y') === 'N' ? 'N' : 'Y';
 $arParams['SHOW_DELIVERY_INFO_NAME'] = ($arParams['SHOW_DELIVERY_INFO_NAME'] ?? 'Y') === 'N' ? 'N' : 'Y';
 $arParams['SHOW_DELIVERY_PARENT_NAMES'] = ($arParams['SHOW_DELIVERY_PARENT_NAMES'] ?? 'Y') === 'N' ? 'N' : 'Y';
 $arParams['SHOW_STORES_IMAGES'] = ($arParams['SHOW_STORES_IMAGES'] ?? 'Y') === 'N' ? 'N' : 'Y';
@@ -272,13 +274,14 @@ switch (LANGUAGE_ID) {
         break;
 }
 
-\Bitrix\Main\UI\Extension::load('ui.fonts.opensans');
-$this->addExternalCss('/bitrix/css/main/bootstrap.css');
-$APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css', true);
-$APPLICATION->SetAdditionalCSS($templateFolder . '/style.css', true);
+//\Bitrix\Main\UI\Extension::load('ui.fonts.opensans');
+//$this->addExternalCss('/bitrix/css/main/bootstrap.css');
+//$APPLICATION->SetAdditionalCSS('/bitrix/css/main/themes/' . $arParams['TEMPLATE_THEME'] . '/style.css', true);
+//$APPLICATION->SetAdditionalCSS($templateFolder . '/style.css', true);
 $this->addExternalJs($templateFolder . '/order_ajax.js');
 \Bitrix\Sale\PropertyValueCollection::initJs();
 $this->addExternalJs($templateFolder . '/script.js');
+
 ?>
     <NOSCRIPT>
         <div style="color:red"><?= Loc::getMessage('SOA_NO_JS') ?></div>
@@ -326,109 +329,49 @@ if ((string)$request->get('ORDER_ID') !== '') {
                         </div>
 
                         <!--	DUPLICATE MOBILE ORDER SAVE BLOCK	-->
-                        <div id="bx-soa-total-mobile" style="margin-bottom: 6px;"></div>
+                        <div id="bx-soa-total-mobile" style="display:none"></div>
 
                         <!--	REGION BLOCK	-->
-                        <div id="bx-soa-region" data-visited="false" class="bx-soa-section bx-active">
-                            <div class="bx-soa-section-title-container">
-                                <h2 class="bx-soa-section-title col-sm-9">
-                                    <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_REGION_BLOCK_NAME'] ?>
-                                </h2>
-                                <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                              class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                </div>
+                        <div id="bx-soa-region" data-visited="false" class="checkout__info-step bx-soa-section bx-active">
+                            <div class="checkout__info-step__num">
+                                <span class="num">1</span>
+                                <span class="text"><?= $arParams['MESS_REGION_BLOCK_NAME'] ?></span>
                             </div>
-                            <div class="bx-soa-section-content container-fluid"></div>
+                            <div class="bx-soa-section-content checkout__info-step__container"></div>
                         </div>
 
-                        <?php
-                        if ($arParams['DELIVERY_TO_PAYSYSTEM'] === 'p2d'):
-                            ?>
-                            <!--	PAY SYSTEMS BLOCK	-->
-                            <div id="bx-soa-paysystem" data-visited="false" class="bx-soa-section bx-active">
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_PAYMENT_BLOCK_NAME'] ?>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
-                                </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
+
+                        <!--	DELIVERY BLOCK	-->
+                        <div class="checkout__info-step">
+                            <div class="checkout__info-step__num">
+                                <span class="num">2</span>
+                                <span class="text"><?= $arParams['MESS_DELIVERY_BLOCK_NAME'] ?></span>
                             </div>
-                            <!--	DELIVERY BLOCK	-->
-                            <div id="bx-soa-delivery" data-visited="false"
-                                 class="bx-soa-section bx-active" <?= ($hideDelivery ? 'style="display:none"' : '') ?>>
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_DELIVERY_BLOCK_NAME'] ?>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
+                            <div class="checkout__info-step__container">
+                                <div id="bx-soa-delivery" class="bx-soa-section bx-active checkout__info-step__wrapper" data-visited="false">
+                                    <div class="bx-soa-section-content checkout__info-step__delPay"></div>
                                 </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
-                            </div>
-                            <!--	PICKUP BLOCK	-->
-                            <div id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
+                                <div id="bx-soa-paysystem" class="bx-soa-section bx-active checkout__info-step__wrapper" data-visited="false">
+                                    <div class="bx-soa-section-content checkout__info-step__delPay del-right"></div>
                                 </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
                             </div>
-                        <?php
-                        else:
-                            ?>
-                            <!--	DELIVERY BLOCK	-->
-                            <div id="bx-soa-delivery" data-visited="false"
-                                 class="bx-soa-section bx-active" <?= ($hideDelivery ? 'style="display:none"' : '') ?>>
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_DELIVERY_BLOCK_NAME'] ?>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
-                                </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
-                            </div>
-                            <!--	PICKUP BLOCK	-->
-                            <div id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
-                                </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
-                            </div>
-                            <!--	PAY SYSTEMS BLOCK	-->
-                            <div id="bx-soa-paysystem" data-visited="false" class="bx-soa-section bx-active">
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_PAYMENT_BLOCK_NAME'] ?>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href=""
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
-                                </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
-                            </div>
-                        <?php
-                        endif;
-                        ?>
+
+                        </div>
+
                         <!--	BUYER PROPS BLOCK	-->
-                        <div id="bx-soa-properties" data-visited="false" class="bx-soa-section bx-active">
+                        <div id="bx-soa-properties" data-visited="false" class="checkout__info-step bx-soa-section bx-active">
+                            <div class="checkout__info-step__num">
+                                <span class="num">3</span>
+                                <span class="text"><?= $arParams['MESS_BUYER_BLOCK_NAME'] ?></span>
+                            </div>
+                            <div class="bx-soa-section-content checkout__info-step__container"></div>
+                        </div>
+
+                        <!--	PICKUP BLOCK	-->
+                        <div id="bx-soa-pickup" data-visited="false" class="bx-soa-section" style="display:none">
                             <div class="bx-soa-section-title-container">
                                 <h2 class="bx-soa-section-title col-sm-9">
-                                    <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_BUYER_BLOCK_NAME'] ?>
+                                    <span class="bx-soa-section-title-count"></span>
                                 </h2>
                                 <div class="col-xs-12 col-sm-3 text-right"><a href=""
                                                                               class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
@@ -436,6 +379,7 @@ if ((string)$request->get('ORDER_ID') !== '') {
                             </div>
                             <div class="bx-soa-section-content container-fluid"></div>
                         </div>
+                        <!--	PAY SYSTEMS BLOCK	-->
 
                         <?php
                         if ($arParams['BASKET_POSITION'] === 'after'):
@@ -554,7 +498,7 @@ if ((string)$request->get('ORDER_ID') !== '') {
         );
         $APPLICATION->IncludeComponent(
             'bitrix:sale.location.selector.search',
-            '.default',
+            'location',
             array(),
             false
         );

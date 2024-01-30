@@ -4,7 +4,10 @@
         <div class="checkout__container">
             <div class="checkout__info">
                 <div class="checkout__info-step open">
-                    <div class="checkout__info-step__num"><span class="num">1</span><span class="text">Тип покупателя и регион доставки</span></div>
+                    <div class="checkout__info-step__num">
+                        <span class="num">1</span>
+                        <span class="text">Тип покупателя и регион доставки</span>
+                    </div>
                     <div class="checkout__info-step__container">
                         <div class="checkout__info-step__type">
                             <div class="name">Тип плательщика:</div>
@@ -19,6 +22,7 @@
                             <div class="name">Город:</div>
                             <input class="search--ico" type="text" placeholder="Минск">
                             <p>Начните вводить название города. Появится выпадающий список. Выберите в нем название своего города.</p>
+
                             <div class="name">Индекс:</div>
                             <input class="num--inset" type="text" placeholder="201010">
                         </div>
@@ -165,6 +169,7 @@
                         <input type="submit" value=""><span class="bx-soa-coupon-item"><strong class="bx-soa-coupon-item-danger" data-coupon="папа">папа<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="ваывпып">ваывпып<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="пыап">пыап<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="ы">ы<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="п">п<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="ып">ып<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="пы">пы<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="впывп">впывп<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="вп">вп<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="ыв">ыв<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong><strong class="bx-soa-coupon-item-danger" data-coupon="ывп">ывп<span class="bx-soa-coupon-remove"></span><span class="bx-soa-tooltip bx-soa-tooltip-coupon bx-soa-tooltip-danger tooltip top"><span class="tooltip-arrow"></span><span class="tooltip-inner">Не найден</span></span></strong></span>
                     </div>
                 </div>
+
                 <div class="checkout__info-step">
                     <div class="checkout__info-step__num"><span class="num">3</span><span class="text">Информация о покупателе</span></div>
                     <div class="checkout__info-step__container">
