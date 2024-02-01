@@ -12998,4 +12998,11 @@ body {
   padding:20px;
 }
 
+label.has-error {
+  color:red;
+}
+
+input.has-error {
+  border-color: red !important;
+}
 /*# sourceMappingURL=style.css.map */

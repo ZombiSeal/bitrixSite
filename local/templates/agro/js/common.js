@@ -5,9 +5,6 @@ $(window).ready(function () {
 	width = $(window).width();
 	height = $(window).height();
 
-	console.log('Width: ' + width + 'px');
-	console.log('Height: ' + height + 'px');
-
 	//Инит лази
 	var lazyLoadInstance = new LazyLoad({
 		elements_selector: ".lazy"
@@ -381,7 +378,6 @@ $(window).ready(function () {
 
 	// Функции фокуса на инпуты
 	$('.input-text-label input').each(function () {
-		console.log($(this).val().length)
 		if ($(this).val().length > 0) {
 			$(this).closest('div').addClass('focus');
 		}
@@ -511,7 +507,6 @@ $(window).ready(function () {
 				}
 			});
 			if (!$(this).attr('data-pay') && $(this).siblings().attr('data-pay')) {
-				console.log('4')
 
 				$(this).closest('.checkout__info-step').removeClass('open-bot-block').find('.checkout__info-step__delPay-bot').each(function () {
 					$(this).removeClass('open');
@@ -842,13 +837,10 @@ $(window).scroll(function () {
 
 	$('.click-counter .plus').click(function () {
 		let num = $(this).siblings('input').val();
-		console.log(num)
 	});
 
 	$('.click-counter .minus').click(function () {
 		let num = $(this).siblings('input').val();
-		console.log(num)
-
 	});
 
 
@@ -952,9 +944,6 @@ function compare(width) {
 		}
 
 		$('.scroll--active').css('min-width', itWidth * compare_item + 'px');
-
-		console.log(itWidth)
-		console.log(compare_item)
 
 		compareScroll(0)
 
@@ -1069,7 +1058,7 @@ function required_phone() {
 function required_input() {
 
 	$('.required--input').keyup(function () {
-		if ($(this).hasClass('required--email')) {
+		if ($(this).hasClass('required--email') || $(this).hasClass('required--phone')) {
 			return false;
 		}
 		else {

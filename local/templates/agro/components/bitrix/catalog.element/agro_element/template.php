@@ -17,8 +17,8 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 
-
 $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
+$price = $arResult['ITEM_PRICES'][0];
 
 ?>
 
@@ -286,8 +286,8 @@ $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
                     </a>
                 </div>
                 <div class="card-info__bottom-block card-info__bottom-btns" id="<?= $itemIds['BASKET_ACTIONS'] ?>">
-                    <?php if ($actualItem['CAN_BUY']): ?>
-                        <a class="link--buy" href="javascript:void(0)" id="<?= $itemIds['BUY_LINK'] ?>">
+                    <?php if ($arResult['CAN_BUY']): ?>
+                        <a class="link--buy" href="javascript:void(0)" id="<?= $arResult['BUY_LINK'] ?>">
                             <svg class="sprite-svg">
                                 <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                             </svg>

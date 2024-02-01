@@ -23,7 +23,7 @@ $APPLICATION->SetTitle("Оформление заказа");
  </section>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:sale.order.ajax", 
-	"agro_order", 
+	"agro_order",
 	array(
 		"ACTION_VARIABLE" => "soa-action",
 		"ADDITIONAL_PICT_PROP_10" => "-",
@@ -54,15 +54,29 @@ $APPLICATION->SetTitle("Оформление заказа");
 		"PRODUCT_COLUMNS_HIDDEN" => array(
 		),
 		"PRODUCT_COLUMNS_VISIBLE" => array(
+			0 => "PREVIEW_PICTURE",
+			1 => "DISCOUNT_PRICE_PERCENT_FORMATED",
+			2 => "PRICE_FORMATED",
+			3 => "WEIGHT_FORMATED",
 		),
 		"PROPS_FADE_LIST_1" => array(
+			0 => "1",
+			1 => "2",
+			2 => "3",
+			3 => "4",
+			4 => "7",
 		),
 		"PROPS_FADE_LIST_2" => array(
+			0 => "8",
+			1 => "13",
+			2 => "14",
+			3 => "16",
+			4 => "19",
 		),
 		"SEND_NEW_USER_NOTIFY" => "N",
 		"SERVICES_IMAGES_SCALING" => "standard",
 		"SET_TITLE" => "Y",
-		"SHOW_BASKET_HEADERS" => "N",
+		"SHOW_BASKET_HEADERS" => "Y",
 		"SHOW_COUPONS" => "Y",
 		"SHOW_COUPONS_BASKET" => "N",
 		"SHOW_COUPONS_DELIVERY" => "N",

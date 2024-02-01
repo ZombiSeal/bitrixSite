@@ -108,8 +108,9 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             }
 
             if (this.totalBlockNode) {
-                this.totalInfoBlockNode = this.totalBlockNode.querySelector('.bx-soa-cart-total');
+                this.totalInfoBlockNode = this.totalBlockNode.querySelector('.bx-soa-cart-total ul');
                 this.totalGhostBlockNode = this.totalBlockNode.querySelector('.bx-soa-cart-total-ghost');
+                this.bottomBlockNode = this.totalBlockNode.querySelector('.checkout_price__bottom');
             }
 
             this.options.deliveriesPerPage = parseInt(parameters.params.DELIVERIES_PER_PAGE);
@@ -2020,15 +2021,15 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             if (currentSection && currentSection.id.indexOf(lastSection.id) != '-1')
                 isLastNode = true;
 
-            if (!isLastNode) {
-                buttons.push(
-                    BX.create('A', {
-                        props: {href: 'javascript:void(0)', className: 'pull-right btn btn-default btn-md'},
-                        html: this.params.MESS_FURTHER,
-                        events: {click: BX.proxy(this.clickNextAction, this)}
-                    })
-                );
-            }
+            // if (!isLastNode) {
+            //     buttons.push(
+            //         BX.create('A', {
+            //             props: {href: 'javascript:void(0)', className: 'pull-right btn btn-default btn-md'},
+            //             html: this.params.MESS_FURTHER,
+            //             events: {click: BX.proxy(this.clickNextAction, this)}
+            //         })
+            //     );
+            // }
 
             // node.appendChild(
             // 	BX.create('DIV', {
@@ -3009,7 +3010,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                     BX.cleanNode(basketContent);
                 }
 
-                this.editBasketItems(basketTable, true);
+                this.editBasketItems(basketContent, true);
 
                 basketContent.appendChild(
                     BX.create('DIV', {
@@ -3104,15 +3105,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 return;
 
             var headers = [
-                    BX.create('DIV', {
-                        props: {className: 'bx-soa-item-td'},
-                        style: {paddingBottom: '5px'},
-                        children: [
-                            BX.create('DIV', {
-                                props: {className: 'bx-soa-item-td-title'},
-                                text: BX.message('SOA_SUM_NAME')
-                            })
-                        ]
+                    BX.create('LI', {
+                        text: BX.message('SOA_SUM_NAME')
                     })
                 ],
                 toRight = false, column, basketColumnIndex = 0, i;
@@ -3128,15 +3122,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
                 toRight = BX.util.in_array(column.id, ["QUANTITY", "PRICE_FORMATED", "DISCOUNT_PRICE_PERCENT_FORMATED", "SUM"]);
                 headers.push(
-                    BX.create('DIV', {
-                        props: {className: 'bx-soa-item-td bx-soa-item-properties' + (toRight ? ' bx-text-right' : '')},
-                        style: {paddingBottom: '5px'},
-                        children: [
-                            BX.create('DIV', {
-                                props: {className: 'bx-soa-item-td-title'},
-                                text: column.name
-                            })
-                        ]
+                    BX.create('LI', {
+                        text: column.name
                     })
                 );
 
@@ -3149,23 +3136,27 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
             basketItemsNode.appendChild(
                 BX.create('DIV', {
-                    props: {className: 'bx-soa-item-tr hidden-sm hidden-xs'},
-                    children: headers
+                    props: {className: 'basket-container__param'},
+                    children: [BX.create('UL', {
+                        children: headers
+                    })]
                 })
             );
         },
 
         createBasketItem: function (basketItemsNode, item, index, active) {
-            var mainColumns = [],
+            var basketImg = [],
+                basketName = [],
                 otherColumns = [],
                 hiddenColumns = [],
                 currentColumn, basketColumnIndex = 0,
                 i, tr, cols;
 
             if (this.options.showPreviewPicInBasket || this.options.showDetailPicInBasket)
-                mainColumns.push(this.createBasketItemImg(item.data));
+                basketImg = this.createBasketItemImg(item.data);
+                // mainColumns.push(this.createBasketItemImg(item.data));
 
-            mainColumns.push(this.createBasketItemContent(item.data));
+            basketName = this.createBasketItemContent(item.data);
 
             for (i = 0; i < this.result.GRID.HEADERS.length; i++) {
                 currentColumn = this.result.GRID.HEADERS[i];
@@ -3195,22 +3186,12 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 }
             }
 
-            cols = [
-                BX.create('DIV', {
-                    props: {className: 'bx-soa-item-td'},
-                    style: {minWidth: '300px'},
-                    children: [
-                        BX.create('DIV', {
-                            props: {className: 'bx-soa-item-block'},
-                            children: mainColumns
-                        })
-                    ]
-                })
-            ].concat(otherColumns);
+            cols = [ basketImg, basketName].concat(otherColumns);
+
 
             basketItemsNode.appendChild(
                 BX.create('DIV', {
-                    props: {className: 'bx-soa-item-tr bx-soa-basket-info' + (index == 0 ? ' bx-soa-item-tr-first' : '')},
+                    props: {className: 'basket-item'},
                     children: cols
                 })
             );
@@ -3303,7 +3284,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
             var logoNode, logotype;
 
-            logoNode = BX.create('DIV', {props: {className: 'bx-soa-item-imgcontainer'}});
+            logoNode = BX.create('DIV', {props: {className: 'bg'}});
 
             if (data.PREVIEW_PICTURE_SRC && data.PREVIEW_PICTURE_SRC.length)
                 logotype = this.getImageSources(data, 'PREVIEW_PICTURE');
@@ -3311,24 +3292,24 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 logotype = this.getImageSources(data, 'DETAIL_PICTURE');
 
             if (logotype && logotype.src_2x) {
+
                 logoNode.setAttribute('style',
-                    'background-image: url("' + logotype.src_1x + '");' +
-                    'background-image: -webkit-image-set(url("' + logotype.src_1x + '") 1x, url("' + logotype.src_2x + '") 2x)'
+                    'background-image: url("' + logotype.src_1x + '");'
                 );
             } else {
                 logotype = logotype && logotype.src_1x || this.defaultBasketItemLogo;
                 logoNode.setAttribute('style', 'background-image: url("' + logotype + '");');
             }
 
-            if (this.params.HIDE_DETAIL_PAGE_URL !== 'Y' && data.DETAIL_PAGE_URL && data.DETAIL_PAGE_URL.length) {
-                logoNode = BX.create('A', {
-                    props: {href: data.DETAIL_PAGE_URL},
-                    children: [logoNode]
-                });
-            }
+            // if (this.params.HIDE_DETAIL_PAGE_URL !== 'Y' && data.DETAIL_PAGE_URL && data.DETAIL_PAGE_URL.length) {
+            //     logoNode = BX.create('A', {
+            //         props: {href: data.DETAIL_PAGE_URL},
+            //         children: [logoNode]
+            //     });
+            // }
 
             return BX.create('DIV', {
-                props: {className: 'bx-soa-item-img-block'},
+                props: {className: 'basket-item__img'},
                 children: [logoNode]
             });
         },
@@ -3339,9 +3320,9 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 props = data.PROPS || [],
                 propsNodes = [];
 
-            if (this.params.HIDE_DETAIL_PAGE_URL !== 'Y' && data.DETAIL_PAGE_URL && data.DETAIL_PAGE_URL.length) {
-                titleHtml = '<a href="' + data.DETAIL_PAGE_URL + '">' + titleHtml + '</a>';
-            }
+            // if (this.params.HIDE_DETAIL_PAGE_URL !== 'Y' && data.DETAIL_PAGE_URL && data.DETAIL_PAGE_URL.length) {
+            //     titleHtml = '<a href="' + data.DETAIL_PAGE_URL + '">' + titleHtml + '</a>';
+            // }
 
             if (this.options.showPropsInBasket && props.length) {
                 for (var i in props) {
@@ -3368,13 +3349,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             }
 
             return BX.create('DIV', {
-                props: {className: 'bx-soa-item-content'},
-                children: propsNodes.length ? [
-                    BX.create('DIV', {props: {className: 'bx-soa-item-title'}, html: titleHtml}),
-                    BX.create('DIV', {props: {className: 'bx-scu-container'}, children: propsNodes})
-                ] : [
-                    BX.create('DIV', {props: {className: 'bx-soa-item-title'}, html: titleHtml})
-                ]
+                props: {className: 'basket-item__name'},
+                html: titleHtml
             });
         },
 
@@ -3388,11 +3364,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 logotype, img;
 
             if (column.id === 'PRICE_FORMATED') {
-                textNode.appendChild(BX.create('STRONG', {props: {className: 'bx-price'}, html: data.PRICE_FORMATED}));
+                BX.addClass(textNode, 'basket-item__price')
+                textNode.appendChild(BX.create('SPAN', {props: {className: 'new'}, html: data.PRICE_FORMATED}));
                 if (parseFloat(data.DISCOUNT_PRICE) > 0) {
-                    textNode.appendChild(BX.create('BR'));
-                    textNode.appendChild(BX.create('STRONG', {
-                        props: {className: 'bx-price-old'},
+                    textNode.appendChild(BX.create('SPAN', {
+                        props: {className: 'old'},
                         html: data.BASE_PRICE_FORMATED
                     }));
                 }
@@ -3402,17 +3378,18 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                     textNode.appendChild(BX.create('SMALL', {text: data.NOTES}));
                 }
             } else if (column.id === 'SUM') {
-                textNode.appendChild(BX.create('STRONG', {props: {className: 'bx-price all'}, html: data.SUM}));
+                BX.addClass(textNode, 'basket-item__total')
+                textNode.appendChild(BX.create('SPAN', {props: {className: 'new'}, html: data.SUM}));
                 if (parseFloat(data.DISCOUNT_PRICE) > 0) {
-                    textNode.appendChild(BX.create('BR'));
-                    textNode.appendChild(BX.create('STRONG', {
-                        props: {className: 'bx-price-old'},
+                    textNode.appendChild(BX.create('SPAN', {
+                        props: {className: 'old'},
                         html: data.SUM_BASE_FORMATED
                     }));
                 }
-            } else if (column.id === 'DISCOUNT') {
-                textNode.appendChild(BX.create('STRONG', {
-                    props: {className: 'bx-price'},
+            } else if (column.id === 'DISCOUNT_PRICE_PERCENT_FORMATED') {
+                BX.addClass(textNode, 'basket-item__discount')
+                textNode.appendChild(BX.create('SPAN', {
+                    props: {className: 'red'},
                     text: data.DISCOUNT_PRICE_PERCENT_FORMATED
                 }));
             } else if (column.id === 'DETAIL_PICTURE') {
@@ -3427,6 +3404,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
                 textNode.appendChild(img);
             } else if (BX.util.in_array(column.id, ["QUANTITY", "WEIGHT_FORMATED", "DISCOUNT_PRICE_PERCENT_FORMATED"])) {
+                BX.addClass(textNode, 'basket-item__weight');
                 textNode.appendChild(BX.create('SPAN', {html: data[column.id]}));
             } else if (column.id === 'PREVIEW_TEXT') {
                 if (data['PREVIEW_TEXT_TYPE'] === 'html') {
@@ -3464,16 +3442,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 }
             }
 
-            return BX.create('DIV', {
-                props: {className: 'bx-soa-item-td bx-soa-item-properties' + (toRight ? ' bx-text-right' : '')},
-                children: [
-                    BX.create('DIV', {
-                        props: {className: 'bx-soa-item-td-title visible-xs visible-sm'},
-                        text: column.name
-                    }),
-                    textNode
-                ]
-            });
+            return textNode;
+
         },
 
         createBasketItemHiddenColumn: function (column, allData) {
@@ -6063,7 +6033,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             if (!this.result.ORDER_PROP || !this.propertyCollection)
                 return;
 
-            var propsItemsContainer = BX.create('DIV', {props: {className: 'col-sm-12 bx-soa-customer'}}),
+            var propsItemsContainer = BX.create('DIV', {props: {className: 'checkout__info-step__info'}}),
                 group, property, groupIterator = this.propertyCollection.getGroupIterator(), propsIterator;
 
             if (!propsItemsContainer)
@@ -6096,10 +6066,10 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             if (disabled) {
                 propsItemNode.innerHTML = '<strong>' + BX.util.htmlspecialchars(property.getName()) + ':</strong> ';
             } else {
-                BX.addClass(propsItemNode, "form-group bx-soa-customer-field");
+                BX.addClass(propsItemNode, "form-group input-text-label");
 
-                if (property.isRequired())
-                    textHtml += '<span class="bx-authform-starrequired">*</span> ';
+                // if (property.isRequired())
+                //     textHtml += '<span class="bx-authform-starrequired">*</span> ';
 
                 textHtml += BX.util.htmlspecialchars(property.getName());
                 if (propertyDesc.length && propertyType != 'STRING' && propertyType != 'NUMBER' && propertyType != 'DATE')
@@ -6137,6 +6107,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                     this.insertNumberProperty(property, propsItemNode, disabled);
             }
 
+            console.log(propsItemsContainer.querySelectorAll('input'));
             propsItemsContainer.appendChild(propsItemNode);
         },
 
@@ -6326,6 +6297,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 propContainer = BX.create('DIV', {props: {className: 'soa-property-container'}});
                 property.appendTo(propContainer);
                 propsItemNode.appendChild(propContainer);
+
+                if(propsItemNode.querySelector('input') && propsItemNode.querySelector('input').value.length > 0) {
+                   BX.addClass(propsItemNode, 'focus');
+                }
+
                 this.alterProperty(property.getSettings(), propContainer);
                 this.bindValidation(property.getId(), propContainer);
             }
@@ -6838,7 +6814,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 if (quickLocation)
                     targetNode = quickLocation;
 
-                BX.insertAfter(tooltip, targetNode);
+                BX.append(tooltip, targetNode);
             }
 
             tooltipInner.innerHTML = text;
@@ -6887,6 +6863,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             var input0 = BX.type.isElementNode(inputs[0]) ? inputs[0] : inputs[0][0],
                 formGroup = BX.findParent(input0, {tagName: 'DIV', className: 'form-group'}),
                 label = formGroup.querySelector('label'),
+                after = formGroup.querySelector('.soa-property-container'),
                 tooltipId, inputDiv, i;
 
             if (label)
@@ -6894,16 +6871,21 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
             for (i = 0; i < inputs.length; i++) {
                 inputDiv = BX.findParent(inputs[i], {tagName: 'DIV', className: 'form-group'});
-                if (errors[i] && errors[i].length)
-                    BX.addClass(inputDiv, 'has-error');
-                else
-                    BX.removeClass(inputDiv, 'has-error');
+                if (errors[i] && errors[i].length){
+                    BX.addClass(label, 'has-error');
+                    BX.addClass(inputs[i], 'has-error');
+                }
+                else{
+                    BX.removeClass(label, 'has-error');
+                    BX.removeClass(inputs[i], 'has-error');
+                }
             }
 
-            if (errors.length)
-                this.showErrorTooltip(tooltipId, label, errors.join('<br>'));
-            else
-                this.closeErrorTooltip(tooltipId);
+            // if (errors.length)
+            //
+            //     this.showErrorTooltip(tooltipId, after, errors.join('<br>'));
+            // else
+            //     this.closeErrorTooltip(tooltipId);
         },
 
         validateString: function (input, arProperty, fieldName) {
@@ -7160,6 +7142,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 showOrderButton = this.params.SHOW_TOTAL_ORDER_BUTTON === 'Y';
 
             BX.cleanNode(this.totalInfoBlockNode);
+            BX.cleanNode(this.bottomBlockNode);
 
             if (parseFloat(total.ORDER_PRICE) === 0) {
                 priceHtml = this.params.MESS_PRICE_FREE;
@@ -7168,15 +7151,15 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 priceHtml = total.ORDER_PRICE_FORMATED;
             }
 
-            if (this.options.showPriceWithoutDiscount) {
-                priceHtml += '<br><span class="bx-price-old">' + total.PRICE_WITHOUT_DISCOUNT + '</span>';
-            }
+            // if (this.options.showPriceWithoutDiscount) {
+            //     priceHtml += '<br><span class="bx-price-old">' + total.PRICE_WITHOUT_DISCOUNT + '</span>';
+            // }
 
             this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_SUMMARY'), priceHtml, params));
 
-            if (this.options.showOrderWeight) {
-                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_WEIGHT_SUM'), total.ORDER_WEIGHT_FORMATED));
-            }
+            // if (this.options.showOrderWeight) {
+            //     this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_WEIGHT_SUM'), total.ORDER_WEIGHT_FORMATED));
+            // }
 
             if (this.options.showTaxList) {
                 for (i = 0; i < total.TAX_LIST.length; i++) {
@@ -7225,27 +7208,19 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 this.totalInfoBlockNode.appendChild(this.createTotalUnit(discText + ':', total.DISCOUNT_PRICE_FORMATED, {highlighted: true}));
             }
 
-            if (this.options.showPayedFromInnerBudget) {
-                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_IT'), total.ORDER_TOTAL_PRICE_FORMATED));
-                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_PAYED'), total.PAYED_FROM_ACCOUNT_FORMATED));
-                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_LEFT_TO_PAY'), total.ORDER_TOTAL_LEFT_TO_PAY_FORMATED, {total: true}));
-            } else {
-                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_IT'), total.ORDER_TOTAL_PRICE_FORMATED, {total: true}));
-            }
-
             if (parseFloat(total.PAY_SYSTEM_PRICE) >= 0 && this.result.DELIVERY.length) {
                 this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_PAYSYSTEM_PRICE'), '~' + total.PAY_SYSTEM_PRICE_FORMATTED));
             }
 
             if (!this.result.SHOW_AUTH) {
-                this.totalInfoBlockNode.appendChild(
+                this.bottomBlockNode.appendChild(
                     BX.create('DIV', {
-                        props: {className: 'bx-soa-cart-total-button-container' + (!showOrderButton ? ' visible-xs' : '')},
+                        props: {className: 'bx-soa-cart-total-button-container'},
                         children: [
                             BX.create('A', {
                                 props: {
                                     href: 'javascript:void(0)',
-                                    className: 'btn btn-default btn-lg btn-order-save'
+                                    className: 'btn btn-default btn-lg btn-order-save sbmt--red-border'
                                 },
                                 html: this.params.MESS_ORDER,
                                 events: {
@@ -7256,6 +7231,14 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                         ]
                     })
                 );
+            }
+
+            if (this.options.showPayedFromInnerBudget) {
+                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_IT'), total.ORDER_TOTAL_PRICE_FORMATED));
+                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_PAYED'), total.PAYED_FROM_ACCOUNT_FORMATED));
+                this.totalInfoBlockNode.appendChild(this.createTotalUnit(BX.message('SOA_SUM_LEFT_TO_PAY'), total.ORDER_TOTAL_LEFT_TO_PAY_FORMATED, {total: true}));
+            } else {
+                this.bottomBlockNode.appendChild(BX.create('DIV', {props: {className: 'total'}, html:BX.message('SOA_SUM_IT') + " " + total.ORDER_TOTAL_PRICE_FORMATED}));
             }
 
             this.editMobileTotalBlock();
@@ -7276,7 +7259,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
         },
 
         createTotalUnit: function (name, value, params) {
-            var totalValue, className = 'bx-soa-cart-total-line';
+            var totalValue, body,className = '';
 
             name = name || '';
             value = value || '';
@@ -7301,22 +7284,16 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 totalValue = [value];
             }
 
-            if (params.total) {
-                className += ' bx-soa-cart-total-line-total';
-            }
-
             if (params.highlighted) {
-                className += ' bx-soa-cart-total-line-highlighted';
+                className += ' econom';
             }
 
-            return BX.create('DIV', {
+
+            return BX.create('LI', {
                 props: {className: className},
                 children: [
-                    BX.create('SPAN', {props: {className: 'bx-soa-cart-t'}, text: name}),
+                    BX.create('SPAN', {text: name}),
                     BX.create('SPAN', {
-                        props: {
-                            className: 'bx-soa-cart-d' + (!!params.total && this.options.totalPriceChanged ? ' bx-soa-changeCostSign' : '')
-                        },
                         children: totalValue
                     })
                 ]

@@ -67,31 +67,30 @@ function renderFlag($sprite, $class, $tooltip) {
         HTML;
 }
 
-//function getNewsType() {
-//    $cache = Cache::createInstance(); // получаем экземпляр класса
-//    $ttl = 36000000;
-//    $cacheKey = 'contactsMap';
-//    if ($cache->initCache($ttl, $cacheKey)) { // проверяем кеш и задаём настройки
-//        $vars = $cache->getVars(); // достаем переменные из кеша
-//    } elseif ($cache->startDataCache()) {
-//        if (Loader::includeModule("iblock")) {
-//            $propertyEnums = CIBlockPropertyEnum::GetList(
-//                ["SORT" => "ASC"],
-//                ["IBLOCK_ID" => $arParams['IBLOCK_ID'], "CODE" => "TYPE"]
-//            );
-//
-//            $typesAll['all'] = ['VALUE' => 'Все материалы',"CODE" => 'all', 'LINK' => '?type=all'];
-//            while ($enumFields = $propertyEnums->GetNext()) {
-//                $arSelectElem = ['ID'];
-//                $arFilterElem = ["IBLOCK_ID" => NEWS_IBLOCK_ID,'PROPERTY_TYPE' => $enumFields['ID'], 'ACTIVE' => 'Y'];
-//                $res = CIBlockElement::GetList([], $arFilterElem, false, ["nTopCount"=>1], $arSelectElem);
-//                if(!empty($res->GetNext())) $types[$enumFields['XML_ID']] = ['ID' => $enumFields['ID'], 'VALUE' => $enumFields['VALUE'], 'CODE' => $enumFields['XML_ID'], 'LINK' => '?type=' . $enumFields['XML_ID']];
-//            }
-//            if(!empty($types)) $types = array_merge($typesAll, $types);
-//        }
-//        $vars = $types;
-//        $cache->endDataCache($vars);
-//
-//    }
-//    return $vars;
-//}
+function getApplicationBasketItems()
+{
+    if (Loader::includeModule("sale")) {
+        $basket = \Bitrix\Sale\Basket::loadItemsForFUser(\Bitrix\Sale\Fuser::getId(), \Bitrix\Main\Context::getCurrent()->getSite());
+        $additionalIds = [];
+        if (!empty($basket)) {
+            foreach ($basket as $basketItem) {
+                $basketIds[] = $basketItem->getProductId();;
+            }
+            if (!empty($basketIds)) {
+                $arFilter = [
+                    "IBLOCK_ID" => CATALOG_IBLOCK_ID,
+                    "ACTIVE" => "Y",
+                    "ID" => $basketIds
+                ];
+                $res = CIBlockElement::GetList([], $arFilter, false, false, ['PROPERTY_ADDITIONAL_PRODUCT.ID']);
+                while ($ar_fields = $res->GetNext()) {
+                    $productId = $ar_fields['PROPERTY_ADDITIONAL_PRODUCT_ID'];
+                    if ($productId && !in_array($productId, $basketIds)) $additionalIds[] = $productId;
+                }
+            }
+            array_unique($additionalIds);
+        }
+
+    }
+    return $additionalIds;
+}

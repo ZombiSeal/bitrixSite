@@ -84,7 +84,7 @@ if (!empty($item['DISPLAY_PROPERTIES'])) {
             </a>
         <?php endif; ?>
         <?php if ($arParams['DISPLAY_COMPARE'] && (!$haveOffers || $arParams['PRODUCT_DISPLAY_MODE'] === 'Y')): ?>
-            <a class="" href="#" id="<?= $itemIds['COMPARE_LINK'] ?>">
+            <a class="compare-pr" href="" id="<?=$itemIds['COMPARE_LINK']?>" data-id="<?=$item['ID']?>" action="<?=($item['IN_COMPARE']) ? 'DELETE_FROM_COMPARE_LIST' : 'ADD_TO_COMPARE_LIST'?>">
                 <svg class="sprite-svg">
                     <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#compare"></use>
                 </svg>
@@ -96,7 +96,7 @@ if (!empty($item['DISPLAY_PROPERTIES'])) {
 
         <?php if ($actualItem['CAN_BUY']): ?>
             <div id="<?= $itemIds['BASKET_ACTIONS']?>">
-                <a class="basket" href="<?=$item['ADD_URL']?>" id="<?= $itemIds['BUY_LINK'] ?>" data-id="<?=$item['ID'];?>">
+                <a class="add-basket" href="<?=$item['ADD_URL']?>" id="<?= $itemIds['BUY_LINK'] ?>" data-id="<?=$item['ID'];?>">
                     <svg class="sprite-svg">
                         <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                     </svg>

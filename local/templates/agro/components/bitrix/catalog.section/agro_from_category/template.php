@@ -22,7 +22,7 @@ use Bitrix\Catalog\ProductTable;
  * |    <!-- component-end -->
  */
 
-
+include  $_SERVER['DOCUMENT_ROOT'] . "/ajax/basket-items.php";
 $this->setFrameMode(true);
 
 if (!empty($arResult['NAV_RESULT'])) {

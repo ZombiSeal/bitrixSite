@@ -15,6 +15,7 @@ use Bitrix\Main\Localization\Loc;
  * @var string $templateFolder
  */
 
+
 $context = Main\Application::getInstance()->getContext();
 $request = $context->getRequest();
 
@@ -385,23 +386,21 @@ if ((string)$request->get('ORDER_ID') !== '') {
                         if ($arParams['BASKET_POSITION'] === 'after'):
                             ?>
                             <!--	BASKET ITEMS BLOCK	-->
-                            <div id="bx-soa-basket" data-visited="false" class="bx-soa-section bx-active">
-                                <div class="bx-soa-section-title-container">
-                                    <h2 class="bx-soa-section-title col-sm-9">
-                                        <span class="bx-soa-section-title-count"></span><?= $arParams['MESS_BASKET_BLOCK_NAME'] ?>
-                                    </h2>
-                                    <div class="col-xs-12 col-sm-3 text-right"><a href="javascript:void(0)"
-                                                                                  class="bx-soa-editstep"><?= $arParams['MESS_EDIT'] ?></a>
-                                    </div>
+                            <div id="bx-soa-basket" data-visited="false" class="bx-soa-section bx-active basket-container">
+                                <div class="basket-container__top">
+                                    <span><?= $arParams['MESS_BASKET_BLOCK_NAME'] ?></span>
+                                    <a href="#">Подробнее</a>
                                 </div>
-                                <div class="bx-soa-section-content container-fluid"></div>
+                                <div class="bx-soa-section-content">
+
+                                </div>
                             </div>
                         <?php
                         endif;
                         ?>
 
                         <!--	ORDER SAVE BLOCK	-->
-                        <div id="bx-soa-orderSave">
+                        <div id="bx-soa-orderSave" class="checkout__info-submit">
                             <div class="checkbox">
                                 <?php
                                 if ($arParams['USER_CONSENT'] === 'Y') {
@@ -424,7 +423,7 @@ if ((string)$request->get('ORDER_ID') !== '') {
                                 ?>
                             </div>
                             <a href="javascript:void(0)" style="margin: 10px 0"
-                               class="pull-right btn btn-default btn-lg hidden-xs" data-save-button="true">
+                               class="sbmt--red" data-save-button="true">
                                 <?= $arParams['MESS_ORDER'] ?>
                             </a>
                         </div>
@@ -444,8 +443,15 @@ if ((string)$request->get('ORDER_ID') !== '') {
 
                     <!--	SIDEBAR BLOCK	-->
                     <div id="bx-soa-total" class="checkout_price">
+                        <div class="checkout_price__top">
+                            <span>Ваш заказ</span>
+                            <a href="/basket/">Изменить</a>
+                        </div>
                         <div class="bx-soa-cart-total-ghost"></div>
-                        <div class="bx-soa-cart-total"></div>
+                        <div class="bx-soa-cart-total checkout_price__body">
+                            <ul></ul>
+                        </div>
+                        <div class="checkout_price__bottom"></div>
                     </div>
                 </div>
             </form>

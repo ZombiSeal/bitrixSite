@@ -102,6 +102,7 @@
 			this.bindInitialEvents();
 		},
 
+
 		getTemplate: function(templateName)
 		{
 			if (!this.templates.hasOwnProperty(templateName))
@@ -1194,7 +1195,6 @@
 			}
 
 			var basketItemTemplate = this.getTemplate('basket-item-template');
-			console.log(basketItemTemplate);
 			if (basketItemTemplate)
 			{
 				var basketItemHtml = this.renderBasketItem(basketItemTemplate, this.items[itemId]);
@@ -1470,6 +1470,7 @@
 				if (items.hasOwnProperty(i))
 				{
 					this.deleteBasketItem(items[i], restore, final);
+					location.reload();
 					let countBlock = document.querySelector('.basket-block .count');
 					countBlock.innerHTML = +countBlock.innerHTML - 1;
 					if (countBlock.innerHTML == 0) countBlock.classList.remove('active');
@@ -1947,7 +1948,6 @@
 				id = itemNode.getAttribute('data-id');
 				data = this.items[id];
 			}
-
 			return data;
 		},
 

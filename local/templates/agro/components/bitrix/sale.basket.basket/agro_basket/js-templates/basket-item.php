@@ -77,7 +77,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
         </div>
         <div class="basket-item__total">
             <span class="for--mob">Сумма</span>
-            <span class="new">{{{SUM_PRICE_FORMATED}}}</span>
+            <span class="new" id="basket-item-sum-price-old-{{ID}}">{{{SUM_PRICE_FORMATED}}}</span>
 
             {{#SHOW_DISCOUNT_PRICE}}
             <span class="old">{{{SUM_FULL_PRICE_FORMATED}}}</span>
