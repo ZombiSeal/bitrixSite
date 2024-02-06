@@ -23,6 +23,7 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $labelPositionClass
  * @var CatalogSectionComponent $component
  */
+
 ?>
 
 <div class="catalog-item__flags">
@@ -95,20 +96,21 @@ if (!empty($item['DISPLAY_PROPERTIES'])) {
         <?php endif; ?>
 
         <?php if ($actualItem['CAN_BUY']): ?>
-            <div id="<?= $itemIds['BASKET_ACTIONS']?>">
-                <a class="add-basket" href="<?=$item['ADD_URL']?>" id="<?= $itemIds['BUY_LINK'] ?>" data-id="<?=$item['ID'];?>">
-                    <svg class="sprite-svg">
-                        <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
-                    </svg>
-                    <div class="tooltip-ico"><span>В корзину</span></div>
-                </a>
-            </div>
+            <a class="ajax-form" href="/basket/click-buy/" data-id="<?= $item['ID']; ?>">
+                <svg class="sprite-svg ajax-form">
+                    <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#click-one"></use>
+                </svg>
+                <div class="tooltip-ico"><span>Купить в 1 клик</span></div>
+            </a>
+            <a class="add-basket" href="<?= $item['ADD_URL'] ?>" id="<?= $itemIds['BUY_LINK'] ?>"
+               data-id="<?= $item['ID']; ?>">
+                <svg class="sprite-svg">
+                    <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
+                </svg>
+                <div class="tooltip-ico"><span>В корзину</span></div>
+            </a>
         <?php else: ?>
-            <div>
-                <a id="<?= $itemIds['NOT_AVAILABLE_MESS'] ?>" href="javascript:void(0)" rel="nofollow">
-                    <?= $arParams['MESS_NOT_AVAILABLE'] ?>
-                </a>
-            </div>
+            <div>нет в наличии</div>
         <?php endif; ?>
     </div>
 </div>

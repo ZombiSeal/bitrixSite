@@ -434,6 +434,7 @@ $(window).ready(function () {
 	});
 
 	$('body').on("click", '.ajax-form', function (e) {
+		console.log('hello');
 		e.preventDefault();
 		let file_link = $(this).attr('href');
 		$.magnificPopup.open({

@@ -8,10 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     basketBtns.forEach(btn => {
         btn.addEventListener('click', e => {
+            if(!btn.classList.contains('active-link')) {
             e.preventDefault();
             let elem = e.currentTarget;
             let url = e.currentTarget.getAttribute('href');
-            if(!btn.classList.contains('active-link')) {
+
                 addToBasket(url, elem);
             }
         })
@@ -51,6 +52,7 @@ function getBasketItems() {
             items.forEach(item => {
                 if(data.includes(+item.getAttribute('data-id'))) {
                     changeLinkStatus(item, 'В корзине', true);
+                    item.setAttribute('href', '/basket/');
                 }
             })
         }
@@ -103,6 +105,7 @@ function addToBasket(url, elem) {
         return res.json();
     }).then(data => {
         if (data['STATUS'] === 'OK') {
+            elem.setAttribute('href', '/basket/');
             changeLinkStatus(elem, 'В корзине', true);
             let countBlock = document.querySelector('.basket-block .count');
             if (!countBlock.classList.contains('active')) countBlock.classList.add('active');

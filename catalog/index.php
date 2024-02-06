@@ -5,7 +5,11 @@ $APPLICATION->SetTitle("Каталог");
     <div class="fixed-compare">
         <a class="fixed-compare__link" href="/catalog/compare/?DIFFERENT=N">
         </a>
-        <a class="fixed-compare__close" href="#"> </a>
+        <a class="fixed-compare__close" href="#">
+            <svg class="sprite-svg">
+                <use xlink:href="<?=SITE_TEMPLATE_PATH?>/images/sprite/sprite.svg#close"></use>
+            </svg>
+        </a>
     </div>
     <article>
         <section>
