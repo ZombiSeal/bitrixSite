@@ -13,10 +13,13 @@
 
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
+$APPLICATION->SetTitle('Сравнение товаров');
+$APPLICATION->AddChainItem($APPLICATION->GetTitle());
+
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.compare.result",
-	"",
+	"compare_result",
 	array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],

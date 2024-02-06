@@ -278,16 +278,16 @@ $price = $arResult['ITEM_PRICES'][0];
                     </ul>
                 </div>
                 <div class="card-info__bottom-block">
-                    <a class="compare--link" href="#">
+                    <a class="compare--link compare-pr" href="<?=$arResult['COMPARE_URL']?>" action='ADD_TO_COMPARE_LIST' data-id='<?=$arResult['ID']?>'>
                         <svg class="sprite-svg">
                             <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#compare"></use>
                         </svg>
                         Добавить к сравнению
                     </a>
                 </div>
-                <div class="card-info__bottom-block card-info__bottom-btns" id="<?= $itemIds['BASKET_ACTIONS'] ?>">
+                <div class="card-info__bottom-block card-info__bottom-btns" id="<?= $arResult['BASKET_ACTIONS'] ?>">
                     <?php if ($arResult['CAN_BUY']): ?>
-                        <a class="link--buy" href="javascript:void(0)" id="<?= $arResult['BUY_LINK'] ?>">
+                        <a class="link--buy" href="<?= $arResult['BUY_URL'] ?>">
                             <svg class="sprite-svg">
                                 <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                             </svg>

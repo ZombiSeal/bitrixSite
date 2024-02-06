@@ -3583,8 +3583,9 @@ body .article-item.article-item--main .article-item__link .arrow {
   transition: .3s;
 }
 
-.catalog-item__ico svg.active {
-  fill: black;
+.add-basket svg.active,
+.catalog-item__ico svg.active{
+  fill: black !important;
 }
 
 
@@ -13004,5 +13005,10 @@ label.has-error {
 
 input.has-error {
   border-color: red !important;
+}
+
+.add-basket.active-basket {
+  color: black;
+  border-color: black;
 }
 /*# sourceMappingURL=style.css.map */

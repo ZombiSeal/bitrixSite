@@ -130,19 +130,17 @@ function addToCompare(url, elem) {
             let active = true;
             let text = '';
             let compareBlock = document.querySelector('.fixed-compare__link');
-            let countCompare = parseInt(compareBlock.innerHTML) || 0;
+            let countCompare = data['COUNT'];
 
             if(elem.getAttribute('action') == 'ADD_TO_COMPARE_LIST'){
                 elem.setAttribute('action', 'DELETE_FROM_COMPARE_LIST');
                 active = true;
                 text = 'Убрать из сравнения';
-                countCompare++;
 
             } else {
                 elem.setAttribute('action', 'ADD_TO_COMPARE_LIST');
                 active = false;
                 text = 'Добавить в сравнение';
-                countCompare--;
             }
             (countCompare == 0) ? compareBlock.parentElement.style.display = 'none' : compareBlock.parentElement.style.display = 'flex';
             compareBlock.innerHTML = countCompare + ' ' + getNoun(countCompare, ['товар', 'товара', 'товаров']);
