@@ -57,10 +57,9 @@ $APPLICATION->SetTitle("Каталог");
 		"COMPARE_ELEMENT_SORT_FIELD" => "sort",
 		"COMPARE_ELEMENT_SORT_ORDER" => "asc",
 		"COMPARE_FIELD_CODE" => array(
-			0 => "",
-			1 => "NAME",
-			2 => "PREVIEW_PICTURE",
-			3 => "",
+			0 => "NAME",
+			1 => "PREVIEW_PICTURE",
+			2 => "",
 		),
 		"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
 		"COMPARE_POSITION" => "top left",
@@ -276,7 +275,8 @@ $APPLICATION->SetTitle("Каталог");
 		),
 		"FILTER_PROPERTY_CODE" => array(
 			0 => "",
-			1 => "",
+			1 => "POWER",
+			2 => "",
 		),
 		"FILTER_PRICE_CODE" => array(
 		),

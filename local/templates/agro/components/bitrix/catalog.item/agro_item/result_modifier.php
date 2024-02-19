@@ -12,6 +12,8 @@ $arResult['ITEM']['FLAGS'] = [ 'NEW' => [$arResult['ITEM']['PROPERTIES']['NEW'],
     [$arResult['ITEM']['PROPERTIES']['GUARANTEE'], 'SPRITE' => 'onePost', 'CLASS' => 'one']
 ];
 
+$arResult['ITEM']['CLICK_ACTION'] = 'BUY_ONE_CLICK';
+
 if (Loader::includeModule("iblock")) {
     $arSelect = ["NAME"];
     $res = CIBlockSection::GetList([], ["ID" => $arResult['ITEM']['IBLOCK_SECTION_ID']], false, [], $arSelect);

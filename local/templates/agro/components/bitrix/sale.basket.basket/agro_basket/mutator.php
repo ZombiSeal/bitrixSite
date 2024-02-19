@@ -400,7 +400,8 @@ $totalData = array(
 	'PRICE' => $result['allSum'],
 	'PRICE_FORMATED' => $result['allSum_FORMATED'],
 	'PRICE_WITHOUT_DISCOUNT_FORMATED' => $result['PRICE_WITHOUT_DISCOUNT'],
-	'CURRENCY' => $result['CURRENCY']
+	'CURRENCY' => $result['CURRENCY'],
+    'CLICK_ACTION' => 'BUY_ALL'
 );
 
 if ($result['DISCOUNT_PRICE_ALL'] > 0)

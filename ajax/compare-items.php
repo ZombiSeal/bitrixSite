@@ -4,7 +4,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.ph
 if($_POST['ajax_compare'] == 'Y') {
     ob_end_clean();
     $compareItems = array_keys($_SESSION['CATALOG_COMPARE_LIST'][CATALOG_IBLOCK_ID]['ITEMS']) ?? [];
-    echo json_encode($compareItems ?? []);
+    echo json_encode($compareItems);
     die();
 }
 

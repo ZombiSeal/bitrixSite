@@ -3154,7 +3154,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
             if (this.options.showPreviewPicInBasket || this.options.showDetailPicInBasket)
                 basketImg = this.createBasketItemImg(item.data);
-                // mainColumns.push(this.createBasketItemImg(item.data));
+            // mainColumns.push(this.createBasketItemImg(item.data));
 
             basketName = this.createBasketItemContent(item.data);
 
@@ -3655,39 +3655,27 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
         editCoupons: function (basketItemsNode) {
             var couponsList = this.getCouponsList(true),
                 couponsLabel = this.getCouponsLabel(true),
-                couponsBlock = BX.create('DIV', {
-                    props: {className: 'bx-soa-coupon-block'},
-                    children: [
-                        BX.create('DIV', {
-                            props: {className: 'bx-soa-coupon-input'},
-                            children: [
-                                BX.create('INPUT', {
-                                    props: {
-                                        className: 'form-control bx-ios-fix',
-                                        type: 'text'
-                                    },
-                                    events: {
-                                        change: BX.delegate(function (event) {
-                                            var newCoupon = BX.getEventTarget(event);
-                                            if (newCoupon && newCoupon.value) {
-                                                this.sendRequest('enterCoupon', newCoupon.value);
-                                                newCoupon.value = '';
-                                            }
-                                        }, this)
-                                    }
-                                })
-                            ]
-                        }),
-                        BX.create('SPAN', {props: {className: 'bx-soa-coupon-item'}, children: couponsList})
-                    ]
+                couponsBlock = BX.create('INPUT', {
+                    props: {className: 'bx-soa-coupon-input', type: 'text'},
+                    events: {
+                        change: BX.delegate(function (event) {
+                            var newCoupon = BX.getEventTarget(event);
+                            if (newCoupon && newCoupon.value) {
+                                this.sendRequest('enterCoupon', newCoupon.value);
+                                newCoupon.value = '';
+                            }
+                        }, this)
+                    }
                 });
 
             basketItemsNode.appendChild(
                 BX.create('DIV', {
-                    props: {className: 'bx-soa-coupon'},
+                    props: {className: 'bx-soa-coupon checkout__info-step__promo'},
                     children: [
                         couponsLabel,
-                        couponsBlock
+                        couponsBlock,
+                        BX.create('INPUT', {props: {type: 'button', value: ''}}),
+                        BX.create('SPAN', {props: {className: 'bx-soa-coupon-item'}, children: couponsList})
                     ]
                 })
             );
@@ -3797,10 +3785,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
         getCouponsLabel: function (active) {
             return BX.create('DIV', {
-                props: {className: 'bx-soa-coupon-label'},
-                children: active
-                    ? [BX.create('LABEL', {html: this.params.MESS_USE_COUPON + ':'})]
-                    : [this.params.MESS_COUPON + ':']
+                props: {className: 'bx-soa-coupon-label text'},
+                html: this.params.MESS_USE_COUPON + ':'
             });
         },
 
@@ -4060,40 +4046,40 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                     }
                 }
             }
-
-            if (altProperty) {
-                altNode = BX.create('DIV', {
-                    attrs: {'data-property-id-row': altProperty.ID},
-                    props: {className: "form-group bx-soa-location-input-container"}
-                });
-
-                labelTextHtml = altProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
-                labelTextHtml += BX.util.htmlspecialchars(altProperty.NAME);
-
-                label = BX.create('LABEL', {
-                    attrs: {for: 'altProperty'},
-                    props: {className: 'bx-soa-custom-label'},
-                    html: labelTextHtml
-                });
-
-                input = BX.create('INPUT', {
-                    props: {
-                        id: 'altProperty',
-                        type: 'text',
-                        placeholder: altProperty.DESCRIPTION,
-                        autocomplete: 'city',
-                        className: 'form-control bx-soa-customer-input bx-ios-fix',
-                        name: 'ORDER_PROP_' + altProperty.ID,
-                        value: altProperty.VALUE
-                    }
-                });
-
-                altNode.appendChild(label);
-                altNode.appendChild(input);
-                node.appendChild(altNode);
-
-                this.bindValidation(altProperty.ID, altNode);
-            }
+            //
+            // if (altProperty) {
+            //     altNode = BX.create('DIV', {
+            //         attrs: {'data-property-id-row': altProperty.ID},
+            //         props: {className: "form-group bx-soa-location-input-container"}
+            //     });
+            //
+            //     labelTextHtml = altProperty.REQUIRED == 'Y' ? '<span class="bx-authform-starrequired">*</span> ' : '';
+            //     labelTextHtml += BX.util.htmlspecialchars(altProperty.NAME);
+            //
+            //     label = BX.create('LABEL', {
+            //         attrs: {for: 'altProperty'},
+            //         props: {className: 'bx-soa-custom-label'},
+            //         html: labelTextHtml
+            //     });
+            //
+            //     input = BX.create('INPUT', {
+            //         props: {
+            //             id: 'altProperty',
+            //             type: 'text',
+            //             placeholder: altProperty.DESCRIPTION,
+            //             autocomplete: 'city',
+            //             className: 'form-control bx-soa-customer-input bx-ios-fix',
+            //             name: 'ORDER_PROP_' + altProperty.ID,
+            //             value: altProperty.VALUE
+            //         }
+            //     });
+            //
+            //     altNode.appendChild(label);
+            //     altNode.appendChild(input);
+            //     node.appendChild(altNode);
+            //
+            //     this.bindValidation(altProperty.ID, altNode);
+            // }
 
             this.getZipLocationInput(node);
 
@@ -4252,8 +4238,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 for (i in this.result.PERSON_TYPE) {
                     if (this.result.PERSON_TYPE.hasOwnProperty(i)) {
                         currentType = this.result.PERSON_TYPE[i];
-                        console.log(currentType.NAME);
                         label = BX.create('LABEL', {
+                            props: {className: 'radio-label'},
                             children: [
                                 BX.create('INPUT', {
                                     attrs: {checked: currentType.CHECKED == 'Y'},
@@ -4261,7 +4247,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                                         type: 'radio',
                                         name: 'PERSON_TYPE',
                                         value: currentType.ID,
-                                        className: 'styler'
+                                        className: 'styler-radio'
                                     }
                                 }),
                                 BX.create('SPAN', {
@@ -4410,6 +4396,8 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             var node = activeNodeMode ? this.paySystemBlockNode : this.paySystemHiddenBlockNode,
                 paySystemContent, paySystemNode;
 
+            var coupon = document.querySelector('.coupon-block');
+
             if (this.initialized.paySystem) {
                 BX.remove(BX.lastChild(node));
                 node.appendChild(BX.firstChild(this.paySystemHiddenBlockNode));
@@ -4418,8 +4406,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 if (!paySystemContent) {
                     paySystemContent = this.getNewContainer();
                     node.appendChild(paySystemContent);
-                } else
+                } else {
                     BX.cleanNode(paySystemContent);
+                    BX.cleanNode(coupon);
+                }
+
 
                 this.getErrorContainer(paySystemContent);
 
@@ -4427,7 +4418,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 this.editPaySystemInfo(paySystemContent);
 
                 if (this.params.SHOW_COUPONS_PAY_SYSTEM == 'Y')
-                    this.editCoupons(paySystemContent);
+                    this.editCoupons(coupon);
 
                 this.getBlockFooter(paySystemContent);
             }
@@ -4486,14 +4477,14 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             logoNode.appendChild(logoImg);
 
             input = BX.create('INPUT', {
-                        props: {
-                            id: 'ID_PAY_SYSTEM_ID_' + paySystemId,
-                            name: 'PAY_SYSTEM_ID',
-                            type: 'checkbox',
-                            value: paySystemId,
-                            checked: checked
-                        }
-                    });
+                props: {
+                    id: 'ID_PAY_SYSTEM_ID_' + paySystemId,
+                    name: 'PAY_SYSTEM_ID',
+                    type: 'checkbox',
+                    value: paySystemId,
+                    checked: checked
+                }
+            });
 
 
             if (this.params.SHOW_PAY_SYSTEM_LIST_NAMES == 'Y') {
@@ -4512,7 +4503,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             }
 
             itemNode = BX.create('LABEL', {
-                props: {className: 'block'},
+                props: {className: 'block bx-soa-pp-company'},
                 children: [input, logoNode, label],
                 events: {
                     click: BX.proxy(this.selectPaySystem, this)
@@ -4520,7 +4511,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
             });
 
             if (checked)
-                BX.addClass(itemNode, 'active');
+                BX.addClass(itemNode, 'active bx-selected');
 
             return itemNode;
         },
@@ -5150,11 +5141,11 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
 
             labelNodes.push(label);
             itemNode = BX.create('LABEL', {
-                props: {className: 'block'},
+                props: {className: 'block bx-soa-pp-company'},
                 children: labelNodes,
                 events: {click: BX.proxy(this.selectDelivery, this)}
             });
-            checked && BX.addClass(itemNode, 'active');
+            checked && BX.addClass(itemNode, 'active bx-selected');
 
             if (checked && this.result.LAST_ORDER_DATA.PICK_UP)
                 this.lastSelectedDelivery = deliveryId;
@@ -6084,6 +6075,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 propsItemNode.appendChild(label);
             }
 
+
             switch (propertyType) {
                 case 'LOCATION':
                     this.insertLocationProperty(property, propsItemNode, disabled);
@@ -6106,8 +6098,6 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 case 'NUMBER':
                     this.insertNumberProperty(property, propsItemNode, disabled);
             }
-
-            console.log(propsItemsContainer.querySelectorAll('input'));
             propsItemsContainer.appendChild(propsItemNode);
         },
 
@@ -6281,6 +6271,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 if (prop) {
                     values = [];
                     inputs = prop.querySelectorAll('input[type=text]');
+
                     if (inputs.length == 0)
                         inputs = prop.querySelectorAll('textarea');
 
@@ -6299,7 +6290,7 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
                 propsItemNode.appendChild(propContainer);
 
                 if(propsItemNode.querySelector('input') && propsItemNode.querySelector('input').value.length > 0) {
-                   BX.addClass(propsItemNode, 'focus');
+                    BX.addClass(propsItemNode, 'focus');
                 }
 
                 this.alterProperty(property.getSettings(), propContainer);
@@ -7499,3 +7490,4 @@ BX.namespace('BX.Sale.OrderAjaxComponent');
         }
     };
 })();
+

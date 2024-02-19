@@ -4,7 +4,14 @@ if (file_exists(__DIR__.'/include/constants.php')) require_once __DIR__.'/includ
 
 if (file_exists(__DIR__.'/include/functions.php')) require_once __DIR__.'/include/functions.php';
 
-//AddEventHandler("main", "OnBeforeUserLogin", "DoBeforeUserLoginHandler");
+if (file_exists(__DIR__.'/include/events.php')) require_once __DIR__.'/include/events.php';
+
+//AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
+//function OnBeforeUserRegisterHandler(&$arFields)
+//{
+//    \Bitrix\Main\Diag\Debug::dumpToFile($arFields);
+//}
+
 //function DoBeforeUserLoginHandler(&$arFields)
 //{
 //    $userLogin = $_POST["USER_LOGIN"];
@@ -25,7 +32,7 @@ if (file_exists(__DIR__.'/include/functions.php')) require_once __DIR__.'/includ
 //        }
 //    }
 //}
-//
+
 //AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
 //function OnBeforeUserRegisterHandler(&$args)
 //{

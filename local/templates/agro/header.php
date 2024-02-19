@@ -31,7 +31,9 @@ use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/libs.min.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/common.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/auth.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/buy-one-click.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/basket.js");
+
     ?>
 
 </head>

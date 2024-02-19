@@ -16,7 +16,7 @@ use Bitrix\Main\Localization\Loc;
                 <input type="text" data-entity="basket-coupon-input">
                 <input type="submit">
             </div>
-
+            <span>hello</span>
         </div>
     <?php endif; ?>
     <div class="basket-header__price">
@@ -45,6 +45,6 @@ use Bitrix\Main\Localization\Loc;
     <div class="basket-header__btn">
         <a class="sbmt--red" href="<?= $arParams['PATH_TO_ORDER'] ?>" data-entity="basket-checkout-button">Оформить
             заказ</a>
-        <button class="btn--gray">Быстрый заказ</button>
+        <a class="btn--gray ajax-form ajax-one-click" href="/basket/click-buy/?action={{CLICK_ACTION}}">Быстрый заказ</a>
     </div>
 </script>

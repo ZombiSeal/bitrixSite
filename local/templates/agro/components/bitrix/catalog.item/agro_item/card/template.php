@@ -96,8 +96,8 @@ if (!empty($item['DISPLAY_PROPERTIES'])) {
         <?php endif; ?>
 
         <?php if ($actualItem['CAN_BUY']): ?>
-            <a class="ajax-form" href="/basket/click-buy/" data-id="<?= $item['ID']; ?>">
-                <svg class="sprite-svg ajax-form">
+            <a class="ajax-form" href="/basket/click-buy/?action=<?=$item['CLICK_ACTION']?>&product_id=<?=$item['ID']?>" data-id="<?= $item['ID']; ?>">
+                <svg class="sprite-svg ajax-one-click">
                     <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#click-one"></use>
                 </svg>
                 <div class="tooltip-ico"><span>Купить в 1 клик</span></div>

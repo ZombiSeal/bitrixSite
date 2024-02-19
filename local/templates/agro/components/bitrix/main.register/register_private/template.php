@@ -88,7 +88,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
         <div class="error-auth"></div>
         <div class="input-bottom">
             <input class="required--sbmt ajax-register" type="submit" name="register_submit_button" value="<?= GetMessage('REGISTER_BUTTON') ?>"/>
-            <div class="help w50"><a class="ajax-form" href="/auth/">Я уже зарегистрирован</a></div>
+            <div class="help w50"><a class="ajax-form" href="/auth/auth.php">Я уже зарегистрирован</a></div>
         </div>
     </form>
 <? endif; ?>

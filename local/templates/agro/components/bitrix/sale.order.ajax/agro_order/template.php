@@ -341,7 +341,6 @@ if ((string)$request->get('ORDER_ID') !== '') {
                             <div class="bx-soa-section-content checkout__info-step__container"></div>
                         </div>
 
-
                         <!--	DELIVERY BLOCK	-->
                         <div class="checkout__info-step">
                             <div class="checkout__info-step__num">
@@ -359,6 +358,11 @@ if ((string)$request->get('ORDER_ID') !== '') {
 
                         </div>
 
+                        <?php if($arParams['SHOW_COUPONS'] === 'Y'):?>
+                        <div class="checkout__info-step coupon-block">
+
+                        </div>
+                        <?php endif;?>
                         <!--	BUYER PROPS BLOCK	-->
                         <div id="bx-soa-properties" data-visited="false" class="checkout__info-step bx-soa-section bx-active">
                             <div class="checkout__info-step__num">
@@ -645,3 +649,4 @@ if ((string)$request->get('ORDER_ID') !== '') {
         <?php
     }
 }
+?>

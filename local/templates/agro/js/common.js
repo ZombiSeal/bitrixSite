@@ -434,7 +434,6 @@ $(window).ready(function () {
 	});
 
 	$('body').on("click", '.ajax-form', function (e) {
-		console.log('hello');
 		e.preventDefault();
 		let file_link = $(this).attr('href');
 		$.magnificPopup.open({
@@ -1024,7 +1023,7 @@ function required_email() {
 	$('.required--email').keyup(function () {
 		let email = $(this).val();
 
-		if (email.length > 0 && (email.match(/.+?\@.+[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}/g) || []).length !== 1) {
+		if (email.length > 0 && (email.match(/.+?\@.+\.([a-z]{1,4}\.)?[a-z]{1,4}/g) || []).length !== 1) {
 			$(this).addClass('error-online').closest('.input-text-label').addClass('error-online');
 		}
 		else if (email == '') {
@@ -1202,12 +1201,12 @@ function click_submit() {
 		//Вывод ошибки вверху
 		popupForm__error(count);
 		//	Отпралять или нет
-		if (count >= 1) {
-			return false;
-		}
-		else {
-			// $this.closest('form').submit();
-		}
+		// if (count >= 1) {
+		// 	return false;
+		// }
+		// else {
+		// 	// $this.closest('form').submit();
+		// }
 
 	});
 }

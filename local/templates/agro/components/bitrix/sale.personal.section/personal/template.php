@@ -44,7 +44,7 @@ if ($arParams['SHOW_LOYALTY_PAGE'] === 'Y')
         </li>
     <?php endforeach;?><?php if($USER->IsAuthorized()):?>
         <li>
-            <a href="/?logout=yes&<?=bitrix_sessid_get()?>">Выйти</a>
+            <a href="/?<?=\CUser::getLogoutParams()?>">Выйти</a>
         </li>
 <?endif;?>
     </ul>

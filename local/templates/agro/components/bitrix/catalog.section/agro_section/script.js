@@ -6,31 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
     getBasketItems();
     getCompareItems();
 
-    basketBtns.forEach(btn => {
-        btn.addEventListener('click', e => {
-            if(!btn.classList.contains('active-link')) {
-            e.preventDefault();
-            let elem = e.currentTarget;
-            let url = e.currentTarget.getAttribute('href');
+    if(basketBtns) {
+        basketBtns.forEach(btn => {
+            btn.addEventListener('click', e => {
+                if(!btn.classList.contains('active-link')) {
+                    e.preventDefault();
+                    let elem = e.currentTarget;
+                    let url = e.currentTarget.getAttribute('href');
 
-                addToBasket(url, elem);
-            }
+                    addToBasket(url, elem);
+                }
+            })
         })
-    })
+    }
 
-    compareBtns.forEach(compare => {
-        compare.addEventListener('click', e => {
-            e.preventDefault();
-            let elem = e.currentTarget;
-            let url = e.currentTarget.getAttribute('href');
-            addToCompare(url, elem);
+    if(compareBtns) {
+        compareBtns.forEach(compare => {
+            compare.addEventListener('click', e => {
+                e.preventDefault();
+                let elem = e.currentTarget;
+                let url = e.currentTarget.getAttribute('href');
+                addToCompare(url, elem);
+            })
         })
-    })
+    }
 
-    delAllFromCompare.addEventListener('click', e=> {
-        e.preventDefault();
-        delAllCompareItems();
-    })
+    if(delAllFromCompare) {
+        delAllFromCompare.addEventListener('click', e=> {
+            e.preventDefault();
+            delAllCompareItems();
+        })
+    }
 
 })
 
@@ -49,12 +55,14 @@ function getBasketItems() {
     }).then(data => {
         if(data.length !== 0) {
             let items = document.querySelectorAll('.add-basket');
-            items.forEach(item => {
-                if(data.includes(+item.getAttribute('data-id'))) {
-                    changeLinkStatus(item, 'В корзине', true);
-                    item.setAttribute('href', '/basket/');
-                }
-            })
+            if(items) {
+                items.forEach(item => {
+                    if(data.includes(+item.getAttribute('data-id'))) {
+                        changeLinkStatus(item, 'В корзине', true);
+                        item.setAttribute('href', '/basket/');
+                    }
+                })
+            }
         }
 
     }).catch((error) => console.log(error));
@@ -73,19 +81,25 @@ function getCompareItems() {
         return res.json();
     }).then(data => {
         if(data.length !== 0) {
-            document.querySelector('.fixed-compare').style.display = 'flex';
+            let fixedBlock = document.querySelector('.fixed-compare');
+            if(fixedBlock) fixedBlock.style.display = 'flex';
             let items = document.querySelectorAll('.compare-pr');
-            items.forEach(item => {
-                if(data.includes(+item.getAttribute('data-id'))) {
-                    item.setAttribute('action', 'DELETE_FROM_COMPARE_LIST');
-                    changeLinkStatus(item, 'Убрать из сравнения', true);
-                }
-            })
-
-            let textCompare = getNoun(data.length, ['товар', 'товара', 'товаров']);
-            document.querySelector('.fixed-compare__link').innerHTML = data.length + '  ' + textCompare;
+            if(items) {
+                items.forEach(item => {
+                    if(data.includes(+item.getAttribute('data-id'))) {
+                        item.setAttribute('action', 'DELETE_FROM_COMPARE_LIST');
+                        changeLinkStatus(item, 'Убрать из сравнения', true);
+                    }
+                })
+            }
+            let countCompareBlock = document.querySelector('.fixed-compare__link');
+            if(countCompareBlock) {
+                let textCompare = getNoun(data.length, ['товар', 'товара', 'товаров']);
+                countCompareBlock.innerHTML = data.length + '  ' + textCompare;
+            }
         } else {
-            document.querySelector('.fixed-compare').style.display = 'none';
+            let compareBlock = document.querySelector('.fixed-compare');
+            if(compareBlock) compareBlock.style.display = 'none';
         }
     }).catch((error) => console.log(error));
 }
@@ -145,8 +159,11 @@ function addToCompare(url, elem) {
                 active = false;
                 text = 'Добавить в сравнение';
             }
-            (countCompare == 0) ? compareBlock.parentElement.style.display = 'none' : compareBlock.parentElement.style.display = 'flex';
-            compareBlock.innerHTML = countCompare + ' ' + getNoun(countCompare, ['товар', 'товара', 'товаров']);
+            if(compareBlock) {
+                (countCompare == 0) ? compareBlock.parentElement.style.display = 'none' : compareBlock.parentElement.style.display = 'flex';
+                compareBlock.innerHTML = countCompare + ' ' + getNoun(countCompare, ['товар', 'товара', 'товаров']);
+            }
+
             changeLinkStatus(elem, text, active);
         }
     }).catch((error) => console.log(error));
