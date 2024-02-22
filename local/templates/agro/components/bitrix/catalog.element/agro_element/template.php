@@ -287,7 +287,7 @@ $price = $arResult['ITEM_PRICES'][0];
                 </div>
                 <div class="card-info__bottom-block card-info__bottom-btns" id="<?= $arResult['BASKET_ACTIONS'] ?>">
                     <?php if ($arResult['CAN_BUY']): ?>
-                        <a class="link--buy" href="<?= $arResult['BUY_URL'] ?>">
+                        <a class="link--buy" href="<?= $arResult['BUY_URL'] ?>" data-id="<?=$arResult['ID']?>">
                             <svg class="sprite-svg">
                                 <use xlink:href="<?= SITE_TEMPLATE_PATH ?>/images/sprite/sprite.svg#shopping-bag"></use>
                             </svg>

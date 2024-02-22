@@ -3586,7 +3586,8 @@ body .article-item.article-item--main .article-item__link .arrow {
 }
 
 .add-basket svg.active,
-.catalog-item__ico svg.active{
+.catalog-item__ico svg.active,
+.compare--link svg.active{
   fill: black !important;
 }
 
@@ -4733,7 +4734,8 @@ body .article-item.article-item--main .article-item__link .arrow {
   padding: 11px 23px;
 }
 
-.link--buy .sprite-svg {
+.link--buy .sprite-svg,
+.link--buy a .sprite-svg{
   margin-right: 16px;
   fill: #fff;
   transition: .3s;
@@ -13019,6 +13021,10 @@ input.has-error {
   color: black;
   border-color: black;
 }
+
+.add-basket.active-basket:hover {
+  background: transparent;
+}
 /*# sourceMappingURL=style.css.map */
 input.styler-radio {
   position: absolute;
@@ -13059,6 +13065,14 @@ input.styler-radio:checked + span::before {
   font-family: "montserat";
 }
 
-.subscribe-btn {
+.link--buy svg.sprite-svg{
+  margin-right: 16px;
+  fill: #fff ;
+  transition: .3s;
+  width: 24px;
+  height: 24px;
+}
 
+.link--buy:hover svg.sprite-svg {
+  fill: #F74B4B;
 }

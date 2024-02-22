@@ -1,8 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
+$isShowCompare = (str_contains($_SERVER['REQUEST_URI'], '/catalog/brands/') || str_contains($_SERVER['REQUEST_URI'], '/catalog/compare/')) ? false : true;
 ?>
-<?php if($_SERVER['REQUEST_URI'] !== '/catalog/brands/'):?>
+<?php if($isShowCompare):?>
     <div class="fixed-compare">
         <a class="fixed-compare__link" href="/catalog/compare/?DIFFERENT=N">
         </a>
