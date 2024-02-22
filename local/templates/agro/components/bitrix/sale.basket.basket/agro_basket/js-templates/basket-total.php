@@ -16,7 +16,6 @@ use Bitrix\Main\Localization\Loc;
                 <input type="text" data-entity="basket-coupon-input">
                 <input type="submit">
             </div>
-            <span>hello</span>
         </div>
     <?php endif; ?>
     <div class="basket-header__price">

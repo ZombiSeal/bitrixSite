@@ -24,16 +24,25 @@ $APPLICATION->SetTitle("Личный кабинет");?><article> <section>
 <div class="lc">
 	<div class="container">
 		 <?$APPLICATION->IncludeComponent(
-	"bitrix:sale.personal.section",
-	"personal",
-	Array(
+	"bitrix:sale.personal.section", 
+	"personal", 
+	array(
 		"0" => "loyalty/",
 		"1" => "loyalty/",
-		"ACCOUNT_PAYMENT_ELIMINATED_PAY_SYSTEMS" => array(0=>"0",),
+		"ACCOUNT_PAYMENT_ELIMINATED_PAY_SYSTEMS" => array(
+			0 => "0",
+		),
 		"ACCOUNT_PAYMENT_PERSON_TYPE" => "1",
 		"ACCOUNT_PAYMENT_SELL_CURRENCY" => "RUB",
 		"ACCOUNT_PAYMENT_SELL_SHOW_FIXED_VALUES" => "Y",
-		"ACCOUNT_PAYMENT_SELL_TOTAL" => array(0=>"100",1=>"200",2=>"500",3=>"1000",4=>"5000",5=>"",),
+		"ACCOUNT_PAYMENT_SELL_TOTAL" => array(
+			0 => "100",
+			1 => "200",
+			2 => "500",
+			3 => "1000",
+			4 => "5000",
+			5 => "",
+		),
 		"ACCOUNT_PAYMENT_SELL_USER_INPUT" => "Y",
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ALLOW_INNER" => "N",
@@ -43,29 +52,41 @@ $APPLICATION->SetTitle("Личный кабинет");?><article> <section>
 		"CHECK_RIGHTS_PRIVATE" => "Y",
 		"COMPATIBLE_LOCATION_MODE_PROFILE" => "N",
 		"CUSTOM_PAGES" => "[]",
-		"CUSTOM_SELECT_PROPS" => array(""),
+		"CUSTOM_SELECT_PROPS" => array(
+			0 => "PROPERTY_ARTICLE",
+			1 => "PROPERTY_BARCODE",
+			2 => "PROPERTY_CODE",
+			3 => "",
+		),
 		"MAIN_CHAIN_NAME" => "Личный кабинет",
-		"NAV_TEMPLATE" => "",
+		"NAV_TEMPLATE" => "agro_pagenav",
 		"ONLY_INNER_FULL" => "N",
-		"ORDERS_PER_PAGE" => "20",
+		"ORDERS_PER_PAGE" => "5",
 		"ORDER_DEFAULT_SORT" => "STATUS",
 		"ORDER_DISALLOW_CANCEL" => "N",
-		"ORDER_HIDE_USER_INFO" => array("0"),
-		"ORDER_HISTORIC_STATUSES" => array("F"),
+		"ORDER_HIDE_USER_INFO" => array(
+			0 => "0",
+		),
+		"ORDER_HISTORIC_STATUSES" => array(
+			0 => "F",
+		),
 		"ORDER_REFRESH_PRICES" => "N",
-		"ORDER_RESTRICT_CHANGE_PAYSYSTEM" => array("0"),
-		"PATH_TO_BASKET" => "/personal/cart",
+		"ORDER_RESTRICT_CHANGE_PAYSYSTEM" => array(
+			0 => "0",
+		),
+		"PATH_TO_BASKET" => "/basket/",
 		"PATH_TO_CATALOG" => "/catalog/",
 		"PATH_TO_CONTACT" => "/about/contacts",
 		"PATH_TO_PAYMENT" => "/personal/order/payment",
 		"PER_PAGE" => "20",
 		"PROFILES_PER_PAGE" => "20",
-		"PROP_1" => array(),
-		"PROP_2" => array(),
+		"PROP_1" => array(
+		),
+		"PROP_2" => array(
+		),
 		"SAVE_IN_SESSION" => "Y",
 		"SEF_FOLDER" => "/personal/",
 		"SEF_MODE" => "Y",
-		"SEF_URL_TEMPLATES" => Array("account"=>"account/","index"=>"index/","loyalty"=>"loyalty/","order_cancel"=>"cancel/#ID#","order_detail"=>"orders/#ID#","orders"=>"orders/","private"=>"private/","profile"=>"profiles/","profile_detail"=>"profiles/#ID#","subscribe"=>"subscribe/"),
 		"SEND_INFO_PRIVATE" => "N",
 		"SET_TITLE" => "Y",
 		"SHOW_ACCOUNT_COMPONENT" => "Y",
@@ -78,8 +99,23 @@ $APPLICATION->SetTitle("Личный кабинет");?><article> <section>
 		"SHOW_PRIVATE_PAGE" => "Y",
 		"SHOW_PROFILE_PAGE" => "N",
 		"SHOW_SUBSCRIBE_PAGE" => "N",
-		"USE_AJAX_LOCATIONS_PROFILE" => "Y"
-	)
+		"USE_AJAX_LOCATIONS_PROFILE" => "Y",
+		"COMPONENT_TEMPLATE" => "personal",
+		"2" => "loyalty/",
+		"3" => "loyalty/",
+		"4" => "loyalty/",
+		"5" => "loyalty/",
+		"6" => "",
+		"7" => "loyalty/",
+		"loyalty" => "loyalty/",
+		"SEF_URL_TEMPLATES" => array(
+			"loyalty" => "loyalty/",
+			"orders" => "orders/",
+			"private" => "private/",
+			"order_detail" => "orders/#ID#",
+		)
+	),
+	false
 );?>
 	</div>
 </div>

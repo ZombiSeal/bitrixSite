@@ -2,16 +2,16 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
 use Bitrix\Main\Localization\Loc;
-
+require "template.php";
 if ($arParams['SHOW_ORDER_PAGE'] !== 'Y')
 {
 	LocalRedirect($arParams['SEF_FOLDER']);
 }
 
-if ($arParams["MAIN_CHAIN_NAME"] <> '')
-{
-	$APPLICATION->AddChainItem(htmlspecialcharsbx($arParams["MAIN_CHAIN_NAME"]), $arResult['SEF_FOLDER']);
-}
+//if ($arParams["MAIN_CHAIN_NAME"] <> '')
+//{
+//	$APPLICATION->AddChainItem(htmlspecialcharsbx($arParams["MAIN_CHAIN_NAME"]), $arResult['SEF_FOLDER']);
+//}
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDERS"), $arResult['PATH_TO_ORDERS']);
 $APPLICATION->AddChainItem(Loc::getMessage("SPS_CHAIN_ORDER_DETAIL", array("#ID#" => urldecode($arResult["VARIABLES"]["ID"]))));
 $arDetParams = array(
@@ -31,8 +31,7 @@ $arDetParams = array(
 		"DISALLOW_CANCEL" => $arParams["ORDER_DISALLOW_CANCEL"],
 		"REFRESH_PRICES" => $arParams["ORDER_REFRESH_PRICES"],
 		"HIDE_USER_INFO" => $arParams["ORDER_HIDE_USER_INFO"],
-
-		"CUSTOM_SELECT_PROPS" => $arParams["CUSTOM_SELECT_PROPS"]
+		"CUSTOM_SELECT_PROPS" =>$arParams["CUSTOM_SELECT_PROPS"]
 	);
 foreach($arParams as $key => $val)
 {
@@ -42,7 +41,7 @@ foreach($arParams as $key => $val)
 
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.personal.order.detail",
-	"",
+	"order_detail",
 	$arDetParams,
 	$component
 );

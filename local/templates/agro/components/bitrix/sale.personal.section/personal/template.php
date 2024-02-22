@@ -4,8 +4,16 @@ if ($arParams['SHOW_ORDER_PAGE'] === 'Y')
 {
 
     $delimeter = ($arParams['SEF_MODE'] === 'Y') ? "?" : "&";
+    if(str_contains($_SERVER['REQUEST_URI'], $arResult['PATH_TO_ORDERS'])){
+        $path = $_SERVER['REQUEST_URI'];
+    }
+    elseif($_REQUEST['filter_history']) {
+        $path = $arResult['PATH_TO_ORDERS'].$delimeter."filter_history=Y";
+    } else {
+        $path = $arResult['PATH_TO_ORDERS'];
+    }
     $availablePages[] = array(
-        "path" => $arResult['PATH_TO_ORDERS'].$delimeter."filter_history=Y",
+        "path" => $path,
         "name" => GetMessage("SPS_ORDER_PAGE_HISTORY"),
         "icon" => SITE_TEMPLATE_PATH . '/images/sprite/sprite.svg#shopping-bag'
     );
@@ -28,6 +36,7 @@ if ($arParams['SHOW_LOYALTY_PAGE'] === 'Y')
         "icon" => SITE_TEMPLATE_PATH . '/images/sprite/sprite.svg#crown'
     );
 }
+
 ?>
 
 <?php if(!empty($availablePages)):?>

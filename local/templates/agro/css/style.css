@@ -2268,7 +2268,8 @@ body::before {
   font-family: "montserat";
 }
 
-.form-border__form input[type='submit'] {
+.form-border__form input[type='submit'],
+.subscribe-btn{
   padding: 12px 30px;
   box-shadow: none;
   border: 2px solid #EF4949;
@@ -2280,7 +2281,8 @@ body::before {
   font-family: "montserat";
 }
 
-.form-border__form input[type='submit']:hover {
+.form-border__form input[type='submit']:hover,
+.subscribe-btn:hover{
   background-color: #EF4949;
   color: #fff;
 }
@@ -6618,7 +6620,7 @@ img.mfp-img {
 
 .checkout__info-step__delPay .block.active .ico {
   background-color: #fff;
-  box-shadow: 0px 0px 10px rgba(213, 221, 221, 0.75);
+  box-shadow: 0px 0px 10px rgba(102, 102, 102, 0.75);
 }
 
 .checkout__info-step__delPay .block.active .ico svg {
@@ -13055,4 +13057,8 @@ input.styler-radio:checked + span::before {
   transition: .3s;
   cursor: pointer;
   font-family: "montserat";
+}
+
+.subscribe-btn {
+
 }

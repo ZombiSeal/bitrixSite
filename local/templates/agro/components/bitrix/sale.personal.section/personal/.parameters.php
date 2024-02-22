@@ -13,9 +13,24 @@ $arTemplateParameters = [
         "TYPE" => "CHECKBOX"
     ],
 
-    [
-        "PARENT" => "SEF_MODE",
+];
+
+$arTemplateParameters['SEF_MODE'] = [
+    'loyalty' => [
         "NAME" => "Программы лояльности",
-        "TYPE" => "STRING"
+        "DEFAULT" => "loyalty/"
+    ],
+    "orders" => [
+        "NAME" => "Заказы",
+        "DEFAULT" =>  "orders/"
+    ],
+    "private" => [
+        "NAME" => "Личные данные",
+        "DEFAULT" =>  "private/"
+    ],
+    "order_detail" => [
+        "NAME" => "Заказ детально",
+        "DEFAULT" =>  "orders/#ID#"
     ]
+
 ];

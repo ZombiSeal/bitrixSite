@@ -15,7 +15,7 @@ $buttonId = $this->randString();
 
 \Bitrix\Main\UI\Extension::load('ui.fonts.opensans');
 ?>
-<section id="sender-subscribe">
+<div class="bx-subscribe"  id="sender-subscribe">
 <?
 $frame = $this->createFrame("sender-subscribe", false)->begin();
 ?>
@@ -99,70 +99,52 @@ $frame = $this->createFrame("sender-subscribe", false)->begin();
 			});
 		})();
 	</script>
-    <div class="form-border">
-        <div class="container">
-            <div class="border">
-                <div class="form-border__text">
-                    <p>
-                        <?=htmlspecialchars_decode($arParams['SUBSCRIBE_TITLE'])?>
-                    </p>
-                </div>
 
-                <form class="form-border__form" id="bx_subscribe_subform_<?=$buttonId?>" role="form" method="post" action="<?=$arResult["FORM_ACTION"]?>">
-                    <?=bitrix_sessid_post()?>
-                    <input type="hidden" name="sender_subscription" value="add">
+	<form id="bx_subscribe_subform_<?=$buttonId?>" role="form" method="post" action="<?=$arResult["FORM_ACTION"]?>">
+		<?=bitrix_sessid_post()?>
+		<input type="hidden" name="sender_subscription" value="add">
 
-                    <div class="input-text-label">
-                        <label><?=GetMessage('subscr_form_name')?></label>
-                        <input class="bx-form-control" type="text" name="NAME" value="">
-                    </div>
+		<div class="bx-input-group">
+			<input class="bx-form-control" type="email" name="SENDER_SUBSCRIBE_EMAIL" value="<?=$arResult["EMAIL"]?>" title="<?=GetMessage("subscr_form_email_title")?>" placeholder="<?=htmlspecialcharsbx(GetMessage('subscr_form_email_title'))?>">
+		</div>
 
-                    <div class="input-text-label">
-                        <label><?=GetMessage("subscr_form_email_title")?></label>
-                        <input class="bx-form-control" type="email" name="SENDER_SUBSCRIBE_EMAIL" title="<?=GetMessage("subscr_form_email_title")?>">
-                    </div>
+		<div style="<?=(($arParams['HIDE_MAILINGS'] ?? '') <> 'Y' ? '' : 'display: none;')?>">
+			<?if(count($arResult["RUBRICS"])>0):?>
+				<div class="bx-subscribe-desc"><?=GetMessage("subscr_form_title_desc")?></div>
+			<?endif;?>
+			<?foreach($arResult["RUBRICS"] as $itemID => $itemValue):?>
+			<div class="bx_subscribe_checkbox_container">
+				<input type="checkbox" name="SENDER_SUBSCRIBE_RUB_ID[]" id="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>" value="<?=$itemValue["ID"]?>"<?if($itemValue["CHECKED"]) echo " checked"?>>
+				<label for="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>"><?=htmlspecialcharsbx($itemValue["NAME"])?></label>
+			</div>
+			<?endforeach;?>
+		</div>
 
+		<?if (($arParams['USER_CONSENT'] ?? '') == 'Y'  && $arParams['AJAX_MODE'] <> 'Y'):?>
+		<div class="bx_subscribe_checkbox_container bx-sender-subscribe-agreement">
+			<?$APPLICATION->IncludeComponent(
+				"bitrix:main.userconsent.request",
+				"",
+				array(
+					"ID" => $arParams["USER_CONSENT_ID"],
+					"IS_CHECKED" => $arParams["USER_CONSENT_IS_CHECKED"],
+					"AUTO_SAVE" => "Y",
+					"IS_LOADED" => $arParams["USER_CONSENT_IS_LOADED"],
+					"ORIGIN_ID" => "sender/sub",
+					"ORIGINATOR_ID" => "",
+					"REPLACE" => array(
+						"button_caption" => GetMessage("subscr_form_button"),
+						"fields" => array(GetMessage("subscr_form_email_title"))
+					),
+				)
+			);?>
+		</div>
+		<?endif;?>
 
-                    <div style="<?=(($arParams['HIDE_MAILINGS'] ?? '') <> 'Y' ? '' : 'display: none;')?>">
-                        <?if(count($arResult["RUBRICS"])>0):?>
-                            <div class="bx-subscribe-desc"><?=GetMessage("subscr_form_title_desc")?></div>
-                        <?endif;?>
-                        <?foreach($arResult["RUBRICS"] as $itemID => $itemValue):?>
-                            <div class="bx_subscribe_checkbox_container">
-                                <input type="checkbox" name="SENDER_SUBSCRIBE_RUB_ID[]" id="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>" value="<?=$itemValue["ID"]?>"<?if($itemValue["CHECKED"]) echo " checked"?>
-                                <label for="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>"><?=htmlspecialcharsbx($itemValue["NAME"])?></label>
-                            </div>
-                        <?endforeach;?>
-                    </div>
-
-                    <?if (($arParams['USER_CONSENT'] ?? '') == 'Y'  && $arParams['AJAX_MODE'] <> 'Y'):?>
-                        <div class="bx_subscribe_checkbox_container bx-sender-subscribe-agreement">
-                            <?$APPLICATION->IncludeComponent(
-                                "bitrix:main.userconsent.request",
-                                "",
-                                array(
-                                    "ID" => $arParams["USER_CONSENT_ID"],
-                                    "IS_CHECKED" => $arParams["USER_CONSENT_IS_CHECKED"],
-                                    "AUTO_SAVE" => "Y",
-                                    "IS_LOADED" => $arParams["USER_CONSENT_IS_LOADED"],
-                                    "ORIGIN_ID" => "sender/sub",
-                                    "ORIGINATOR_ID" => "",
-                                    "REPLACE" => array(
-                                        "button_caption" => GetMessage("subscr_form_button"),
-                                        "fields" => array(GetMessage("subscr_form_email_title"))
-                                    ),
-                                )
-                            );?>
-                        </div>
-                    <?endif;?>
-
-                    <button class="subscribe-btn" id="bx_subscribe_btn_<?= $buttonId ?>">
-                        <span><?= GetMessage("subscr_form_button") ?></span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+		<div class="bx_subscribe_submit_container">
+			<button class="sender-btn btn-subscribe" id="bx_subscribe_btn_<?=$buttonId?>"><span><?=GetMessage("subscr_form_button")?></span></button>
+		</div>
+	</form>
 <?
 $frame->beginStub();
 ?>
@@ -295,4 +277,4 @@ $frame->beginStub();
 <?
 $frame->end();
 ?>
-</section>
+</div>

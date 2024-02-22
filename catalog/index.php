@@ -2,6 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
 ?>
+<?php if($_SERVER['REQUEST_URI'] !== '/catalog/brands/'):?>
     <div class="fixed-compare">
         <a class="fixed-compare__link" href="/catalog/compare/?DIFFERENT=N">
         </a>
@@ -11,6 +12,7 @@ $APPLICATION->SetTitle("Каталог");
             </svg>
         </a>
     </div>
+<?php endif;?>
     <article>
         <section>
             <div class="container">
@@ -265,7 +267,7 @@ $APPLICATION->SetTitle("Каталог");
 		"USE_GIFTS_SECTION" => "Y",
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "N",
+		"USE_PRODUCT_QUANTITY" => "Y",
 		"USE_SALE_BESTSELLERS" => "Y",
 		"USE_STORE" => "N",
 		"COMPONENT_TEMPLATE" => "agro_catalog",
@@ -274,9 +276,8 @@ $APPLICATION->SetTitle("Каталог");
 			1 => "",
 		),
 		"FILTER_PROPERTY_CODE" => array(
-			0 => "",
-			1 => "POWER",
-			2 => "",
+			0 => "POWER",
+			1 => "",
 		),
 		"FILTER_PRICE_CODE" => array(
 		),

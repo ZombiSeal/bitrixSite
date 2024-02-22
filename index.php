@@ -517,25 +517,50 @@ $APPLICATION->SetTitle("Главная");
         ),
         false
     ); ?>
-    <section>
-        <div class="form-border">
-            <div class="container">
-                <div class="border">
-                    <div class="form-border__text">
-                        <p>
-                            Хотите быть в курсе<b>скидок и акций?</b>
-                        </p>
-                    </div>
-                    <form class="form-border__form">
-                        <div class="input-text-label">
-                            <label>Введите ваше имя</label> <input type="text" placeholder="">
-                        </div>
-                        <div class="input-text-label">
-                            <label>Введите ваш email</label> <input type="text" placeholder="">
-                        </div>
-                        <input type="submit" value="Отправить">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section> </article><? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>
+    <?php $APPLICATION->IncludeComponent(
+    "bitrix:sender.subscribe",
+    "agro_subscribe",
+    array(
+    "SUBSCRIBE_TITLE" => "Хотите быть в курсе<b>скидок и акций?</b>",
+    "USER_CONSENT" => "N",
+    "USER_CONSENT_IS_CHECKED" => "N",
+    "USER_CONSENT_ID" => "2",
+    "USER_CONSENT_IS_LOADED" => "N",
+    "USE_PERSONALIZATION" => "Y",
+    "CONFIRMATION" => "N",
+    "HIDE_MAILINGS" => "Y",
+    "SHOW_HIDDEN" => "N",
+    "AJAX_MODE" => "Y",
+    "AJAX_OPTION_JUMP" => "Y",
+    "AJAX_OPTION_STYLE" => "Y",
+    "AJAX_OPTION_HISTORY" => "Y",
+    "CACHE_TYPE" => "A",
+    "CACHE_TIME" => "3600",
+    "COMPONENT_TEMPLATE" => ".default",
+    "AJAX_OPTION_ADDITIONAL" => "",
+    "SET_TITLE" => "N"
+    ),
+    false
+    );?>
+<!--    <section>-->
+<!--        <div class="form-border">-->
+<!--            <div class="container">-->
+<!--                <div class="border">-->
+<!--                    <div class="form-border__text">-->
+<!--                        <p>-->
+<!--                            Хотите быть в курсе<b>скидок и акций?</b>-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                    <form class="form-border__form">-->
+<!--                        <div class="input-text-label">-->
+<!--                            <label>Введите ваше имя</label> <input type="text" placeholder="">-->
+<!--                        </div>-->
+<!--                        <div class="input-text-label">-->
+<!--                            <label>Введите ваш email</label> <input type="text" placeholder="">-->
+<!--                        </div>-->
+<!--                        <input type="submit" value="Отправить">-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section> </article>--><?// require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

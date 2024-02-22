@@ -138,8 +138,8 @@ $price = $arResult['ITEMS']['BASE'];
                                     <?php break; ?>
 
                                 <?php default: ?>
-                                    <?php if ($arItem['CODE'] !== 'PRODUCER'): ?>
-                                        <div class="catalog-filter__check catalog-filter__block">
+                                    <?php if ($arItem['CODE'] !== 'PRODUCER'): $checkCount = count($arItem['VALUES'])?>
+                                        <div class="<?=($checkCount > 3) ? 'catalog-filter__variant' : 'catalog-filter__check'?> catalog-filter__block">
                                             <?php if (!empty($arItem["FILTER_HINT"])): ?>
                                                 <span class="tooltip-span"><?= $arItem['NAME'] ?>:
                                                     <span class="quest">?</span>
@@ -150,26 +150,53 @@ $price = $arResult['ITEMS']['BASE'];
                                             <?php else: ?>
                                                 <span><?= $arItem['NAME'] ?>:</span>
                                             <?php endif; ?>
+                                                <?php if($checkCount > 3):?>
+                                                        <div class="filter__variant__block">
+                                                            <div class="filter__variant__block-name">
+                                                                <span><?=count($arItem['VALUES'])?> вариантов</span>
+                                                            </div>
+                                                            <ul class="filter__variant__block-ul">
+                                                                <?php foreach ($arItem['VALUES'] as $val => $ar): ?>
+                                                                    <li>
+                                                                        <label class="check"
+                                                                               data-role="label_<?= $ar["CONTROL_ID"] ?>"
+                                                                               for="<? echo $ar["CONTROL_ID"] ?>">
+                                                                            <input class="styler"
+                                                                                   type="checkbox"
+                                                                                   value="<? echo $ar["HTML_VALUE"] ?>"
+                                                                                   name="<? echo $ar["CONTROL_NAME"] ?>"
+                                                                                   id="<? echo $ar["CONTROL_ID"] ?>"
+                                                                                <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
+                                                                            />
+                                                                            <span class="styler" title="<?= $ar["VALUE"] ?>"> <?= $ar["VALUE"] ?> </span>
+                                                                        </label>
+                                                                    </li>
+                                                                <?php endforeach;?>
+                                                            </ul>
+                                                        </div>
+                                                <?php else:?>
                                             <div>
-
-                                                <?php foreach ($arItem['VALUES'] as $val => $ar): ?>
-                                                    <label class="check" data-role="label_<?= $ar["CONTROL_ID"] ?>"
-                                                           for="<? echo $ar["CONTROL_ID"] ?>">
-                                                        <input class="styler"
-                                                               type="checkbox"
-                                                               value="<? echo $ar["HTML_VALUE"] ?>"
-                                                               name="<? echo $ar["CONTROL_NAME"] ?>"
-                                                               id="<? echo $ar["CONTROL_ID"] ?>"
-                                                            <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
-                                                        />
-                                                        <span class="styler"
-                                                              title="<?= $ar["VALUE"] ?>">
+                                                    <?php foreach ($arItem['VALUES'] as $val => $ar): ?>
+                                                        <label class="check" data-role="label_<?= $ar["CONTROL_ID"] ?>"
+                                                               for="<? echo $ar["CONTROL_ID"] ?>">
+                                                            <input class="styler"
+                                                                   type="checkbox"
+                                                                   value="<? echo $ar["HTML_VALUE"] ?>"
+                                                                   name="<? echo $ar["CONTROL_NAME"] ?>"
+                                                                   id="<? echo $ar["CONTROL_ID"] ?>"
+                                                                <? echo $ar["CHECKED"] ? 'checked="checked"' : '' ?>
+                                                            />
+                                                            <span class="styler"
+                                                                  title="<?= $ar["VALUE"] ?>">
                                                             <?= $ar["VALUE"] ?>
 
                                                         </span>
-                                                    </label>
-                                                <?php endforeach; ?>
+                                                        </label>
+                                                    <?php endforeach; ?>
                                             </div>
+                                                <?php endif;?>
+
+
                                         </div>
                                     <?php else: ?>
                                         <div class="catalog-filter__maker-zag"><?= $arItem['NAME'] ?></div>
