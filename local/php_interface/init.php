@@ -1,40 +1,11 @@
 <?php
 
+\Bitrix\Main\Loader::registerAutoLoadClasses(null, [
+    'classes\Sales' => '/local/php_interface/classes/Sales.php'
+]);
+
 if (file_exists(__DIR__.'/include/constants.php')) require_once __DIR__.'/include/constants.php';
 
 if (file_exists(__DIR__.'/include/functions.php')) require_once __DIR__.'/include/functions.php';
 
 if (file_exists(__DIR__.'/include/events.php')) require_once __DIR__.'/include/events.php';
-
-//AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
-//function OnBeforeUserRegisterHandler(&$arFields)
-//{
-//    \Bitrix\Main\Diag\Debug::dumpToFile($arFields);
-//}
-
-//function DoBeforeUserLoginHandler(&$arFields)
-//{
-//    $userLogin = $_POST["USER_LOGIN"];
-//    if (isset($userLogin))
-//    {
-//        $isEmail = strpos($userLogin,"@");
-//        if ($isEmail>0)
-//        {
-//            $arFilter = Array("EMAIL"=>$userLogin);
-//            $rsUsers = CUser::GetList(($by="id"), ($order="desc"), $arFilter);
-//            if($res = $rsUsers->Fetch())
-//            {
-//                if($res["EMAIL"]==$arFields["LOGIN"])
-//                    $arFields["LOGIN"] = $res["LOGIN"];
-//            }
-//        } else {
-//            $arFields["LOGIN"] = "";
-//        }
-//    }
-//}
-
-//AddEventHandler("main", "OnBeforeUserRegister", "OnBeforeUserRegisterHandler");
-//function OnBeforeUserRegisterHandler(&$args)
-//{
-//        $args['LOGIN'] = $args['EMAIL'];
-//}

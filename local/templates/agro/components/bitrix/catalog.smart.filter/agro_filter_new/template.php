@@ -16,6 +16,8 @@ use Bitrix\Iblock\SectionPropertyTable;
 
 $this->setFrameMode(true);
 $price = $arResult['ITEMS']['BASE'];
+
+
 ?>
 
 <div class="catalog-filter">
@@ -235,8 +237,13 @@ $price = $arResult['ITEMS']['BASE'];
                     <?php endforeach; ?>
 
                     <div class="catalog-filter__btns">
-                        <label class="presence--btn">
-                            <input class="styler" type="checkbox"><span>В наличии на складе</span>
+                        <label class="presence--btn check">
+                            <input id="<?=$arResult['ITEMS']['AVAILABLE']['VALUES'][0]['CONTROL_ID']?>"
+                                   class="styler <?=($_GET['arrFilter_available']) ? 'checked' : ''?>"
+                                   type="checkbox" <?=($_GET['arrFilter_available']) ? 'checked' : ''?>
+                                   name="<?=$arResult['ITEMS']['AVAILABLE']['VALUES'][0]['CONTROL_NAME']?>"
+                                   title="<?=$arResult['ITEMS']['AVAILABLE']['VALUES'][0]['VALUE']?>">
+                            <span>В наличии на складе</span>
                         </label>
 
                         <button class="reset for--deks">
@@ -280,7 +287,6 @@ $price = $arResult['ITEMS']['BASE'];
                         <?php endif;?>
 
                     <img src="<?= SITE_TEMPLATE_PATH ?>/images/svg/cross.svg" class="sprite-svg">
-
                 </div>
             <?php
             endforeach;

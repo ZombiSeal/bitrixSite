@@ -10,8 +10,6 @@
  * @var string $componentPath
  *
 */
-
-
 $this->setFrameMode(true);
 
 $elementEdit = CIBlock::GetArrayByID($arParams['IBLOCK_ID'], 'ELEMENT_EDIT');

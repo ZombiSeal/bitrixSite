@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let select = form.querySelector('select');
     let sortBlock= document.querySelector('.sort');
 
+    console.log(checkboxes);
     history.pushState(null, null, filter.generateUrl());
     filter.getElementsCount();
 
@@ -25,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         checkboxes.forEach((check) => {
             check.addEventListener('click', (e) => {
                 if (e.target.tagName == 'SPAN') return;
+                if(e.target.tagName == 'LABEL') return;
                 e.preventDefault();
-
                 filter.checkboxParams(check);
                 filter.getElementsCount();
             });
@@ -73,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             return;
         }
+
         filter.delParam(elem);
         filter.getElementsCount();
     })
@@ -126,7 +128,6 @@ AjaxFilter.prototype.getParams = function () {
             {}
         );
 
-    console.log(params);
     return params;
 }
 
@@ -146,7 +147,6 @@ AjaxFilter.prototype.generateSort = function() {
 }
 
 AjaxFilter.prototype.generateUrl = function () {
-    console.log(this.sort);
     let symbol = (this.params.hasOwnProperty("") && this.params[""] === undefined) ? "&" : "?";
 
     if (this.sort) {
@@ -156,16 +156,18 @@ AjaxFilter.prototype.generateUrl = function () {
     }
 
     let formData = new FormData(this.form);
-    // console.log(formData);
+
     for (let pair of formData.entries()) {
         if (pair[1].length !== 0) {
             this.url += "&" + pair[0] + "=" + pair[1];
         }
+        console.log(pair);
     }
     for (let key in this.params) {
         if (!this.url.includes(key) && !key.includes('arrFilter')) this.url += "&" + key + "=" + this.params[key];
     }
 
+    console.log(this.url);
     return this.url;
 }
 
@@ -224,11 +226,11 @@ AjaxFilter.prototype.createFilterParam = function (id, text) {
 }
 
 AjaxFilter.prototype.checkboxParams = function (check) {
-    let text = check.querySelector('span').getAttribute('title');
+    let text = check.querySelector('span').getAttribute('title') || check.querySelector('input').getAttribute('title');
     let id = check.querySelector('input[type="checkbox"]').getAttribute('name');
 
-    let isExists = this.filterParams.querySelector('div[input-id=' + id + ']') ?? null;
-
+    let isExists = this.filterParams.querySelector('div[input-id=' + id + ']');
+    console.log(isExists);
     if (isExists) {
         this.filterParams.querySelector('div[input-id=' + id + ']').remove()
     } else {
@@ -296,7 +298,6 @@ AjaxFilter.prototype.changeExitFlag = function () {
 
 AjaxFilter.prototype.delParam = function(param) {
     let id = param.getAttribute('input-id');
-    console.log(id);
     let filterElem = document.querySelector('#' + id);
 
     if (!filterElem) {
@@ -319,7 +320,6 @@ AjaxFilter.prototype.delParam = function(param) {
             optionText.textContent = elem.parentElement.options[0].text;
             this.isExistFlag = false;
         }
-        console.log(elem);
     }
 
     this.filterParams.querySelector('div[input-id=' + id + ']').remove();

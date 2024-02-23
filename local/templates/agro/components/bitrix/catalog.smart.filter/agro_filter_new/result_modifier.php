@@ -32,6 +32,19 @@ if (!empty($arResult['ITEMS'])) {
             $arResult['NEW_ITEMS']['SECOND_BLOCK'][] = $item;
         }
     }
+
+    $arResult['ITEMS']['AVAILABLE'] = [
+        'CODE' => 'AVAILABLE',
+        'NAME' => 'В наличие',
+        'PROPERTY_TYPE' => 'L',
+        'VALUES' => [[
+            'CONTROL_ID' => 'arrFilter_available',
+            'CONTROL_NAME' => 'arrFilter_available',
+            'VALUE' => 'В наличие на складе',
+            'HTML_VALUE' => 'Y',
+            'CHECKED' => ($_GET['arrFilter_available']) ? true : false
+        ]]
+    ];
 }
 
 if (!empty($arResult['ITEMS'])) {

@@ -136,7 +136,7 @@ $isShowCompare = (str_contains($_SERVER['REQUEST_URI'], '/catalog/brands/') || s
 		"GIFTS_SHOW_IMAGE" => "Y",
 		"GIFTS_SHOW_NAME" => "Y",
 		"GIFTS_SHOW_OLD_PRICE" => "Y",
-		"HIDE_NOT_AVAILABLE" => "N",
+		"HIDE_NOT_AVAILABLE" => ($_GET['arrFilter_available']) ? "Y" : "N",
 		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"IBLOCK_ID" => "10",
 		"IBLOCK_TYPE" => "catalog",
@@ -275,6 +275,7 @@ $isShowCompare = (str_contains($_SERVER['REQUEST_URI'], '/catalog/brands/') || s
 		"FILTER_FIELD_CODE" => array(
 			0 => "",
 			1 => "",
+			2 => "",
 		),
 		"FILTER_PROPERTY_CODE" => array(
 			0 => "POWER",

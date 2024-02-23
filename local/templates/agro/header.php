@@ -33,6 +33,7 @@ use Bitrix\Main\Page\Asset;
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/auth.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/buy-one-click.js");
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/basket.js");
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/index_ajax.js");
 
     ?>
 

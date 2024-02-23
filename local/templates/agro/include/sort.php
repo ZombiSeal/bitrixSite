@@ -16,8 +16,8 @@ $sortSelected = (isset($_GET["sort"]) && isset($_GET["method"])) ? ('sort=' . $_
             Новые
         </option>
         <option
-                value="sort=property_new&method=desc"
-            <?php echo $sortSelected === 'sort=property_new&method=desc' ? 'selected' : '';?>
+                value="sort=property_sale&method=desc,nulls"
+            <?php echo $sortSelected === 'sort=property_sale&method=desc,nulls' ? 'selected' : '';?>
         >
             На акции
         </option>
