@@ -208,7 +208,7 @@ use Bitrix\Main\Page\Asset;
             </div>
             <div class="header-bottom__ul">
                 <div class="header-bottom__li"><a href="/about/">О компании</a></div>
-                <div class="header-bottom__li"><a href="#">Сотрудничество</a></div>
+                <div class="header-bottom__li"><a href="/cooperation/">Сотрудничество</a></div>
             </div>
             <div class="header-bottom__btn">
                 <?$APPLICATION->IncludeComponent("bitrix:search.title","header-search",Array(

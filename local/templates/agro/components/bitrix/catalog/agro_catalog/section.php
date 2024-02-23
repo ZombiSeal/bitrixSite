@@ -131,7 +131,7 @@ if (isset($_GET["sort"]) && isset($_GET["method"])) {
             array(
                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                "SECTION_ID" => $arCurSection['ID'],
+                "SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
                 "FILTER_NAME" => "arrFilter",
                 "PRICE_CODE" => $arParams["PRICE_CODE"],
                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
@@ -261,7 +261,7 @@ if (isset($_GET["sort"]) && isset($_GET["method"])) {
                     "USE_MAIN_ELEMENT_SECTION" => $arParams["USE_MAIN_ELEMENT_SECTION"],
                     'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
                     'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-                    'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
+                    'HIDE_NOT_AVAILABLE' => ($_GET['arrFilter_available']) ? "Y" : "N",
                     'HIDE_NOT_AVAILABLE_OFFERS' => $arParams["HIDE_NOT_AVAILABLE_OFFERS"],
 
                     'LABEL_PROP' => $arParams['LABEL_PROP'],

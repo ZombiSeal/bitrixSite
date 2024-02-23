@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Информационная");
+$APPLICATION->SetTitle("Доставка");
 
 ?>
 <article>
@@ -17,7 +17,7 @@ $APPLICATION->SetTitle("Информационная");
                 </div>
             </div>
             <div class="zag_main">
-                <h1>Текстовая страница</h1>
+                <h1><?=$APPLICATION->GetTitle()?></h1>
                 <? $APPLICATION->IncludeComponent(
                     "bitrix:main.include",
                     "",

@@ -244,7 +244,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') $ajax = true;
                             "SHOW_DISCOUNT_PERCENT" => "N",
                             "SHOW_FROM_SECTION" => "N",
                             "SHOW_MAX_QUANTITY" => "N",
-                            "SHOW_OLD_PRICE" => "N",
+                            "SHOW_OLD_PRICE" => "Y",
                             "SHOW_PRICE_COUNT" => "1",
                             "SHOW_SLIDER" => "Y",
                             "SLIDER_INTERVAL" => "3000",

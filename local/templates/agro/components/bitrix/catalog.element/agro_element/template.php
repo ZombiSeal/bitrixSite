@@ -19,7 +19,6 @@ $this->setFrameMode(true);
 
 $firstImgSrc = $arResult['PROPERTIES']['IMAGES']['SRC'][0];
 $price = $arResult['ITEM_PRICES'][0];
-
 ?>
 
 <section>
@@ -34,54 +33,36 @@ $price = $arResult['ITEM_PRICES'][0];
                         </p>
                     <?php endif; ?>
 
-                    <div class="card-tabs__block-text-zag btn-mob-slider">
-                        <span>Подарки при покупке одним платежом:</span>
-                    </div>
-                    <div class="card-tabs__block-text-slider__container">
-                        <div class="card-tabs__block-text-slider-arrow">
-                            <button class="slick-next slick-arrow" type="button"></button>
-                            <button class="slick-prev slick-arrow" type="button"></button>
+                    <?php if(!empty($arResult['GIFTS'])):?>
+                        <div class="card-tabs__block-text-zag btn-mob-slider">
+                            <span>Подарки при покупке одним платежом:</span>
                         </div>
-                        <div class="card-tabs__block-text-slider">
-                            <div class="slide-vertical"><a class="slide-vertical__container" href="#">
-                                    <div class="slide-vertical__img">
-                                        <div class="bg"
-                                             style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/card-slide.png"></div>
-                                    </div>
-                                    <div class="slide-vertical__text">
-                                        <div class="slide-vertical__text-name">Плуг П1-20/3 без сцепк 65 отоблокам РФ
-                                        </div>
-                                        <div class="slide-vertical__text-price">50 рублей</div>
-                                        <div class="slide-vertical__text-free">Бесплатно</div>
-                                    </div>
-                                </a>
+                        <div class="card-tabs__block-text-slider__container">
+                            <div class="card-tabs__block-text-slider-arrow">
+                                <button class="slick-next slick-arrow" type="button"></button>
+                                <button class="slick-prev slick-arrow" type="button"></button>
                             </div>
-                            <div class="slide-vertical"><a class="slide-vertical__container" href="#">
-                                    <div class="slide-vertical__img">
-                                        <div class="bg"
-                                             style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/card-slide.png"></div>
+                            <div class="card-tabs__block-text-slider">
+                                <?php foreach ($arResult['GIFTS'] as $gift):?>
+                                    <div class="slide-vertical">
+                                        <a class="slide-vertical__container" href="<?=$gift['DETAIL_PAGE_URL']?>">
+                                            <div class="slide-vertical__img">
+                                                <div class="bg"
+                                                     style="background-image: url(<?=$gift['PICTURE_SRC']?>"></div>
+                                            </div>
+                                            <div class="slide-vertical__text">
+                                                <div class="slide-vertical__text-name"><?=$gift['NAME']?>
+                                                </div>
+                                                <div class="slide-vertical__text-price"><?=$gift['PRICE']?> рублей</div>
+                                                <div class="slide-vertical__text-free">Бесплатно</div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="slide-vertical__text">
-                                        <div class="slide-vertical__text-name">Плуг П1-20/3 без сцепк 65 отоблокам РФ
-                                        </div>
-                                        <div class="slide-vertical__text-price">50 рублей</div>
-                                        <div class="slide-vertical__text-free">Бесплатно</div>
-                                    </div>
-                                </a></div>
-                            <div class="slide-vertical"><a class="slide-vertical__container" href="#">
-                                    <div class="slide-vertical__img">
-                                        <div class="bg"
-                                             style="background-image: url(<?= SITE_TEMPLATE_PATH ?>/images/card-slide.png"></div>
-                                    </div>
-                                    <div class="slide-vertical__text">
-                                        <div class="slide-vertical__text-name">Плуг П1-20/3 без сцепк 65 отоблокам РФ
-                                        </div>
-                                        <div class="slide-vertical__text-price">50 рублей</div>
-                                        <div class="slide-vertical__text-free">Бесплатно</div>
-                                    </div>
-                                </a></div>
+                                <?php endforeach;?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif;?>
+
                     <?php if (!empty($arResult['PROPERTIES']['ADVANTAGES']['ELEMENTS'])): ?>
                         <div class="card-tabs__block-text-advantage">
                             <?php foreach ($arResult['PROPERTIES']['ADVANTAGES']['ELEMENTS'] as $el): ?>
@@ -251,18 +232,18 @@ $price = $arResult['ITEM_PRICES'][0];
                         </div>
                     <?php endif; ?>
                     <div class="new"><?= $price['PRINT_RATIO_PRICE']; ?></div>
-                    <div class="list-shop"><span class="list-shop__name">Наличие товара по магазинам</span>
-                        <ul class="location-block__ul list-shop__ul">
-                            <li class="ico-placeholder"><a href="/contacts/">Магазин
-                                    на<span>Наполеона, 23</span></a>
-                                <div>8 (017) 555-11-22</div>
-                            </li>
-                            <li class="ico-placeholder"><a href="/contacts/">Магазин
-                                    на<span>Наполеона, 23</span></a>
-                                <div>8 (017) 555-11-22</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <?php if(!empty($arResult['STORES']) && $arResult['CAN_BUY']):?>
+                        <div class="list-shop"><span class="list-shop__name">Наличие товара по магазинам</span>
+                            <ul class="location-block__ul list-shop__ul">
+                                <?php foreach ($arResult['STORES'] as $store):?>
+                                    <li class="ico-placeholder"><a href="/contacts/">Магазин
+                                            на<span><?=$store['STORE_ADDRESS']?></span></a>
+                                        <div><?=$store['STORE_PHONE']?></div>
+                                    </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </div>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="card-info__bottom">

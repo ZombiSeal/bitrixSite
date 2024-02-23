@@ -5454,6 +5454,7 @@ body .article-item.article-item--main .article-item__link .arrow {
 }
 
 .slide-vertical__text-name {
+  width: 100%;
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 12px;

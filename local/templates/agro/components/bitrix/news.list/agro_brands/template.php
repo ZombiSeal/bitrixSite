@@ -4,7 +4,12 @@ $this->setFrameMode(true);
 if (!empty($arResult['ITEMS'])):?>
     <div class="brands-list">
         <?php foreach ($arResult['ITEMS'] as $brand):?>
-            <div class="brands-list__item">
+            <?php
+
+            $this->AddEditAction($brand['ID'], $brand['EDIT_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_EDIT"));
+            $this->AddDeleteAction($brand['ID'], $brand['DELETE_LINK'], CIBlock::GetArrayByID($brand["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            ?>
+            <div class="brands-list__item" id="<?=$this->GetEditAreaId($brand['ID']);?>">
 
                 <div class="brands-list__item-logo">
                     <?php $img = CFile::GetFileArray($brand['PROPERTIES']['LOGO']['VALUE']);?>
